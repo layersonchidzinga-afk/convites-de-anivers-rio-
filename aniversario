@@ -15,76 +15,162 @@ body {
     margin: 0;
     min-height: 100vh;
     font-family: Georgia, serif;
-    background: #11100d;
+    background: radial-gradient(circle at top, #3a3018, #11100d 50%, #080807);
     color: #f5d77a;
     display: flex;
     justify-content: center;
     align-items: center;
+    padding: 20px;
 }
 
 .convite {
-    width: 90%;
-    max-width: 500px;
-    padding: 45px 25px;
+    position: relative;
+    width: 100%;
+    max-width: 520px;
+    padding: 50px 28px;
     text-align: center;
-    border: 2px solid #d4af37;
-    border-radius: 25px;
-    background: linear-gradient(145deg, #171510, #292313);
-    box-shadow: 0 0 30px rgba(212,175,55,0.35);
+    background: rgba(23, 21, 16, 0.97);
+    border: 1px solid #d4af37;
+    border-radius: 28px;
+    box-shadow: 0 0 15px rgba(212,175,55,.25),
+                0 0 50px rgba(212,175,55,.12);
+    overflow: hidden;
+}
+
+.convite::before,
+.convite::after {
+    content: "✦";
+    position: absolute;
+    color: #d4af37;
+    font-size: 45px;
+    opacity: .45;
+}
+
+.convite::before {
+    top: 12px;
+    left: 20px;
+}
+
+.convite::after {
+    bottom: 8px;
+    right: 20px;
 }
 
 .estrela {
-    font-size: 35px;
+    font-size: 34px;
+    margin-bottom: 10px;
 }
 
 h1 {
-    font-size: 42px;
-    margin: 15px 0 5px;
-    color: #f1c75b;
+    margin: 10px 0 5px;
+    font-size: 48px;
+    letter-spacing: 5px;
+    color: #f5d77a;
+}
+
+.linha {
+    width: 90px;
+    height: 1px;
+    margin: 15px auto 20px;
+    background: #d4af37;
 }
 
 h2 {
-    font-size: 20px;
+    margin: 0 0 30px;
+    font-size: 21px;
     font-weight: normal;
-    margin-bottom: 30px;
+    font-style: italic;
     color: #fff1b8;
 }
 
 .mensagem {
-    font-size: 19px;
-    line-height: 1.7;
+    font-size: 18px;
+    line-height: 1.8;
     color: #f7f0d0;
+}
+
+.coracao {
+    font-size: 25px;
+    margin: 20px 0;
 }
 
 .data {
     margin: 30px 0;
-    padding: 15px;
+    padding: 20px 10px;
     border-top: 1px solid #d4af37;
     border-bottom: 1px solid #d4af37;
-    font-size: 22px;
+}
+
+.data small {
+    display: block;
+    font-size: 14px;
+    letter-spacing: 2px;
+    margin-bottom: 8px;
+    color: #d4af37;
+}
+
+.data strong {
+    display: block;
+    font-size: 25px;
+    color: #f5d77a;
 }
 
 button {
-    border: none;
-    padding: 16px 28px;
-    border-radius: 30px;
-    background: linear-gradient(90deg, #b8860b, #f5d77a, #b8860b);
+    border: 1px solid #f5d77a;
+    padding: 16px 30px;
+    border-radius: 40px;
+    background: linear-gradient(90deg, #9b7208, #f5d77a, #9b7208);
     color: #171510;
-    font-size: 17px;
+    font-size: 16px;
     font-weight: bold;
     cursor: pointer;
-    box-shadow: 0 5px 15px rgba(212,175,55,0.3);
+    box-shadow: 0 5px 20px rgba(212,175,55,.25);
+    transition: .3s;
 }
 
 button:hover {
-    transform: scale(1.04);
+    transform: translateY(-3px) scale(1.03);
 }
 
 #confirmacao {
     display: none;
     margin-top: 25px;
-    font-size: 18px;
+    padding: 15px;
+    border: 1px solid #d4af37;
+    border-radius: 15px;
+    background: rgba(212,175,55,.08);
+    font-size: 17px;
+    line-height: 1.6;
     color: #f5d77a;
+}
+
+.rodape {
+    margin-top: 30px;
+    font-size: 13px;
+    color: #9e936d;
+    letter-spacing: 1px;
+}
+
+@media (max-width: 400px) {
+    .convite {
+        padding: 40px 20px;
+    }
+
+    h1 {
+        font-size: 39px;
+    }
+
+    h2 {
+        font-size: 18px;
+    }
+
+    .mensagem {
+        font-size: 16px;
+    }
+
+    .data strong {
+        font-size: 22px;
+    }
 }
 </style>
 </head>
@@ -97,17 +183,22 @@ button:hover {
 
     <h1>INÊS</h1>
 
+    <div class="linha"></div>
+
     <h2>Para o amor da minha vida</h2>
 
     <div class="mensagem">
-        Preparei este convite especialmente para ti. ❤️
-        <br><br>
+        Preparei este convite especialmente para ti.
+
+        <div class="coracao">❤️</div>
+
         A tua presença vai tornar este momento
         ainda mais especial e inesquecível.
     </div>
 
     <div class="data">
-        📅 19 de setembro
+        <small>GUARDA ESTA DATA</small>
+        <strong>📅 19 DE SETEMBRO</strong>
     </div>
 
     <button onclick="confirmar()">
@@ -115,8 +206,13 @@ button:hover {
     </button>
 
     <div id="confirmacao">
-        ❤️ Presença confirmada!<br>
+        ❤️ <strong>Presença confirmada!</strong>
+        <br>
         Obrigado por fazer parte deste momento especial.
+    </div>
+
+    <div class="rodape">
+        ✦ Um momento especial merece uma pessoa especial ✦
     </div>
 
 </div>
