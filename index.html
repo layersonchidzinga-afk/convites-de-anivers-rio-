@@ -14,13 +14,13 @@
 body {
     margin: 0;
     min-height: 100vh;
+    padding: 20px;
     font-family: Georgia, serif;
     background: radial-gradient(circle at top, #3a3018, #11100d 50%, #080807);
     color: #f5d77a;
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 20px;
 }
 
 .convite {
@@ -132,16 +132,10 @@ button:hover {
     transform: translateY(-3px) scale(1.03);
 }
 
-#confirmacao {
-    display: none;
-    margin-top: 25px;
-    padding: 15px;
-    border: 1px solid #d4af37;
-    border-radius: 15px;
-    background: rgba(212,175,55,.08);
-    font-size: 17px;
-    line-height: 1.6;
-    color: #f5d77a;
+.info {
+    margin-top: 22px;
+    font-size: 14px;
+    color: #b8ad84;
 }
 
 .rodape {
@@ -201,14 +195,13 @@ button:hover {
         <strong>📅 19 DE SETEMBRO</strong>
     </div>
 
-    <button onclick="confirmar()">
+    <button onclick="confirmarPresenca()">
         💛 CONFIRMAR PRESENÇA
     </button>
 
-    <div id="confirmacao">
-        ❤️ <strong>Presença confirmada!</strong>
-        <br>
-        Obrigado por fazer parte deste momento especial.
+    <div class="info">
+        Ao confirmar, o WhatsApp será aberto
+        com uma mensagem pronta.
     </div>
 
     <div class="rodape">
@@ -218,8 +211,18 @@ button:hover {
 </div>
 
 <script>
-function confirmar() {
-    document.getElementById("confirmacao").style.display = "block";
+function confirmarPresenca() {
+
+    const numero = "258870739955";
+
+    const mensagem =
+        "Olá! ❤️ Confirmo a minha presença no aniversário da Inês, dia 19 de setembro.";
+
+    const link =
+        "https://wa.me/" + numero +
+        "?text=" + encodeURIComponent(mensagem);
+
+    window.location.href = link;
 }
 </script>
 
