@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Convite Especial - Inês</title>
+
+<style>
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    font-family: Georgia, serif;
+    background: #11100d;
+    color: #f5d77a;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.convite {
+    width: 90%;
+    max-width: 500px;
+    padding: 45px 25px;
+    text-align: center;
+    border: 2px solid #d4af37;
+    border-radius: 25px;
+    background: linear-gradient(145deg, #171510, #292313);
+    box-shadow: 0 0 30px rgba(212,175,55,0.35);
+}
+
+.estrela {
+    font-size: 35px;
+}
+
+h1 {
+    font-size: 42px;
+    margin: 15px 0 5px;
+    color: #f1c75b;
+}
+
+h2 {
+    font-size: 20px;
+    font-weight: normal;
+    margin-bottom: 30px;
+    color: #fff1b8;
+}
+
+.mensagem {
+    font-size: 19px;
+    line-height: 1.7;
+    color: #f7f0d0;
+}
+
+.data {
+    margin: 30px 0;
+    padding: 15px;
+    border-top: 1px solid #d4af37;
+    border-bottom: 1px solid #d4af37;
+    font-size: 22px;
+}
+
+button {
+    border: none;
+    padding: 16px 28px;
+    border-radius: 30px;
+    background: linear-gradient(90deg, #b8860b, #f5d77a, #b8860b);
+    color: #171510;
+    font-size: 17px;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 0 5px 15px rgba(212,175,55,0.3);
+}
+
+button:hover {
+    transform: scale(1.04);
+}
+
+#confirmacao {
+    display: none;
+    margin-top: 25px;
+    font-size: 18px;
+    color: #f5d77a;
+}
+</style>
+</head>
+
+<body>
+
+<div class="convite">
+
+    <div class="estrela">✨ ❤️ ✨</div>
+
+    <h1>INÊS</h1>
+
+    <h2>Para o amor da minha vida</h2>
+
+    <div class="mensagem">
+        Preparei este convite especialmente para ti. ❤️
+        <br><br>
+        A tua presença vai tornar este momento
+        ainda mais especial e inesquecível.
+    </div>
+
+    <div class="data">
+        📅 19 de setembro
+    </div>
+
+    <button onclick="confirmar()">
+        💛 CONFIRMAR PRESENÇA
+    </button>
+
+    <div id="confirmacao">
+        ❤️ Presença confirmada!<br>
+        Obrigado por fazer parte deste momento especial.
+    </div>
+
+</div>
+
+<script>
+function confirmar() {
+    document.getElementById("confirmacao").style.display = "block";
+}
+</script>
+
+</body>
+</html>
