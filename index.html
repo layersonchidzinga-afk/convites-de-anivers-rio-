@@ -24,7 +24,6 @@ body {
 }
 
 .convite {
-    position: relative;
     width: 100%;
     max-width: 520px;
     padding: 50px 28px;
@@ -34,26 +33,6 @@ body {
     border-radius: 28px;
     box-shadow: 0 0 15px rgba(212,175,55,.25),
                 0 0 50px rgba(212,175,55,.12);
-    overflow: hidden;
-}
-
-.convite::before,
-.convite::after {
-    content: "✦";
-    position: absolute;
-    color: #d4af37;
-    font-size: 45px;
-    opacity: .45;
-}
-
-.convite::before {
-    top: 12px;
-    left: 20px;
-}
-
-.convite::after {
-    bottom: 8px;
-    right: 20px;
 }
 
 .estrela {
@@ -115,7 +94,8 @@ h2 {
     color: #f5d77a;
 }
 
-button {
+.botao {
+    display: inline-block;
     border: 1px solid #f5d77a;
     padding: 16px 30px;
     border-radius: 40px;
@@ -123,17 +103,17 @@ button {
     color: #171510;
     font-size: 16px;
     font-weight: bold;
-    cursor: pointer;
+    text-decoration: none;
     box-shadow: 0 5px 20px rgba(212,175,55,.25);
     transition: .3s;
 }
 
-button:hover {
-    transform: translateY(-3px) scale(1.03);
+.botao:hover {
+    transform: scale(1.03);
 }
 
 .info {
-    margin-top: 22px;
+    margin-top: 20px;
     font-size: 14px;
     color: #b8ad84;
 }
@@ -195,9 +175,12 @@ button:hover {
         <strong>📅 19 DE SETEMBRO</strong>
     </div>
 
-    <button onclick="confirmarPresenca()">
+    <a
+        class="botao"
+        href="https://wa.me/258870739955?text=Ol%C3%A1!%20Confirmo%20a%20minha%20presen%C3%A7a%20no%20anivers%C3%A1rio%20da%20In%C3%AAs%2C%20dia%2019%20de%20setembro.%20%E2%9D%A4%EF%B8%8F"
+        target="_blank">
         💛 CONFIRMAR PRESENÇA
-    </button>
+    </a>
 
     <div class="info">
         Ao confirmar, o WhatsApp será aberto
@@ -209,22 +192,6 @@ button:hover {
     </div>
 
 </div>
-
-<script>
-function confirmarPresenca() {
-
-    const numero = "258870739955";
-
-    const mensagem =
-        "Olá! ❤️ Confirmo a minha presença no aniversário da Inês, dia 19 de setembro.";
-
-    const link =
-        "https://wa.me/" + numero +
-        "?text=" + encodeURIComponent(mensagem);
-
-    window.location.href = link;
-}
-</script>
 
 </body>
 </html>
