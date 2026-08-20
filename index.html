@@ -1,12 +1,14 @@
+```html
 <!DOCTYPE html>
 <html lang="pt">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Convite Especial - Layerson & Naira</title>
+<title>Convite - Layerson & Naira</title>
 
 <style>
+
 * {
     box-sizing: border-box;
 }
@@ -15,24 +17,42 @@ body {
     margin: 0;
     min-height: 100vh;
     padding: 20px;
+
     font-family: Georgia, serif;
-    background: radial-gradient(circle at top, #3a3018, #11100d 50%, #080807);
+
+    background:
+        radial-gradient(circle at top, #3a3018, #11100d 50%, #080807);
+
     color: #f5d77a;
+
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-.convite {
+
+/* ================================
+   CONVITE GERAL
+================================ */
+
+.convite-geral {
+
     width: 100%;
     max-width: 520px;
+
     padding: 50px 28px;
+
     text-align: center;
+
     background: rgba(23, 21, 16, 0.97);
+
     border: 1px solid #d4af37;
+
     border-radius: 28px;
-    box-shadow: 0 0 15px rgba(212,175,55,.25),
-                0 0 50px rgba(212,175,55,.12);
+
+    box-shadow:
+        0 0 15px rgba(212,175,55,.25),
+        0 0 50px rgba(212,175,55,.12);
 }
 
 .estrela {
@@ -40,71 +60,119 @@ body {
     margin-bottom: 10px;
 }
 
-h1 {
+.convite-geral h1 {
+
     margin: 10px 0 5px;
+
     font-size: 42px;
+
     letter-spacing: 3px;
+
     color: #f5d77a;
 }
 
 .linha {
+
     width: 90px;
+
     height: 1px;
+
     margin: 15px auto 20px;
+
     background: #d4af37;
 }
 
-h2 {
+.convite-geral h2 {
+
     margin: 0 0 30px;
+
     font-size: 21px;
+
     font-weight: normal;
+
     font-style: italic;
+
     color: #fff1b8;
 }
 
 .mensagem {
+
     font-size: 18px;
+
     line-height: 1.8;
+
     color: #f7f0d0;
 }
 
 .coracao {
+
     font-size: 25px;
+
     margin: 20px 0;
 }
 
 .data {
+
     margin: 30px 0;
+
     padding: 20px 10px;
+
     border-top: 1px solid #d4af37;
+
     border-bottom: 1px solid #d4af37;
 }
 
 .data small {
+
     display: block;
+
     font-size: 14px;
+
     letter-spacing: 2px;
+
     margin-bottom: 8px;
+
     color: #d4af37;
 }
 
 .data strong {
+
     display: block;
+
     font-size: 25px;
+
     color: #f5d77a;
 }
 
 .botao {
+
     display: inline-block;
+
     padding: 16px 30px;
+
     border: 1px solid #f5d77a;
+
     border-radius: 40px;
-    background: linear-gradient(90deg, #9b7208, #f5d77a, #9b7208);
+
+    background:
+        linear-gradient(
+            90deg,
+            #9b7208,
+            #f5d77a,
+            #9b7208
+        );
+
     color: #171510;
+
     font-size: 16px;
+
     font-weight: bold;
+
     text-decoration: none;
-    box-shadow: 0 5px 20px rgba(212,175,55,.25);
+
+    box-shadow:
+        0 5px 20px rgba(212,175,55,.25);
+
     transition: .3s;
 }
 
@@ -113,60 +181,487 @@ h2 {
 }
 
 .info {
+
     margin-top: 20px;
+
     font-size: 14px;
+
     color: #b8ad84;
 }
 
 .rodape {
+
     margin-top: 30px;
+
     font-size: 13px;
+
     color: #9e936d;
+
     letter-spacing: 1px;
 }
 
+
+/* ================================
+   TELA DA SENHA
+================================ */
+
+#areaSenha {
+
+    display: none;
+
+    width: 100%;
+
+    max-width: 520px;
+
+    padding: 55px 30px;
+
+    text-align: center;
+
+    background:
+        linear-gradient(
+            145deg,
+            #70530c,
+            #241a04 50%,
+            #0d0902
+        );
+
+    border: 2px solid #e8c75a;
+
+    border-radius: 32px;
+
+    box-shadow:
+        0 0 25px rgba(255,215,100,.45),
+        0 0 70px rgba(212,175,55,.25);
+}
+
+.senha-icone {
+
+    font-size: 42px;
+
+    margin-bottom: 15px;
+}
+
+#areaSenha h1 {
+
+    margin: 5px 0 15px;
+
+    font-size: 34px;
+
+    color: #ffe9a0;
+
+    letter-spacing: 2px;
+}
+
+#areaSenha p {
+
+    font-size: 17px;
+
+    line-height: 1.7;
+
+    color: #fff0bd;
+
+    margin-bottom: 25px;
+}
+
+#codigo {
+
+    width: 100%;
+
+    max-width: 300px;
+
+    padding: 15px 20px;
+
+    border-radius: 30px;
+
+    border: 1px solid #e8c75a;
+
+    background: #171004;
+
+    color: #ffe9a0;
+
+    text-align: center;
+
+    font-size: 18px;
+
+    outline: none;
+}
+
+#codigo::placeholder {
+    color: #a9975f;
+}
+
+#entrar {
+
+    display: block;
+
+    margin: 18px auto 0;
+
+    padding: 15px 28px;
+
+    border: 1px solid #ffe49a;
+
+    border-radius: 40px;
+
+    background:
+        linear-gradient(
+            90deg,
+            #a87505,
+            #ffe18a,
+            #a87505
+        );
+
+    color: #2c2107;
+
+    font-size: 16px;
+
+    font-weight: bold;
+
+    cursor: pointer;
+}
+
+#erro {
+
+    display: none;
+
+    margin-top: 18px;
+
+    color: #ffd0a0;
+
+    font-size: 14px;
+}
+
+
+/* ================================
+   CONVITE ESPECIAL DA INÊS
+================================ */
+
+#conviteInes {
+
+    display: none;
+
+    width: 100%;
+
+    max-width: 520px;
+
+    padding: 55px 30px;
+
+    text-align: center;
+
+    position: relative;
+
+    overflow: hidden;
+
+    background:
+        linear-gradient(
+            145deg,
+            #70530c,
+            #241a04 45%,
+            #0d0902
+        );
+
+    border: 2px solid #f0d16a;
+
+    border-radius: 32px;
+
+    box-shadow:
+        0 0 25px rgba(255,215,100,.45),
+        0 0 70px rgba(212,175,55,.25),
+
+        inset 0 0 30px rgba(255,215,100,.08);
+}
+
+#conviteInes::before {
+
+    content: "";
+
+    position: absolute;
+
+    top: -100px;
+    left: -100px;
+
+    width: 220px;
+    height: 220px;
+
+    border-radius: 50%;
+
+    background: rgba(255,215,100,.10);
+}
+
+#conviteInes::after {
+
+    content: "";
+
+    position: absolute;
+
+    right: -100px;
+    bottom: -100px;
+
+    width: 220px;
+    height: 220px;
+
+    border-radius: 50%;
+
+    background: rgba(255,215,100,.08);
+}
+
+.ines-estrelas {
+
+    font-size: 27px;
+
+    color: #ffe9a0;
+
+    letter-spacing: 8px;
+
+    margin-bottom: 20px;
+}
+
+#conviteInes h1 {
+
+    margin: 5px 0;
+
+    font-size: 58px;
+
+    letter-spacing: 6px;
+
+    color: #ffe8a0;
+
+    text-shadow:
+        0 0 12px rgba(255,220,130,.5),
+        0 0 25px rgba(255,200,70,.2);
+}
+
+.linha-ines {
+
+    width: 140px;
+
+    height: 2px;
+
+    margin: 18px auto 25px;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            #ffe28a,
+            transparent
+        );
+}
+
+#conviteInes h2 {
+
+    margin: 0 0 30px;
+
+    font-size: 21px;
+
+    font-weight: normal;
+
+    font-style: italic;
+
+    color: #fff0bd;
+}
+
+.mensagem-ines {
+
+    position: relative;
+
+    z-index: 2;
+
+    font-size: 18px;
+
+    line-height: 1.9;
+
+    color: #fff6d8;
+}
+
+.coracao-ines {
+
+    font-size: 38px;
+
+    margin: 25px 0;
+}
+
+.data-ines {
+
+    position: relative;
+
+    z-index: 2;
+
+    margin: 35px 0;
+
+    padding: 22px 10px;
+
+    border-top: 1px solid #e8c75a;
+
+    border-bottom: 1px solid #e8c75a;
+}
+
+.data-ines small {
+
+    display: block;
+
+    font-size: 13px;
+
+    letter-spacing: 3px;
+
+    margin-bottom: 10px;
+
+    color: #e5c45b;
+}
+
+.data-ines strong {
+
+    display: block;
+
+    font-size: 25px;
+
+    color: #ffe9a0;
+}
+
+.botao-ines {
+
+    position: relative;
+
+    z-index: 2;
+
+    display: inline-block;
+
+    padding: 17px 32px;
+
+    border: 1px solid #ffe49a;
+
+    border-radius: 50px;
+
+    background:
+        linear-gradient(
+            90deg,
+            #a87505,
+            #ffe18a,
+            #a87505
+        );
+
+    color: #2c2107;
+
+    font-size: 16px;
+
+    font-weight: bold;
+
+    text-decoration: none;
+
+    box-shadow:
+        0 5px 25px rgba(255,215,100,.30);
+
+    transition: .3s;
+}
+
+.botao-ines:hover {
+    transform: scale(1.05);
+}
+
+.info-ines {
+
+    position: relative;
+
+    z-index: 2;
+
+    margin-top: 20px;
+
+    font-size: 14px;
+
+    color: #d8c88d;
+}
+
+.rodape-ines {
+
+    position: relative;
+
+    z-index: 2;
+
+    margin-top: 30px;
+
+    font-size: 13px;
+
+    letter-spacing: 1px;
+
+    color: #d8c477;
+}
+
+
+/* ================================
+   TELEMÓVEL
+================================ */
+
 @media (max-width: 400px) {
-    .convite {
+
+    .convite-geral,
+    #areaSenha,
+    #conviteInes {
+
         padding: 40px 20px;
     }
 
-    h1 {
+    .convite-geral h1 {
         font-size: 34px;
     }
 
-    h2 {
+    #areaSenha h1 {
+        font-size: 29px;
+    }
+
+    #conviteInes h1 {
+
+        font-size: 43px;
+
+        letter-spacing: 4px;
+    }
+
+    #conviteInes h2 {
         font-size: 18px;
     }
 
-    .mensagem {
+    .mensagem-ines {
         font-size: 16px;
     }
 
-    .data strong {
-        font-size: 22px;
+    .data-ines strong {
+        font-size: 21px;
     }
 }
+
 </style>
+
 </head>
 
 <body>
 
-<div class="convite">
 
-    <div class="estrela">✨ ❤️ ✨</div>
+<!-- ==========================================
+     CONVITE GERAL
+========================================== -->
 
-    <h1>LAYerson & NAIRA</h1>
+<div id="conviteGeral" class="convite-geral">
+
+    <div class="estrela">
+        ✨ ❤️ ✨
+    </div>
+
+    <h1>
+        LAYerson & NAIRA
+    </h1>
 
     <div class="linha"></div>
 
-    <h2>Convite Especial</h2>
+    <h2>
+        Convite Especial
+    </h2>
 
     <div class="mensagem">
 
         Você está convidado(a) para celebrar
         este momento muito especial conosco.
 
-        <div class="coracao">❤️</div>
+        <div class="coracao">
+            ❤️
+        </div>
 
         A sua presença vai tornar esta celebração
         ainda mais especial e inesquecível.
@@ -175,9 +670,13 @@ h2 {
 
     <div class="data">
 
-        <small>GUARDA ESTA DATA</small>
+        <small>
+            GUARDA ESTA DATA
+        </small>
 
-        <strong>📅 19 DE SETEMBRO</strong>
+        <strong>
+            📅 19 DE SETEMBRO
+        </strong>
 
     </div>
 
@@ -205,5 +704,263 @@ h2 {
 
 </div>
 
+
+<!-- ==========================================
+     TELA DA SENHA
+========================================== -->
+
+<div id="areaSenha">
+
+    <div class="senha-icone">
+        🔐
+    </div>
+
+    <h1>
+        O teu convite especial
+    </h1>
+
+    <p>
+        Digita a palavra especial
+        para abrir o teu convite. ❤️
+    </p>
+
+    <input
+        type="password"
+        id="codigo"
+        placeholder="Digite a palavra"
+        autocomplete="off"
+    >
+
+    <button id="entrar">
+        ✨ ABRIR CONVITE
+    </button>
+
+    <div id="erro">
+        Palavra incorreta. Tenta novamente. ❤️
+    </div>
+
+</div>
+
+
+<!-- ==========================================
+     CONVITE ESPECIAL DA INÊS
+========================================== -->
+
+<div id="conviteInes">
+
+    <div class="ines-estrelas">
+        ✦ ✨ ✦
+    </div>
+
+    <h1>
+        INÊS
+    </h1>
+
+    <div class="linha-ines"></div>
+
+    <h2>
+        Um convite especial para ti
+    </h2>
+
+    <div class="mensagem-ines">
+
+        Inês,
+
+        <br><br>
+
+        este convite foi preparado
+        especialmente para ti.
+
+        <div class="coracao-ines">
+            ❤️
+        </div>
+
+        Quero muito que estejas presente
+        para viver connosco este momento
+        tão especial.
+
+    </div>
+
+    <div class="data-ines">
+
+        <small>
+            GUARDA ESTA DATA
+        </small>
+
+        <strong>
+            📅 19 DE SETEMBRO
+        </strong>
+
+    </div>
+
+    <a
+        href="https://wa.me/258870739955?text=Ol%C3%A1%21%20Confirmo%20a%20minha%20presen%C3%A7a%20no%20anivers%C3%A1rio%20do%20Layerson%20e%20da%20Naira%2C%20dia%2019%20de%20setembro.%20%E2%9D%A4%EF%B8%8F"
+        target="_blank"
+        class="botao-ines">
+
+        💛 CONFIRMAR PRESENÇA
+
+    </a>
+
+    <div class="info-ines">
+
+        Clica no botão para confirmar
+        a tua presença pelo WhatsApp.
+
+    </div>
+
+    <div class="rodape-ines">
+
+        ✦ Com carinho, Layerson & Naira ✦
+
+    </div>
+
+</div>
+
+
+<script>
+
+/* ==========================================
+   SENHA DA INÊS
+========================================== */
+
+const CODIGO_INES = "TE AMO";
+
+
+/* ==========================================
+   IDENTIFICA O TIPO DE CONVITE
+========================================== */
+
+const parametros =
+    new URLSearchParams(window.location.search);
+
+const convidada =
+    parametros.get("convidada");
+
+
+const conviteGeral =
+    document.getElementById("conviteGeral");
+
+const areaSenha =
+    document.getElementById("areaSenha");
+
+const conviteInes =
+    document.getElementById("conviteInes");
+
+const campoCodigo =
+    document.getElementById("codigo");
+
+const botaoEntrar =
+    document.getElementById("entrar");
+
+const mensagemErro =
+    document.getElementById("erro");
+
+
+/* ==========================================
+   LINK NORMAL
+========================================== */
+
+if (
+    !convidada ||
+    convidada.toLowerCase() !== "ines"
+) {
+
+    conviteGeral.style.display = "block";
+
+    areaSenha.style.display = "none";
+
+    conviteInes.style.display = "none";
+
+}
+
+
+/* ==========================================
+   LINK ESPECIAL DA INÊS
+========================================== */
+
+if (
+    convidada &&
+    convidada.toLowerCase() === "ines"
+) {
+
+    conviteGeral.style.display = "none";
+
+    areaSenha.style.display = "block";
+
+    conviteInes.style.display = "none";
+
+    document.title =
+        "O teu convite especial";
+
+}
+
+
+/* ==========================================
+   VERIFICAR SENHA
+========================================== */
+
+function verificarCodigo() {
+
+    const codigoDigitado =
+        campoCodigo.value.trim().toUpperCase();
+
+
+    if (
+        codigoDigitado === CODIGO_INES
+    ) {
+
+        areaSenha.style.display = "none";
+
+        conviteInes.style.display = "block";
+
+        document.title =
+            "Convite Especial - Inês";
+
+    }
+
+    else {
+
+        mensagemErro.style.display = "block";
+
+        campoCodigo.value = "";
+
+        campoCodigo.focus();
+
+    }
+
+}
+
+
+/* ==========================================
+   CLICAR NO BOTÃO
+========================================== */
+
+botaoEntrar.addEventListener(
+    "click",
+    verificarCodigo
+);
+
+
+/* ==========================================
+   PRESSIONAR ENTER
+========================================== */
+
+campoCodigo.addEventListener(
+    "keydown",
+    function(event) {
+
+        if (event.key === "Enter") {
+
+            verificarCodigo();
+
+        }
+
+    }
+);
+
+</script>
+
 </body>
 </html>
+```
