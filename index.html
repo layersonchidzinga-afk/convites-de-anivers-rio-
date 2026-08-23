@@ -7,8 +7,13 @@
 <title>Convite de Aniversário - Layerson & Naira</title>
 
 <style>
+
 * {
     box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
 }
 
 body {
@@ -16,27 +21,90 @@ body {
     min-height: 100vh;
     font-family: Georgia, "Times New Roman", serif;
     background:
-        radial-gradient(circle at top, #4a3a0b 0%, #151515 45%, #000 100%);
+        radial-gradient(circle at top, #4b3b0b, #111 45%, #000 100%);
     color: white;
     display: flex;
     justify-content: center;
     align-items: center;
     padding: 20px;
+    overflow-x: hidden;
 }
+
+/* =========================
+   PARTÍCULAS DOURADAS
+========================= */
+
+.particle {
+    position: fixed;
+    top: -20px;
+    width: 5px;
+    height: 5px;
+    background: #d4af37;
+    border-radius: 50%;
+    pointer-events: none;
+    animation: cair linear infinite;
+    opacity: 0.8;
+    z-index: 0;
+}
+
+@keyframes cair {
+    from {
+        transform: translateY(-20px) rotate(0deg);
+        opacity: 0;
+    }
+
+    15% {
+        opacity: 0.8;
+    }
+
+    to {
+        transform: translateY(110vh) rotate(360deg);
+        opacity: 0;
+    }
+}
+
+/* =========================
+   CONTAINER
+========================= */
 
 .container {
     width: 100%;
     max-width: 620px;
+    position: relative;
+    z-index: 2;
 }
+
+/* =========================
+   CARTÃO
+========================= */
 
 .card {
     width: 100%;
-    background: rgba(15, 15, 15, 0.97);
+    background: rgba(12,12,12,0.97);
     border: 2px solid #d4af37;
     border-radius: 28px;
     padding: 42px 25px;
     text-align: center;
-    box-shadow: 0 0 45px rgba(212,175,55,0.35);
+
+    box-shadow:
+        0 0 30px rgba(212,175,55,0.3),
+        0 0 80px rgba(212,175,55,0.08);
+
+    animation: aparecer 0.8s ease;
+}
+
+@keyframes aparecer {
+
+    from {
+        opacity: 0;
+        transform: translateY(30px) scale(0.96);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+
 }
 
 .hidden {
@@ -47,8 +115,12 @@ body {
     color: #d4af37;
 }
 
+/* =========================
+   TEXTOS
+========================= */
+
 .logo {
-    font-size: 18px;
+    font-size: 17px;
     letter-spacing: 3px;
     color: #d4af37;
     margin-bottom: 20px;
@@ -69,6 +141,10 @@ p {
     line-height: 1.7;
 }
 
+/* =========================
+   PIN
+========================= */
+
 .pin-title {
     font-size: 34px;
     font-weight: bold;
@@ -82,35 +158,61 @@ input {
     max-width: 330px;
     padding: 15px;
     margin-top: 10px;
+
     border-radius: 30px;
     border: 2px solid #d4af37;
+
     background: #080808;
     color: white;
+
     text-align: center;
     font-size: 18px;
     outline: none;
 }
 
-input::placeholder {
-    color: #aaa;
+input:focus {
+    box-shadow: 0 0 15px rgba(212,175,55,0.5);
 }
+
+input::placeholder {
+    color: #999;
+}
+
+/* =========================
+   BOTÕES
+========================= */
 
 button {
     border: none;
     border-radius: 30px;
-    padding: 15px 28px;
-    margin-top: 18px;
-    font-size: 17px;
+    padding: 14px 25px;
+    margin-top: 17px;
+
+    font-size: 16px;
     font-weight: bold;
+
     cursor: pointer;
+
     background: #d4af37;
     color: #111;
-    transition: 0.2s;
+
+    transition: 0.25s;
 }
 
 button:hover {
     transform: scale(1.05);
+    box-shadow: 0 0 20px rgba(212,175,55,0.4);
 }
+
+button.secondary {
+    background: transparent;
+    color: #d4af37;
+    border: 1px solid #d4af37;
+}
+
+/* =========================
+   ERRO
+========================= */
 
 .error {
     color: #ff7777;
@@ -118,17 +220,27 @@ button:hover {
     font-weight: bold;
 }
 
+/* =========================
+   INFORMAÇÕES
+========================= */
+
 .info {
     border: 1px solid #d4af37;
     border-radius: 20px;
+
     padding: 20px;
     margin: 25px 0;
+
     background: rgba(212,175,55,0.08);
 }
 
 .info p {
-    margin: 8px 0;
+    margin: 9px 0;
 }
+
+/* =========================
+   MENSAGEM AMIGOS
+========================= */
 
 .friend-message {
     color: #f0d568;
@@ -137,10 +249,99 @@ button:hover {
 }
 
 /* =========================
-   CONVITE DA INÊS
+   CONTAGEM REGRESSIVA
+========================= */
+
+.countdown-title {
+    color: #d4af37;
+    font-size: 15px;
+    letter-spacing: 2px;
+    margin-top: 25px;
+}
+
+.countdown {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 8px;
+    margin: 15px 0 25px;
+}
+
+.time-box {
+    border: 1px solid #d4af37;
+    border-radius: 12px;
+    padding: 10px 5px;
+    background: rgba(212,175,55,0.08);
+}
+
+.time-number {
+    display: block;
+    color: #d4af37;
+    font-size: 25px;
+    font-weight: bold;
+}
+
+.time-label {
+    display: block;
+    font-size: 11px;
+    color: #ccc;
+    margin-top: 4px;
+}
+
+/* =========================
+   BOTÃO MÚSICA
+========================= */
+
+.music-button {
+    position: fixed;
+
+    bottom: 20px;
+    right: 20px;
+
+    width: 52px;
+    height: 52px;
+
+    padding: 0;
+    margin: 0;
+
+    border-radius: 50%;
+
+    z-index: 10;
+
+    font-size: 20px;
+}
+
+/* =========================
+   ANIMAÇÃO DE ABERTURA
+========================= */
+
+.opening {
+    animation: abrir 1s ease forwards;
+}
+
+@keyframes abrir {
+
+    0% {
+        opacity: 0;
+        transform: scale(0.75) rotateX(20deg);
+    }
+
+    60% {
+        opacity: 1;
+        transform: scale(1.04) rotateX(0);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+
+}
+
+/* =========================
+   INÊS
 ========================= */
 
 .special {
+
     background:
         linear-gradient(
             135deg,
@@ -154,8 +355,8 @@ button:hover {
     border: 3px solid #f5d76e;
 
     box-shadow:
-        0 0 25px rgba(245,215,110,0.5),
-        0 0 70px rgba(212,175,55,0.3);
+        0 0 30px rgba(245,215,110,0.55),
+        0 0 80px rgba(212,175,55,0.3);
 }
 
 .special h1,
@@ -166,7 +367,19 @@ button:hover {
 
 .heart {
     font-size: 45px;
-    margin-bottom: 10px;
+    animation: pulsar 1.5s infinite;
+}
+
+@keyframes pulsar {
+
+    0%, 100% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.15);
+    }
+
 }
 
 .special-message {
@@ -174,20 +387,129 @@ button:hover {
     line-height: 1.8;
 }
 
+/* =========================
+   AGRADECIMENTO
+========================= */
+
+.thanks {
+    margin-top: 25px;
+    padding: 25px 15px;
+
+    border: 1px solid #d4af37;
+    border-radius: 20px;
+
+    background: rgba(212,175,55,0.08);
+
+    animation: aparecer 0.8s ease;
+}
+
+.thanks h2 {
+    color: #d4af37;
+}
+
+/* =========================
+   RODAPÉ
+========================= */
+
 .footer {
     margin-top: 25px;
-    font-size: 14px;
-    color: #aaa;
+    font-size: 13px;
+    color: #999;
 }
+
+/* =========================
+   CELULAR
+========================= */
+
+@media (max-width: 500px) {
+
+    .card {
+        padding: 32px 18px;
+    }
+
+    h1 {
+        font-size: 32px;
+    }
+
+    h2 {
+        font-size: 22px;
+    }
+
+    p {
+        font-size: 16px;
+    }
+
+    .countdown {
+        gap: 5px;
+    }
+
+    .time-number {
+        font-size: 21px;
+    }
+
+}
+
 </style>
 </head>
 
 <body>
 
+
+<!-- =========================
+     PARTÍCULAS
+========================= -->
+
+<script>
+
+for (let i = 0; i < 35; i++) {
+
+    const particle = document.createElement("div");
+
+    particle.className = "particle";
+
+    particle.style.left =
+        Math.random() * 100 + "%";
+
+    particle.style.animationDuration =
+        (5 + Math.random() * 8) + "s";
+
+    particle.style.animationDelay =
+        Math.random() * 8 + "s";
+
+    particle.style.width =
+        (2 + Math.random() * 5) + "px";
+
+    particle.style.height =
+        particle.style.width;
+
+    document.body.appendChild(particle);
+}
+
+</script>
+
+
+<!-- =========================
+     MÚSICA
+========================= -->
+
+<audio id="musica" loop>
+    <source src="musica.mp3" type="audio/mpeg">
+</audio>
+
+<button
+    id="musicButton"
+    class="music-button"
+    onclick="alternarMusica()"
+    title="Música">
+    🔇
+</button>
+
+
 <div class="container">
 
+
 <!-- ==================================================
-     TELA INICIAL
+     TELA DO PIN
 ================================================== -->
 
 <div id="login" class="card">
@@ -212,8 +534,7 @@ button:hover {
         type="password"
         id="pin"
         placeholder="Digite o seu PIN"
-        autocomplete="off"
-    >
+        autocomplete="off">
 
     <br>
 
@@ -258,6 +579,38 @@ button:hover {
         risadas e boas memórias.
     </p>
 
+
+    <!-- CONTAGEM -->
+
+    <div class="countdown-title">
+        ✨ CONTAGEM PARA O GRANDE DIA ✨
+    </div>
+
+    <div class="countdown">
+
+        <div class="time-box">
+            <span id="dias" class="time-number">0</span>
+            <span class="time-label">DIAS</span>
+        </div>
+
+        <div class="time-box">
+            <span id="horas" class="time-number">0</span>
+            <span class="time-label">HORAS</span>
+        </div>
+
+        <div class="time-box">
+            <span id="minutos" class="time-number">0</span>
+            <span class="time-label">MIN</span>
+        </div>
+
+        <div class="time-box">
+            <span id="segundos" class="time-number">0</span>
+            <span class="time-label">SEG</span>
+        </div>
+
+    </div>
+
+
     <div class="info">
 
         <p>
@@ -290,14 +643,43 @@ button:hover {
 
     </div>
 
+
     <p class="gold">
         Contamos contigo para celebrar
         este momento conosco! 🥳
     </p>
 
-    <button onclick="confirmarAmigo()">
-        💌 Confirmar Presença
+
+    <!-- LOCALIZAÇÃO -->
+
+    <button onclick="abrirMapa()">
+        📍 COMO CHEGAR
     </button>
+
+
+    <br>
+
+
+    <!-- CONFIRMAÇÃO -->
+
+    <button onclick="confirmarAmigo()">
+        💌 CONFIRMAR PRESENÇA
+    </button>
+
+
+    <div id="agradecimentoAmigo"
+         class="thanks hidden">
+
+        <h2>
+            ❤️ Obrigado!
+        </h2>
+
+        <p>
+            Ficamos muito felizes por saber
+            que estarás conosco neste momento.
+        </p>
+
+    </div>
 
 </div>
 
@@ -335,6 +717,54 @@ button:hover {
         ❤️ Você, Inês. ❤️
     </p>
 
+
+    <!-- CONTAGEM -->
+
+    <div class="countdown-title">
+        ✨ CONTAGEM PARA O NOSSO DIA ✨
+    </div>
+
+    <div class="countdown">
+
+        <div class="time-box">
+            <span id="diasInes"
+                  class="time-number">0</span>
+
+            <span class="time-label">
+                DIAS
+            </span>
+        </div>
+
+        <div class="time-box">
+            <span id="horasInes"
+                  class="time-number">0</span>
+
+            <span class="time-label">
+                HORAS
+            </span>
+        </div>
+
+        <div class="time-box">
+            <span id="minutosInes"
+                  class="time-number">0</span>
+
+            <span class="time-label">
+                MIN
+            </span>
+        </div>
+
+        <div class="time-box">
+            <span id="segundosInes"
+                  class="time-number">0</span>
+
+            <span class="time-label">
+                SEG
+            </span>
+        </div>
+
+    </div>
+
+
     <div class="info">
 
         <p>
@@ -367,6 +797,7 @@ button:hover {
 
     </div>
 
+
     <p class="special-message">
         Quero muito ter você ao meu lado
         para viver este momento comigo.
@@ -376,9 +807,31 @@ button:hover {
         Com muito amor ❤️
     </p>
 
-    <button onclick="confirmarInes()">
-        💌 Confirmar Presença
+
+    <button onclick="abrirMapa()">
+        📍 COMO CHEGAR
     </button>
+
+    <br>
+
+    <button onclick="confirmarInes()">
+        💌 CONFIRMAR PRESENÇA
+    </button>
+
+
+    <div id="agradecimentoInes"
+         class="thanks hidden">
+
+        <h2>
+            ❤️ Obrigado, meu amor!
+        </h2>
+
+        <p>
+            Saber que estarás comigo torna
+            este momento ainda mais especial.
+        </p>
+
+    </div>
 
 </div>
 
@@ -388,7 +841,7 @@ button:hover {
 <script>
 
 /* ==================================================
-   LISTA DOS CONVIDADOS
+   CONVIDADOS
 ================================================== */
 
 const convidados = {
@@ -421,7 +874,7 @@ const convidados = {
 
 
 /* ==================================================
-   ABRIR CONVITE PELO PIN
+   ABRIR CONVITE
 ================================================== */
 
 function abrirConvite() {
@@ -447,8 +900,6 @@ function abrirConvite() {
     }
 
 
-    /* Verificar PIN */
-
     if (!convidados[pin]) {
 
         erro.innerText =
@@ -462,7 +913,12 @@ function abrirConvite() {
     }
 
 
-    /* Esconder tela inicial */
+    /* Tocar música quando possível */
+
+    iniciarMusica();
+
+
+    /* Esconder login */
 
     document
         .getElementById("login")
@@ -475,9 +931,12 @@ function abrirConvite() {
 
     if (pin === "te amo") {
 
-        document
-            .getElementById("ines")
-            .classList.remove("hidden");
+        const convite =
+            document.getElementById("ines");
+
+        convite.classList.remove("hidden");
+
+        convite.classList.add("opening");
 
         return;
     }
@@ -487,9 +946,12 @@ function abrirConvite() {
        AMIGOS
     ========================= */
 
-    document
-        .getElementById("amigo")
-        .classList.remove("hidden");
+    const convite =
+        document.getElementById("amigo");
+
+    convite.classList.remove("hidden");
+
+    convite.classList.add("opening");
 
 
     document
@@ -501,7 +963,174 @@ function abrirConvite() {
 
 
 /* ==================================================
-   CONFIRMAÇÃO DOS AMIGOS
+   CONTAGEM REGRESSIVA
+================================================== */
+
+const dataFesta =
+    new Date("2026-09-19T18:00:00").getTime();
+
+
+function atualizarContagem() {
+
+    const agora =
+        new Date().getTime();
+
+    const distancia =
+        dataFesta - agora;
+
+
+    if (distancia <= 0) {
+
+        document.getElementById("dias").innerText = "0";
+        document.getElementById("horas").innerText = "0";
+        document.getElementById("minutos").innerText = "0";
+        document.getElementById("segundos").innerText = "0";
+
+        document.getElementById("diasInes").innerText = "0";
+        document.getElementById("horasInes").innerText = "0";
+        document.getElementById("minutosInes").innerText = "0";
+        document.getElementById("segundosInes").innerText = "0";
+
+        return;
+    }
+
+
+    const dias =
+        Math.floor(
+            distancia /
+            (1000 * 60 * 60 * 24)
+        );
+
+    const horas =
+        Math.floor(
+            (distancia %
+            (1000 * 60 * 60 * 24)) /
+            (1000 * 60 * 60)
+        );
+
+    const minutos =
+        Math.floor(
+            (distancia %
+            (1000 * 60 * 60)) /
+            (1000 * 60)
+        );
+
+    const segundos =
+        Math.floor(
+            (distancia %
+            (1000 * 60)) /
+            1000
+        );
+
+
+    document.getElementById("dias").innerText =
+        dias;
+
+    document.getElementById("horas").innerText =
+        horas;
+
+    document.getElementById("minutos").innerText =
+        minutos;
+
+    document.getElementById("segundos").innerText =
+        segundos;
+
+
+    document.getElementById("diasInes").innerText =
+        dias;
+
+    document.getElementById("horasInes").innerText =
+        horas;
+
+    document.getElementById("minutosInes").innerText =
+        minutos;
+
+    document.getElementById("segundosInes").innerText =
+        segundos;
+
+}
+
+
+setInterval(atualizarContagem, 1000);
+
+atualizarContagem();
+
+
+/* ==================================================
+   MÚSICA
+================================================== */
+
+const musica =
+    document.getElementById("musica");
+
+const musicButton =
+    document.getElementById("musicButton");
+
+
+function iniciarMusica() {
+
+    musica.play()
+    .then(() => {
+
+        musicButton.innerText = "🔊";
+
+    })
+    .catch(() => {
+
+        /*
+           Alguns navegadores bloqueiam
+           reprodução automática.
+        */
+
+        musicButton.innerText = "🔇";
+
+    });
+
+}
+
+
+function alternarMusica() {
+
+    if (musica.paused) {
+
+        musica.play()
+        .then(() => {
+
+            musicButton.innerText = "🔊";
+
+        });
+
+    } else {
+
+        musica.pause();
+
+        musicButton.innerText = "🔇";
+
+    }
+
+}
+
+
+/* ==================================================
+   MAPA
+================================================== */
+
+function abrirMapa() {
+
+    const local =
+        "Salão Rosita";
+
+    const url =
+        "https://www.google.com/maps/search/?api=1&query=" +
+        encodeURIComponent(local);
+
+    window.open(url, "_blank");
+
+}
+
+
+/* ==================================================
+   WHATSAPP - AMIGOS
 ================================================== */
 
 function confirmarAmigo() {
@@ -518,23 +1147,28 @@ function confirmarAmigo() {
         ". ❤️";
 
 
-    const numeroWhatsApp =
+    const numero =
         "258870739955";
 
 
     window.open(
         "https://wa.me/" +
-        numeroWhatsApp +
+        numero +
         "?text=" +
         encodeURIComponent(mensagem),
         "_blank"
     );
 
+
+    document
+        .getElementById("agradecimentoAmigo")
+        .classList.remove("hidden");
+
 }
 
 
 /* ==================================================
-   CONFIRMAÇÃO DA INÊS
+   WHATSAPP - INÊS
 ================================================== */
 
 function confirmarInes() {
@@ -543,17 +1177,22 @@ function confirmarInes() {
         "Olá Layerson! ❤️ Confirmo a minha presença no teu aniversário com a Naira, dia 19 de setembro de 2026, às 18h, no Salão Rosita. ❤️";
 
 
-    const numeroWhatsApp =
+    const numero =
         "258870739955";
 
 
     window.open(
         "https://wa.me/" +
-        numeroWhatsApp +
+        numero +
         "?text=" +
         encodeURIComponent(mensagem),
         "_blank"
     );
+
+
+    document
+        .getElementById("agradecimentoInes")
+        .classList.remove("hidden");
 
 }
 
