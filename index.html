@@ -1,1254 +1,432 @@
-```html
 <!DOCTYPE html>
 <html lang="pt">
 <head>
-
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<meta name="viewport"
-content="width=device-width, initial-scale=1.0">
-
-<title>Convite - Layerson & Naira</title>
-
+<title>Convite de Aniversário - Layerson & Naira</title>
 
 <style>
-
-/* =================================================
-   CONFIGURAÇÕES GERAIS
-================================================= */
-
 * {
     box-sizing: border-box;
 }
 
 body {
-
     margin: 0;
-
     min-height: 100vh;
-
-    padding: 20px;
-
     font-family: Georgia, serif;
-
-    background:
-        radial-gradient(
-            circle at top,
-            #3a3018,
-            #11100d 50%,
-            #080807
-        );
-
-    color: #f5d77a;
-
+    background: linear-gradient(135deg, #080808, #1b1b1b, #080808);
+    color: white;
     display: flex;
-
     justify-content: center;
-
     align-items: center;
 }
 
-
-/* =================================================
-   TELA INICIAL
-================================================= */
-
-#inicio {
-
-    width: 100%;
-
-    max-width: 520px;
-
-    padding: 50px 28px;
-
+.container {
+    width: 92%;
+    max-width: 600px;
     text-align: center;
+}
 
-    background:
-        linear-gradient(
-            145deg,
-            #3d2e08,
-            #171207,
-            #080602
-        );
-
+.card {
+    padding: 45px 25px;
+    border-radius: 25px;
+    background: rgba(20,20,20,0.95);
     border: 2px solid #d4af37;
-
-    border-radius: 30px;
-
-    box-shadow:
-        0 0 25px rgba(212,175,55,.30),
-        0 0 60px rgba(212,175,55,.15);
+    box-shadow: 0 0 35px rgba(212,175,55,0.35);
 }
 
-
-#inicio .brilho {
-
-    font-size: 40px;
-
-    margin-bottom: 15px;
-}
-
-
-#inicio h1 {
-
-    margin: 5px 0 10px;
-
-    font-size: 34px;
-
-    color: #ffe9a0;
-
-    letter-spacing: 2px;
-}
-
-
-#inicio p {
-
-    font-size: 17px;
-
-    line-height: 1.7;
-
-    color: #f7edc7;
-
-    margin-bottom: 30px;
-}
-
-
-.opcao {
-
-    display: block;
-
-    width: 100%;
-
-    max-width: 330px;
-
-    margin: 15px auto;
-
-    padding: 17px 20px;
-
-    border-radius: 40px;
-
-    border: 1px solid #e8c75a;
-
-    background:
-        linear-gradient(
-            90deg,
-            #8f6808,
-            #f5d77a,
-            #8f6808
-        );
-
-    color: #211805;
-
-    font-size: 16px;
-
-    font-weight: bold;
-
-    cursor: pointer;
-
-    transition: .3s;
-}
-
-
-.opcao:hover {
-
-    transform: scale(1.04);
-}
-
-
-/* =================================================
-   CONVITE GERAL
-================================================= */
-
-#conviteGeral {
-
-    display: none;
-
-    width: 100%;
-
-    max-width: 520px;
-
-    padding: 50px 28px;
-
-    text-align: center;
-
-    background:
-        rgba(23, 21, 16, .97);
-
-    border: 1px solid #d4af37;
-
-    border-radius: 28px;
-
-    box-shadow:
-        0 0 15px rgba(212,175,55,.25),
-        0 0 50px rgba(212,175,55,.12);
-}
-
-
-.estrela {
-
-    font-size: 34px;
-
-    margin-bottom: 10px;
-}
-
-
-#conviteGeral h1 {
-
-    margin: 10px 0 5px;
-
-    font-size: 42px;
-
-    letter-spacing: 3px;
-
-    color: #f5d77a;
-}
-
-
-.linha {
-
-    width: 90px;
-
-    height: 1px;
-
-    margin: 15px auto 20px;
-
-    background: #d4af37;
-}
-
-
-#conviteGeral h2 {
-
-    margin: 0 0 30px;
-
-    font-size: 21px;
-
-    font-weight: normal;
-
-    font-style: italic;
-
-    color: #fff1b8;
-}
-
-
-.mensagem {
-
-    font-size: 18px;
-
-    line-height: 1.8;
-
-    color: #f7f0d0;
-}
-
-
-.coracao {
-
-    font-size: 25px;
-
-    margin: 20px 0;
-}
-
-
-.data {
-
-    margin: 30px 0;
-
-    padding: 20px 10px;
-
-    border-top: 1px solid #d4af37;
-
-    border-bottom: 1px solid #d4af37;
-}
-
-
-.data small {
-
-    display: block;
-
-    font-size: 14px;
-
-    letter-spacing: 2px;
-
-    margin-bottom: 8px;
-
+.gold {
     color: #d4af37;
 }
 
-
-.data strong {
-
-    display: block;
-
-    font-size: 25px;
-
-    color: #f5d77a;
+h1 {
+    font-size: 38px;
+    margin-bottom: 10px;
 }
 
-
-.botao {
-
-    display: inline-block;
-
-    padding: 16px 30px;
-
-    border: 1px solid #f5d77a;
-
-    border-radius: 40px;
-
-    background:
-        linear-gradient(
-            90deg,
-            #9b7208,
-            #f5d77a,
-            #9b7208
-        );
-
-    color: #171510;
-
-    font-size: 16px;
-
-    font-weight: bold;
-
-    text-decoration: none;
-
-    box-shadow:
-        0 5px 20px rgba(212,175,55,.25);
-
-    transition: .3s;
+h2 {
+    font-size: 27px;
+    margin: 10px 0 25px;
 }
 
-
-.botao:hover {
-
-    transform: scale(1.03);
+p {
+    font-size: 18px;
+    line-height: 1.7;
 }
-
 
 .info {
-
-    margin-top: 20px;
-
-    font-size: 14px;
-
-    color: #b8ad84;
-}
-
-
-.rodape {
-
-    margin-top: 30px;
-
-    font-size: 13px;
-
-    color: #9e936d;
-
-    letter-spacing: 1px;
-}
-
-
-/* =================================================
-   TELA DA PALAVRA ESPECIAL
-================================================= */
-
-#senha {
-
-    display: none;
-
-    width: 100%;
-
-    max-width: 520px;
-
-    padding: 55px 30px;
-
-    text-align: center;
-
-    background:
-        linear-gradient(
-            145deg,
-            #70530c,
-            #241a04 50%,
-            #0d0902
-        );
-
-    border: 2px solid #e8c75a;
-
-    border-radius: 32px;
-
-    box-shadow:
-        0 0 25px rgba(255,215,100,.45),
-        0 0 70px rgba(212,175,55,.25);
-}
-
-
-.senha-icone {
-
-    font-size: 42px;
-
-    margin-bottom: 15px;
-}
-
-
-#senha h1 {
-
-    margin: 5px 0 15px;
-
-    font-size: 34px;
-
-    color: #ffe9a0;
-
-    letter-spacing: 2px;
-}
-
-
-#senha p {
-
-    font-size: 17px;
-
-    line-height: 1.7;
-
-    color: #fff0bd;
-
-    margin-bottom: 25px;
-}
-
-
-#codigo {
-
-    width: 100%;
-
-    max-width: 300px;
-
-    padding: 15px 20px;
-
-    border-radius: 30px;
-
-    border: 1px solid #e8c75a;
-
-    background: #171004;
-
-    color: #ffe9a0;
-
-    text-align: center;
-
-    font-size: 18px;
-
-    outline: none;
-}
-
-
-#codigo::placeholder {
-
-    color: #a9975f;
-}
-
-
-#entrar {
-
-    display: block;
-
-    margin: 18px auto 0;
-
-    padding: 15px 28px;
-
-    border: 1px solid #ffe49a;
-
-    border-radius: 40px;
-
-    background:
-        linear-gradient(
-            90deg,
-            #a87505,
-            #ffe18a,
-            #a87505
-        );
-
-    color: #2c2107;
-
-    font-size: 16px;
-
-    font-weight: bold;
-
-    cursor: pointer;
-}
-
-
-#erro {
-
-    display: none;
-
-    margin-top: 18px;
-
-    color: #ffd0a0;
-
-    font-size: 14px;
-}
-
-
-/* =================================================
-   CONVITE ESPECIAL DA INÊS
-================================================= */
-
-#conviteInes {
-
-    display: none;
-
-    width: 100%;
-
-    max-width: 520px;
-
-    padding: 55px 30px;
-
-    text-align: center;
-
-    position: relative;
-
-    overflow: hidden;
-
-    background:
-        linear-gradient(
-            145deg,
-            #80600f,
-            #2b1f05 45%,
-            #0d0902
-        );
-
-    border: 2px solid #f0d16a;
-
-    border-radius: 32px;
-
-    box-shadow:
-
-        0 0 25px rgba(255,215,100,.50),
-
-        0 0 70px rgba(212,175,55,.30),
-
-        inset 0 0 30px rgba(255,215,100,.08);
-}
-
-
-#conviteInes::before {
-
-    content: "";
-
-    position: absolute;
-
-    top: -100px;
-
-    left: -100px;
-
-    width: 220px;
-
-    height: 220px;
-
-    border-radius: 50%;
-
-    background:
-        rgba(255,215,100,.10);
-}
-
-
-#conviteInes::after {
-
-    content: "";
-
-    position: absolute;
-
-    right: -100px;
-
-    bottom: -100px;
-
-    width: 220px;
-
-    height: 220px;
-
-    border-radius: 50%;
-
-    background:
-        rgba(255,215,100,.08);
-}
-
-
-.ines-estrelas {
-
-    position: relative;
-
-    z-index: 2;
-
-    font-size: 27px;
-
-    color: #ffe9a0;
-
-    letter-spacing: 8px;
-
-    margin-bottom: 20px;
-}
-
-
-#conviteInes h1 {
-
-    position: relative;
-
-    z-index: 2;
-
-    margin: 5px 0;
-
-    font-size: 58px;
-
-    letter-spacing: 6px;
-
-    color: #ffe8a0;
-
-    text-shadow:
-        0 0 12px rgba(255,220,130,.5),
-        0 0 25px rgba(255,200,70,.2);
-}
-
-
-.linha-ines {
-
-    position: relative;
-
-    z-index: 2;
-
-    width: 140px;
-
-    height: 2px;
-
-    margin: 18px auto 25px;
-
-    background:
-        linear-gradient(
-            90deg,
-            transparent,
-            #ffe28a,
-            transparent
-        );
-}
-
-
-#conviteInes h2 {
-
-    position: relative;
-
-    z-index: 2;
-
-    margin: 0 0 30px;
-
-    font-size: 21px;
-
-    font-weight: normal;
-
-    font-style: italic;
-
-    color: #fff0bd;
-}
-
-
-.mensagem-ines {
-
-    position: relative;
-
-    z-index: 2;
-
-    font-size: 18px;
-
-    line-height: 1.9;
-
-    color: #fff6d8;
-}
-
-
-.coracao-ines {
-
-    font-size: 38px;
-
     margin: 25px 0;
+    padding: 20px;
+    border-radius: 15px;
+    border: 1px solid #d4af37;
+    background: rgba(212,175,55,0.08);
 }
 
-
-.data-ines {
-
-    position: relative;
-
-    z-index: 2;
-
-    margin: 35px 0;
-
-    padding: 22px 10px;
-
-    border-top: 1px solid #e8c75a;
-
-    border-bottom: 1px solid #e8c75a;
+.info p {
+    margin: 8px 0;
 }
 
-
-.data-ines small {
-
-    display: block;
-
-    font-size: 13px;
-
-    letter-spacing: 3px;
-
-    margin-bottom: 10px;
-
-    color: #e5c45b;
-}
-
-
-.data-ines strong {
-
-    display: block;
-
-    font-size: 25px;
-
-    color: #ffe9a0;
-}
-
-
-.botao-ines {
-
-    position: relative;
-
-    z-index: 2;
-
-    display: inline-block;
-
-    padding: 17px 32px;
-
-    border: 1px solid #ffe49a;
-
-    border-radius: 50px;
-
-    background:
-        linear-gradient(
-            90deg,
-            #a87505,
-            #ffe18a,
-            #a87505
-        );
-
-    color: #2c2107;
-
-    font-size: 16px;
-
+button {
+    border: none;
+    padding: 14px 25px;
+    border-radius: 30px;
+    font-size: 17px;
+    cursor: pointer;
+    background: #d4af37;
+    color: #111;
     font-weight: bold;
-
-    text-decoration: none;
-
-    box-shadow:
-        0 5px 25px rgba(255,215,100,.30);
-
-    transition: .3s;
+    margin-top: 15px;
 }
 
-
-.botao-ines:hover {
-
+button:hover {
     transform: scale(1.05);
 }
 
-
-.info-ines {
-
-    position: relative;
-
-    z-index: 2;
-
-    margin-top: 20px;
-
-    font-size: 14px;
-
-    color: #d8c88d;
+.hidden {
+    display: none;
 }
 
-
-.rodape-ines {
-
-    position: relative;
-
-    z-index: 2;
-
-    margin-top: 30px;
-
-    font-size: 13px;
-
-    letter-spacing: 1px;
-
-    color: #d8c477;
+/* Convite especial */
+.special {
+    background: linear-gradient(135deg, #1a1203, #4b3508, #1a1203);
+    border: 3px solid #f5d76e;
+    box-shadow: 0 0 45px rgba(245,215,110,0.55);
 }
 
-
-/* =================================================
-   TELEMÓVEL
-================================================= */
-
-@media (max-width: 400px) {
-
-    #inicio,
-    #conviteGeral,
-    #senha,
-    #conviteInes {
-
-        padding: 40px 20px;
-    }
-
-
-    #inicio h1 {
-
-        font-size: 29px;
-    }
-
-
-    #conviteGeral h1 {
-
-        font-size: 34px;
-    }
-
-
-    #senha h1 {
-
-        font-size: 29px;
-    }
-
-
-    #conviteInes h1 {
-
-        font-size: 43px;
-
-        letter-spacing: 4px;
-    }
-
-
-    #conviteInes h2 {
-
-        font-size: 18px;
-    }
-
-
-    .mensagem-ines {
-
-        font-size: 16px;
-    }
-
-
-    .data-ines strong {
-
-        font-size: 21px;
-    }
-
+.special h1,
+.special h2,
+.special p {
+    color: #f5d76e;
 }
 
+.special .message {
+    font-size: 21px;
+    margin: 25px 0;
+}
+
+input {
+    width: 85%;
+    max-width: 300px;
+    padding: 13px;
+    border-radius: 25px;
+    border: 1px solid #d4af37;
+    text-align: center;
+    font-size: 16px;
+    outline: none;
+}
+
+.error {
+    color: #ff7777;
+    margin-top: 10px;
+}
 </style>
-
 </head>
-
 
 <body>
 
+<div class="container">
 
-<!-- =================================================
-     TELA INICIAL
-================================================= -->
+    <!-- CONVITE NORMAL -->
+    <div id="normal" class="card">
 
-<div id="inicio">
+        <div class="gold">✨ VOCÊ É NOSSO CONVIDADO ESPECIAL ✨</div>
 
-    <div class="brilho">
-        ✨ ❤️ ✨
-    </div>
+        <h1>Aniversário</h1>
 
+        <h2 class="gold">Layerson & Naira</h2>
 
-    <h1>
-        Layerson & Naira
-    </h1>
+        <p>
+            É com muita alegria que convidamos você
+            para celebrar conosco este momento
+            tão especial das nossas vidas.
+        </p>
 
+        <div class="info">
 
-    <p>
-        Bem-vindo ao nosso convite.<br>
-        Escolha uma opção para continuar.
-    </p>
+            <p>📅 <strong>Data:</strong><br>
+            19 de Dezembro de 2026</p>
 
+            <p>🕕 <strong>Hora:</strong><br>
+            18h</p>
 
-    <button
-        class="opcao"
-        onclick="abrirGeral()">
+            <p>📍 <strong>Local:</strong><br>
+            Salão Rosita</p>
 
-        💛 VER CONVITE
-
-    </button>
-
-
-    <button
-        class="opcao"
-        onclick="abrirEspecial()">
-
-        ❤️ CONVITE ESPECIAL
-
-    </button>
-
-</div>
-
-
-
-<!-- =================================================
-     CONVITE GERAL
-================================================= -->
-
-<div id="conviteGeral">
-
-    <div class="estrela">
-        ✨ ❤️ ✨
-    </div>
-
-
-    <h1>
-        LAYerson & NAIRA
-    </h1>
-
-
-    <div class="linha"></div>
-
-
-    <h2>
-        Convite Especial
-    </h2>
-
-
-    <div class="mensagem">
-
-        Você está convidado(a) para celebrar
-        este momento muito especial conosco.
-
-
-        <div class="coracao">
-            ❤️
         </div>
 
+        <p class="gold">
+            Sua presença será muito importante
+            para tornar esta celebração ainda mais especial. ❤️
+        </p>
 
-        A sua presença vai tornar esta celebração
-        ainda mais especial e inesquecível.
+        <button onclick="abrirConfirmacao()">
+            💌 Confirmar Presença
+        </button>
 
-    </div>
+        <br>
 
-
-    <div class="data">
-
-        <small>
-            GUARDA ESTA DATA
-        </small>
-
-
-        <strong>
-            📅 19 DE SETEMBRO
-        </strong>
+        <button onclick="abrirEspecial()">
+            🔐 Convite Especial
+        </button>
 
     </div>
 
 
-    <a
-        href="https://wa.me/258870739955?text=Ol%C3%A1%21%20Confirmo%20a%20minha%20presen%C3%A7a%20no%20anivers%C3%A1rio%20do%20Layerson%20e%20da%20Naira%2C%20dia%2019%20de%20setembro.%20%E2%9D%A4%EF%B8%8F"
-        target="_blank"
-        class="botao">
+    <!-- CONFIRMAÇÃO -->
+    <div id="confirmacao" class="card hidden">
 
-        💛 CONFIRMAR PRESENÇA
+        <h1 class="gold">💌 Confirmação</h1>
 
-    </a>
+        <p>
+            Obrigado por confirmar a sua presença
+            no aniversário de Layerson & Naira.
+        </p>
+
+        <p>
+            📅 19 de Dezembro de 2026<br>
+            🕕 18h<br>
+            📍 Salão Rosita
+        </p>
+
+        <button onclick="confirmarWhatsApp()">
+            📱 Confirmar pelo WhatsApp
+        </button>
+
+        <br>
+
+        <button onclick="voltarNormal()">
+            ← Voltar
+        </button>
+
+    </div>
 
 
-    <div class="info">
+    <!-- LOGIN DO CONVITE ESPECIAL -->
+    <div id="senha" class="card hidden">
 
-        Clique no botão para confirmar
-        a sua presença pelo WhatsApp.
+        <h1 class="gold">🔐 Convite Especial</h1>
+
+        <p>
+            Este convite é reservado para uma
+            pessoa muito especial. ❤️
+        </p>
+
+        <p class="gold">
+            Digite a senha para continuar:
+        </p>
+
+        <input
+            type="password"
+            id="password"
+            placeholder="Digite a senha">
+
+        <br>
+
+        <button onclick="verificarSenha()">
+            Entrar ❤️
+        </button>
+
+        <div id="erro" class="error"></div>
+
+        <br>
+
+        <button onclick="voltarNormal()">
+            ← Voltar
+        </button>
 
     </div>
 
 
-    <div class="rodape">
+    <!-- CONVITE ESPECIAL DA INÊS -->
+    <div id="especial" class="card special hidden">
 
-        ✦ Será uma alegria celebrar este dia com você ✦
+        <div>✨ PARA O AMOR DA MINHA VIDA ✨</div>
 
-    </div>
+        <h1>Inês ❤️</h1>
 
-</div>
+        <h2>Este convite é especialmente para você</h2>
 
+        <p class="message">
+            Entre todas as pessoas que estarão
+            presentes neste dia, existe alguém
+            que ocupa um lugar ainda mais especial
+            no meu coração.
+        </p>
 
+        <p class="message">
+            ❤️ Você, Inês. ❤️
+        </p>
 
-<!-- =================================================
-     TELA DA PALAVRA
-================================================= -->
+        <div class="info">
 
-<div id="senha">
+            <p>🎂 <strong>Aniversário de Layerson & Naira</strong></p>
 
-    <div class="senha-icone">
-        🔐
-    </div>
+            <p>📅 19 de Dezembro de 2026</p>
 
+            <p>🕕 18h</p>
 
-    <h1>
-        O teu convite especial
-    </h1>
+            <p>📍 Salão Rosita</p>
 
-
-    <p>
-        Digita a palavra especial
-        para abrir o teu convite. ❤️
-    </p>
-
-
-    <input
-        type="password"
-        id="codigo"
-        placeholder="Digite a palavra"
-        autocomplete="off"
-    >
-
-
-    <button
-        id="entrar">
-
-        ✨ ABRIR CONVITE
-
-    </button>
-
-
-    <div id="erro">
-
-        Palavra incorreta.
-        Tenta novamente. ❤️
-
-    </div>
-
-</div>
-
-
-
-<!-- =================================================
-     CONVITE ESPECIAL DA INÊS
-================================================= -->
-
-<div id="conviteInes">
-
-    <div class="ines-estrelas">
-        ✦ ✨ ✦
-    </div>
-
-
-    <h1>
-        INÊS
-    </h1>
-
-
-    <div class="linha-ines"></div>
-
-
-    <h2>
-        Um convite especial para ti
-    </h2>
-
-
-    <div class="mensagem-ines">
-
-        Inês,
-
-        <br><br>
-
-        este convite foi preparado
-        especialmente para ti.
-
-
-        <div class="coracao-ines">
-            ❤️
         </div>
 
+        <p class="message">
+            Quero muito ter você ao meu lado
+            para viver esse momento comigo.
+        </p>
 
-        Quero muito que estejas presente
-        para viver connosco este momento
-        tão especial.
+        <p class="gold">
+            Com muito amor ❤️
+        </p>
 
-    </div>
+        <button onclick="abrirConfirmacaoEspecial()">
+            💌 Confirmar Presença
+        </button>
 
+        <br>
 
-    <div class="data-ines">
-
-        <small>
-            GUARDA ESTA DATA
-        </small>
-
-
-        <strong>
-            📅 19 DE SETEMBRO
-        </strong>
-
-    </div>
-
-
-    <a
-        href="https://wa.me/258870739955?text=Ol%C3%A1%21%20Confirmo%20a%20minha%20presen%C3%A7a%20no%20anivers%C3%A1rio%20do%20Layerson%20e%20da%20Naira%2C%20dia%2019%20de%20setembro.%20%E2%9D%A4%EF%B8%8F"
-        target="_blank"
-        class="botao-ines">
-
-        💛 CONFIRMAR PRESENÇA
-
-    </a>
-
-
-    <div class="info-ines">
-
-        Clica no botão para confirmar
-        a tua presença pelo WhatsApp.
+        <button onclick="voltarNormal()">
+            ← Voltar ao convite
+        </button>
 
     </div>
 
 
-    <div class="rodape-ines">
+    <!-- CONFIRMAÇÃO ESPECIAL -->
+    <div id="confirmacaoEspecial" class="card special hidden">
 
-        ✦ Com carinho, Layerson & Naira ✦
+        <h1>❤️ Inês</h1>
+
+        <p class="message">
+            A tua presença vai tornar
+            este dia ainda mais especial.
+        </p>
+
+        <button onclick="confirmarWhatsAppEspecial()">
+            📱 Confirmar Presença
+        </button>
+
+        <br>
+
+        <button onclick="voltarEspecial()">
+            ← Voltar
+        </button>
 
     </div>
 
 </div>
-
 
 
 <script>
 
-/* =================================================
-   ELEMENTOS
-================================================= */
+function esconderTudo() {
 
-const inicio =
-    document.getElementById("inicio");
+    document.getElementById("normal").classList.add("hidden");
+    document.getElementById("confirmacao").classList.add("hidden");
+    document.getElementById("senha").classList.add("hidden");
+    document.getElementById("especial").classList.add("hidden");
+    document.getElementById("confirmacaoEspecial").classList.add("hidden");
 
-const conviteGeral =
-    document.getElementById("conviteGeral");
-
-const senha =
-    document.getElementById("senha");
-
-const conviteInes =
-    document.getElementById("conviteInes");
-
-const codigo =
-    document.getElementById("codigo");
-
-const erro =
-    document.getElementById("erro");
-
-
-
-/* =================================================
-   ABRIR CONVITE GERAL
-================================================= */
-
-function abrirGeral() {
-
-    inicio.style.display = "none";
-
-    senha.style.display = "none";
-
-    conviteInes.style.display = "none";
-
-    conviteGeral.style.display = "block";
-
-    window.scrollTo(0, 0);
 }
 
 
+function voltarNormal() {
 
-/* =================================================
-   ABRIR CONVITE ESPECIAL
-================================================= */
+    esconderTudo();
+
+    document.getElementById("normal").classList.remove("hidden");
+
+}
+
+
+function abrirConfirmacao() {
+
+    esconderTudo();
+
+    document.getElementById("confirmacao").classList.remove("hidden");
+
+}
+
 
 function abrirEspecial() {
 
-    inicio.style.display = "none";
+    esconderTudo();
 
-    conviteGeral.style.display = "none";
+    document.getElementById("senha").classList.remove("hidden");
 
-    conviteInes.style.display = "none";
-
-    senha.style.display = "block";
-
-    codigo.value = "";
-
-    erro.style.display = "none";
-
-    codigo.focus();
-
-    window.scrollTo(0, 0);
 }
-
-
-
-/* =================================================
-   SENHA
-================================================= */
-
-const SENHA_ESPECIAL = "TE AMO";
 
 
 function verificarSenha() {
 
-    const valor =
-        codigo.value.trim().toUpperCase();
+    const senha = document.getElementById("password").value;
+    const erro = document.getElementById("erro");
 
+    if (senha === "Te amo") {
 
-    if (valor === SENHA_ESPECIAL) {
+        esconderTudo();
 
-        senha.style.display = "none";
+        document.getElementById("especial").classList.remove("hidden");
 
-        conviteInes.style.display = "block";
+    } else {
 
-        window.scrollTo(0, 0);
-
-    }
-
-    else {
-
-        erro.style.display = "block";
-
-        codigo.value = "";
-
-        codigo.focus();
+        erro.innerHTML = "❌ Senha incorreta. Tente novamente.";
 
     }
 
 }
 
 
+function abrirConfirmacaoEspecial() {
 
-/* =================================================
-   BOTÃO DA SENHA
-================================================= */
+    esconderTudo();
 
-document
-    .getElementById("entrar")
-    .addEventListener(
-        "click",
-        verificarSenha
+    document.getElementById("confirmacaoEspecial").classList.remove("hidden");
+
+}
+
+
+function voltarEspecial() {
+
+    esconderTudo();
+
+    document.getElementById("especial").classList.remove("hidden");
+
+}
+
+
+function confirmarWhatsApp() {
+
+    const mensagem =
+        "Olá! Confirmo a minha presença no aniversário de Layerson e Naira, dia 19 de dezembro de 2026, às 18h, no Salão Rosita. ❤️";
+
+    const numero = "258870739955";
+
+    window.open(
+        "https://wa.me/" + numero + "?text=" +
+        encodeURIComponent(mensagem),
+        "_blank"
     );
 
+}
 
 
-/* =================================================
-   ENTER
-================================================= */
+function confirmarWhatsAppEspecial() {
 
-codigo.addEventListener(
-    "keydown",
-    function(event) {
+    const mensagem =
+        "Olá Layerson! ❤️ Confirmo a minha presença no teu aniversário com a Naira, dia 19 de dezembro de 2026, às 18h, no Salão Rosita. Com muito amor, Inês. ❤️";
 
-        if (event.key === "Enter") {
+    const numero = "258870739955";
 
-            verificarSenha();
+    window.open(
+        "https://wa.me/" + numero + "?text=" +
+        encodeURIComponent(mensagem),
+        "_blank"
+    );
 
-        }
-
-    }
-);
+}
 
 </script>
 
-
 </body>
 </html>
-```
