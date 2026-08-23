@@ -7,7 +7,6 @@
 <title>Convite de Aniversário - Layerson & Naira</title>
 
 <style>
-
 * {
     box-sizing: border-box;
 }
@@ -21,7 +20,7 @@ body {
     min-height: 100vh;
     font-family: Georgia, "Times New Roman", serif;
     background:
-        radial-gradient(circle at top, #4b3b0b, #111 45%, #000 100%);
+        radial-gradient(circle at top, #4b3b0b 0%, #111 45%, #000 100%);
     color: white;
     display: flex;
     justify-content: center;
@@ -30,9 +29,7 @@ body {
     overflow-x: hidden;
 }
 
-/* =========================
-   PARTÍCULAS DOURADAS
-========================= */
+/* PARTÍCULAS DOURADAS */
 
 .particle {
     position: fixed;
@@ -63,9 +60,7 @@ body {
     }
 }
 
-/* =========================
-   CONTAINER
-========================= */
+/* CONTAINER */
 
 .container {
     width: 100%;
@@ -74,9 +69,7 @@ body {
     z-index: 2;
 }
 
-/* =========================
-   CARTÃO
-========================= */
+/* CARTÃO */
 
 .card {
     width: 100%;
@@ -93,20 +86,6 @@ body {
     animation: aparecer 0.8s ease;
 }
 
-@keyframes aparecer {
-
-    from {
-        opacity: 0;
-        transform: translateY(30px) scale(0.96);
-    }
-
-    to {
-        opacity: 1;
-        transform: translateY(0) scale(1);
-    }
-
-}
-
 .hidden {
     display: none;
 }
@@ -114,10 +93,6 @@ body {
 .gold {
     color: #d4af37;
 }
-
-/* =========================
-   TEXTOS
-========================= */
 
 .logo {
     font-size: 17px;
@@ -141,9 +116,21 @@ p {
     line-height: 1.7;
 }
 
-/* =========================
-   PIN
-========================= */
+/* ANIMAÇÃO */
+
+@keyframes aparecer {
+    from {
+        opacity: 0;
+        transform: translateY(30px) scale(0.96);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+/* PIN */
 
 .pin-title {
     font-size: 34px;
@@ -158,13 +145,10 @@ input {
     max-width: 330px;
     padding: 15px;
     margin-top: 10px;
-
     border-radius: 30px;
     border: 2px solid #d4af37;
-
     background: #080808;
     color: white;
-
     text-align: center;
     font-size: 18px;
     outline: none;
@@ -178,24 +162,18 @@ input::placeholder {
     color: #999;
 }
 
-/* =========================
-   BOTÕES
-========================= */
+/* BOTÕES */
 
 button {
     border: none;
     border-radius: 30px;
     padding: 14px 25px;
     margin-top: 17px;
-
     font-size: 16px;
     font-weight: bold;
-
     cursor: pointer;
-
     background: #d4af37;
     color: #111;
-
     transition: 0.25s;
 }
 
@@ -210,9 +188,7 @@ button.secondary {
     border: 1px solid #d4af37;
 }
 
-/* =========================
-   ERRO
-========================= */
+/* ERRO */
 
 .error {
     color: #ff7777;
@@ -220,17 +196,13 @@ button.secondary {
     font-weight: bold;
 }
 
-/* =========================
-   INFORMAÇÕES
-========================= */
+/* INFORMAÇÕES */
 
 .info {
     border: 1px solid #d4af37;
     border-radius: 20px;
-
     padding: 20px;
     margin: 25px 0;
-
     background: rgba(212,175,55,0.08);
 }
 
@@ -238,9 +210,7 @@ button.secondary {
     margin: 9px 0;
 }
 
-/* =========================
-   MENSAGEM AMIGOS
-========================= */
+/* MENSAGEM */
 
 .friend-message {
     color: #f0d568;
@@ -248,9 +218,7 @@ button.secondary {
     line-height: 1.7;
 }
 
-/* =========================
-   CONTAGEM REGRESSIVA
-========================= */
+/* CONTAGEM */
 
 .countdown-title {
     color: #d4af37;
@@ -287,13 +255,10 @@ button.secondary {
     margin-top: 4px;
 }
 
-/* =========================
-   BOTÃO MÚSICA
-========================= */
+/* MÚSICA */
 
 .music-button {
     position: fixed;
-
     bottom: 20px;
     right: 20px;
 
@@ -304,22 +269,17 @@ button.secondary {
     margin: 0;
 
     border-radius: 50%;
-
     z-index: 10;
-
     font-size: 20px;
 }
 
-/* =========================
-   ANIMAÇÃO DE ABERTURA
-========================= */
+/* ABERTURA */
 
 .opening {
     animation: abrir 1s ease forwards;
 }
 
 @keyframes abrir {
-
     0% {
         opacity: 0;
         transform: scale(0.75) rotateX(20deg);
@@ -333,15 +293,11 @@ button.secondary {
     100% {
         transform: scale(1);
     }
-
 }
 
-/* =========================
-   INÊS
-========================= */
+/* INÊS */
 
 .special {
-
     background:
         linear-gradient(
             135deg,
@@ -371,7 +327,6 @@ button.secondary {
 }
 
 @keyframes pulsar {
-
     0%, 100% {
         transform: scale(1);
     }
@@ -379,7 +334,6 @@ button.secondary {
     50% {
         transform: scale(1.15);
     }
-
 }
 
 .special-message {
@@ -387,9 +341,7 @@ button.secondary {
     line-height: 1.8;
 }
 
-/* =========================
-   AGRADECIMENTO
-========================= */
+/* AGRADECIMENTO */
 
 .thanks {
     margin-top: 25px;
@@ -407,9 +359,7 @@ button.secondary {
     color: #d4af37;
 }
 
-/* =========================
-   RODAPÉ
-========================= */
+/* RODAPÉ */
 
 .footer {
     margin-top: 25px;
@@ -417,9 +367,7 @@ button.secondary {
     color: #999;
 }
 
-/* =========================
-   CELULAR
-========================= */
+/* CELULAR */
 
 @media (max-width: 500px) {
 
@@ -446,18 +394,13 @@ button.secondary {
     .time-number {
         font-size: 21px;
     }
-
 }
-
 </style>
 </head>
 
 <body>
 
-
-<!-- =========================
-     PARTÍCULAS
-========================= -->
+<!-- PARTÍCULAS -->
 
 <script>
 
@@ -488,9 +431,7 @@ for (let i = 0; i < 35; i++) {
 </script>
 
 
-<!-- =========================
-     MÚSICA
-========================= -->
+<!-- MÚSICA -->
 
 <audio id="musica" loop>
     <source src="musica.mp3" type="audio/mpeg">
@@ -501,16 +442,17 @@ for (let i = 0; i < 35; i++) {
     class="music-button"
     onclick="alternarMusica()"
     title="Música">
+
     🔇
+
 </button>
 
 
 <div class="container">
 
-
-<!-- ==================================================
-     TELA DO PIN
-================================================== -->
+<!-- =========================
+     LOGIN
+========================= -->
 
 <div id="login" class="card">
 
@@ -552,9 +494,9 @@ for (let i = 0; i < 35; i++) {
 </div>
 
 
-<!-- ==================================================
-     CONVITE DOS AMIGOS
-================================================== -->
+<!-- =========================
+     AMIGOS
+========================= -->
 
 <div id="amigo" class="card hidden">
 
@@ -579,8 +521,6 @@ for (let i = 0; i < 35; i++) {
         risadas e boas memórias.
     </p>
 
-
-    <!-- CONTAGEM -->
 
     <div class="countdown-title">
         ✨ CONTAGEM PARA O GRANDE DIA ✨
@@ -650,17 +590,11 @@ for (let i = 0; i < 35; i++) {
     </p>
 
 
-    <!-- LOCALIZAÇÃO -->
-
     <button onclick="abrirMapa()">
         📍 COMO CHEGAR
     </button>
 
-
     <br>
-
-
-    <!-- CONFIRMAÇÃO -->
 
     <button onclick="confirmarAmigo()">
         💌 CONFIRMAR PRESENÇA
@@ -684,9 +618,9 @@ for (let i = 0; i < 35; i++) {
 </div>
 
 
-<!-- ==================================================
-     CONVITE ESPECIAL DA INÊS
-================================================== -->
+<!-- =========================
+     INÊS
+========================= -->
 
 <div id="ines" class="card special hidden">
 
@@ -717,8 +651,6 @@ for (let i = 0; i < 35; i++) {
         ❤️ Você, Inês. ❤️
     </p>
 
-
-    <!-- CONTAGEM -->
 
     <div class="countdown-title">
         ✨ CONTAGEM PARA O NOSSO DIA ✨
@@ -840,9 +772,9 @@ for (let i = 0; i < 35; i++) {
 
 <script>
 
-/* ==================================================
-   CONVIDADOS
-================================================== */
+/* =========================
+   PINs DOS CONVIDADOS
+========================= */
 
 const convidados = {
 
@@ -873,9 +805,9 @@ const convidados = {
 };
 
 
-/* ==================================================
+/* =========================
    ABRIR CONVITE
-================================================== */
+========================= */
 
 function abrirConvite() {
 
@@ -913,21 +845,15 @@ function abrirConvite() {
     }
 
 
-    /* Tocar música quando possível */
-
     iniciarMusica();
 
-
-    /* Esconder login */
 
     document
         .getElementById("login")
         .classList.add("hidden");
 
 
-    /* =========================
-       INÊS
-    ========================= */
+    /* INÊS */
 
     if (pin === "te amo") {
 
@@ -942,9 +868,7 @@ function abrirConvite() {
     }
 
 
-    /* =========================
-       AMIGOS
-    ========================= */
+    /* AMIGOS */
 
     const convite =
         document.getElementById("amigo");
@@ -962,9 +886,9 @@ function abrirConvite() {
 }
 
 
-/* ==================================================
-   CONTAGEM REGRESSIVA
-================================================== */
+/* =========================
+   CONTAGEM
+========================= */
 
 const dataFesta =
     new Date("2026-09-19T18:00:00").getTime();
@@ -1051,14 +975,17 @@ function atualizarContagem() {
 }
 
 
-setInterval(atualizarContagem, 1000);
+setInterval(
+    atualizarContagem,
+    1000
+);
 
 atualizarContagem();
 
 
-/* ==================================================
+/* =========================
    MÚSICA
-================================================== */
+========================= */
 
 const musica =
     document.getElementById("musica");
@@ -1072,17 +999,14 @@ function iniciarMusica() {
     musica.play()
     .then(() => {
 
-        musicButton.innerText = "🔊";
+        musicButton.innerText =
+            "🔊";
 
     })
     .catch(() => {
 
-        /*
-           Alguns navegadores bloqueiam
-           reprodução automática.
-        */
-
-        musicButton.innerText = "🔇";
+        musicButton.innerText =
+            "🔇";
 
     });
 
@@ -1096,7 +1020,8 @@ function alternarMusica() {
         musica.play()
         .then(() => {
 
-            musicButton.innerText = "🔊";
+            musicButton.innerText =
+                "🔊";
 
         });
 
@@ -1104,16 +1029,17 @@ function alternarMusica() {
 
         musica.pause();
 
-        musicButton.innerText = "🔇";
+        musicButton.innerText =
+            "🔇";
 
     }
 
 }
 
 
-/* ==================================================
-   MAPA
-================================================== */
+/* =========================
+   GOOGLE MAPS
+========================= */
 
 function abrirMapa() {
 
@@ -1124,14 +1050,17 @@ function abrirMapa() {
         "https://www.google.com/maps/search/?api=1&query=" +
         encodeURIComponent(local);
 
-    window.open(url, "_blank");
+    window.open(
+        url,
+        "_blank"
+    );
 
 }
 
 
-/* ==================================================
-   WHATSAPP - AMIGOS
-================================================== */
+/* =========================
+   CONFIRMAÇÃO AMIGOS
+========================= */
 
 function confirmarAmigo() {
 
@@ -1167,9 +1096,9 @@ function confirmarAmigo() {
 }
 
 
-/* ==================================================
-   WHATSAPP - INÊS
-================================================== */
+/* =========================
+   CONFIRMAÇÃO INÊS
+========================= */
 
 function confirmarInes() {
 
@@ -1178,7 +1107,7 @@ function confirmarInes() {
 
 
     const numero =
-        "258870739955";
+        "258739955";
 
 
     window.open(
@@ -1197,9 +1126,9 @@ function confirmarInes() {
 }
 
 
-/* ==================================================
+/* =========================
    ENTER NO PIN
-================================================== */
+========================= */
 
 document
     .getElementById("pin")
