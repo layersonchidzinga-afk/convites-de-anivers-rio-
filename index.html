@@ -3,1091 +3,699 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <title>Convite Especial | Layerson & Naira</title>
 
 <style>
-
-/* =====================================================
-   CONFIGURAÇÃO GERAL
-===================================================== */
-
-* {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
 }
 
-html {
-    scroll-behavior: smooth;
+html{
+    scroll-behavior:smooth;
 }
 
-body {
-    min-height: 100vh;
-    overflow-x: hidden;
-    font-family: Georgia, "Times New Roman", serif;
-    color: #fff;
-
+body{
+    min-height:100vh;
+    overflow-x:hidden;
+    font-family:Georgia,"Times New Roman",serif;
+    color:#fff;
     background:
-        radial-gradient(
-            circle at 50% 0%,
-            #5b4610 0%,
-            #211903 25%,
-            #080705 58%,
-            #000 100%
-        );
+        radial-gradient(circle at 50% 0%,#5b4610 0%,#211903 25%,#080705 58%,#000 100%);
 }
 
-body::before {
-    content: "";
-    position: fixed;
-    width: 700px;
-    height: 700px;
-    top: -350px;
-    left: 50%;
-    transform: translateX(-50%);
-    background: rgba(212,175,55,0.08);
-    border-radius: 50%;
-    filter: blur(80px);
-    pointer-events: none;
+body::before{
+    content:"";
+    position:fixed;
+    width:700px;
+    height:700px;
+    top:-350px;
+    left:50%;
+    transform:translateX(-50%);
+    background:rgba(212,175,55,.08);
+    border-radius:50%;
+    filter:blur(80px);
+    pointer-events:none;
 }
 
-
-/* =====================================================
-   PARTÍCULAS
-===================================================== */
-
-.light {
-    position: fixed;
-    width: 5px;
-    height: 5px;
-    background: #e6c65c;
-    border-radius: 50%;
-    pointer-events: none;
-    animation: fall linear infinite;
-    z-index: 1;
+.light{
+    position:fixed;
+    width:5px;
+    height:5px;
+    background:#e6c65c;
+    border-radius:50%;
+    pointer-events:none;
+    animation:fall linear infinite;
+    z-index:1;
 }
 
-@keyframes fall {
-    0% {
-        transform: translateY(-30px) scale(0);
-        opacity: 0;
+@keyframes fall{
+    0%{
+        transform:translateY(-30px) scale(0);
+        opacity:0;
     }
-
-    15% {
-        opacity: 1;
-        transform: scale(1);
+    15%{
+        opacity:1;
+        transform:scale(1);
     }
-
-    100% {
-        transform: translateY(110vh) scale(.2);
-        opacity: 0;
+    100%{
+        transform:translateY(110vh) scale(.2);
+        opacity:0;
     }
 }
 
-
-/* =====================================================
-   CONTAINER
-===================================================== */
-
-.wrapper {
-    position: relative;
-    z-index: 5;
-    width: 100%;
-    max-width: 720px;
-    margin: auto;
-    padding: 20px 14px 50px;
+.wrapper{
+    position:relative;
+    z-index:5;
+    width:100%;
+    max-width:720px;
+    margin:auto;
+    padding:20px 14px 50px;
 }
 
-
-/* =====================================================
-   CARTÃO
-===================================================== */
-
-.card {
-    position: relative;
-    width: 100%;
-    min-height: 600px;
-    padding: 45px 28px;
-    text-align: center;
-
+.card{
+    position:relative;
+    width:100%;
+    min-height:600px;
+    padding:45px 28px;
+    text-align:center;
     background:
-        linear-gradient(
-            145deg,
-            rgba(25,22,14,0.98),
-            rgba(4,4,4,0.98)
-        );
-
-    border:
-        1px solid rgba(221,188,79,0.8);
-
-    border-radius: 35px;
-
+        linear-gradient(145deg,rgba(25,22,14,.98),rgba(4,4,4,.98));
+    border:1px solid rgba(221,188,79,.8);
+    border-radius:35px;
     box-shadow:
-        0 30px 100px rgba(0,0,0,0.8),
-        0 0 60px rgba(212,175,55,0.1);
-
-    overflow: hidden;
+        0 30px 100px rgba(0,0,0,.8),
+        0 0 60px rgba(212,175,55,.1);
+    overflow:hidden;
 }
 
-.card::before {
-    content: "";
-    position: absolute;
-    top: 13px;
-    left: 13px;
-    right: 13px;
-    bottom: 13px;
-
-    border:
-        1px solid rgba(212,175,55,0.25);
-
-    border-radius: 26px;
-    pointer-events: none;
+.card::before{
+    content:"";
+    position:absolute;
+    top:13px;
+    left:13px;
+    right:13px;
+    bottom:13px;
+    border:1px solid rgba(212,175,55,.25);
+    border-radius:26px;
+    pointer-events:none;
 }
 
-
-/* =====================================================
-   TELAS
-===================================================== */
-
-.hidden {
-    display: none !important;
+.hidden{
+    display:none!important;
 }
 
-.fade-in {
-    animation: fadeIn 1s ease;
+.fade-in{
+    animation:fadeIn 1s ease;
 }
 
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-        transform: translateY(40px) scale(.94);
+@keyframes fadeIn{
+    from{
+        opacity:0;
+        transform:translateY(40px) scale(.94);
     }
-
-    to {
-        opacity: 1;
-        transform: translateY(0) scale(1);
+    to{
+        opacity:1;
+        transform:translateY(0) scale(1);
     }
 }
 
-
-/* =====================================================
-   INTRODUÇÃO
-===================================================== */
-
-.intro {
-    min-height: 650px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+.intro{
+    min-height:650px;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
 }
 
-.intro-small {
-    color: #d8b94e;
-    font-size: 12px;
-    letter-spacing: 5px;
-    text-transform: uppercase;
-    margin-bottom: 35px;
+.intro-small{
+    color:#d8b94e;
+    font-size:12px;
+    letter-spacing:5px;
+    text-transform:uppercase;
+    margin-bottom:35px;
 }
 
-.intro-title {
-    font-size: clamp(35px, 9vw, 62px);
-    font-weight: normal;
-    line-height: 1.1;
+.intro-title{
+    font-size:clamp(35px,9vw,62px);
+    font-weight:normal;
+    line-height:1.1;
 }
 
-.intro-title span {
-    color: #e4c45b;
+.intro-title span{
+    color:#e4c45b;
 }
 
-.intro-subtitle {
-    margin-top: 25px;
-    color: #aaa;
-    font-size: 16px;
-    line-height: 1.8;
-    max-width: 450px;
+.intro-subtitle{
+    margin-top:25px;
+    color:#aaa;
+    font-size:16px;
+    line-height:1.8;
+    max-width:450px;
 }
 
-
-/* =====================================================
-   ENVELOPE
-===================================================== */
-
-.envelope-area {
-    margin: 35px 0;
-    cursor: pointer;
+.envelope-area{
+    margin:35px 0;
+    cursor:pointer;
 }
 
-.envelope {
-    position: relative;
-    width: 230px;
-    height: 150px;
-    margin: auto;
-
-    background:
-        linear-gradient(
-            145deg,
-            #d4af37,
-            #8e6815
-        );
-
-    border-radius: 5px;
-
+.envelope{
+    position:relative;
+    width:230px;
+    height:150px;
+    margin:auto;
+    background:linear-gradient(145deg,#d4af37,#8e6815);
+    border-radius:5px;
     box-shadow:
         0 25px 50px rgba(0,0,0,.5),
         0 0 35px rgba(212,175,55,.18);
-
-    transition: .4s;
+    transition:.4s;
 }
 
-.envelope:hover {
-    transform: translateY(-8px) scale(1.03);
+.envelope:hover{
+    transform:translateY(-8px) scale(1.03);
 }
 
-.envelope::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-
-    border-left: 115px solid transparent;
-    border-right: 115px solid transparent;
-    border-top: 85px solid #f0d76a;
-
-    transform-origin: top;
-    transition: .8s;
-    z-index: 3;
+.envelope::before{
+    content:"";
+    position:absolute;
+    top:0;
+    left:0;
+    border-left:115px solid transparent;
+    border-right:115px solid transparent;
+    border-top:85px solid #f0d76a;
+    transform-origin:top;
+    transition:.8s;
+    z-index:3;
 }
 
-.envelope.open::before {
-    transform: rotateX(180deg);
+.envelope.open::before{
+    transform:rotateX(180deg);
 }
 
-.envelope::after {
-    content: "✦";
-    position: absolute;
-    top: 53px;
-    left: 50%;
-    transform: translateX(-50%);
-
-    width: 55px;
-    height: 55px;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    border-radius: 50%;
-    background: #17130a;
-    color: #e5c354;
-    font-size: 24px;
-
-    border:
-        1px solid #e5c354;
-
-    z-index: 4;
+.envelope::after{
+    content:"✦";
+    position:absolute;
+    top:53px;
+    left:50%;
+    transform:translateX(-50%);
+    width:55px;
+    height:55px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    border-radius:50%;
+    background:#17130a;
+    color:#e5c354;
+    font-size:24px;
+    border:1px solid #e5c354;
+    z-index:4;
 }
 
-.envelope-text {
-    margin-top: 18px;
-    color: #d9c16b;
-    font-size: 12px;
-    letter-spacing: 3px;
+.envelope-text{
+    margin-top:18px;
+    color:#d9c16b;
+    font-size:12px;
+    letter-spacing:3px;
 }
 
-
-/* =====================================================
-   BOTÕES
-===================================================== */
-
-.btn {
-    display: inline-block;
-    border: none;
-
-    padding: 15px 30px;
-    margin-top: 20px;
-
-    border-radius: 50px;
-
-    background:
-        linear-gradient(
-            135deg,
-            #b88b20,
-            #f0d56a,
-            #b88b20
-        );
-
-    color: #100e08;
-
-    font-family: inherit;
-    font-size: 13px;
-    font-weight: bold;
-    letter-spacing: 1.5px;
-
-    cursor: pointer;
-    transition: .3s;
-
-    box-shadow:
-        0 10px 25px rgba(212,175,55,.15);
+.btn{
+    display:inline-block;
+    border:none;
+    padding:15px 30px;
+    margin-top:20px;
+    border-radius:50px;
+    background:linear-gradient(135deg,#b88b20,#f0d56a,#b88b20);
+    color:#100e08;
+    font-family:inherit;
+    font-size:13px;
+    font-weight:bold;
+    letter-spacing:1.5px;
+    cursor:pointer;
+    transition:.3s;
+    box-shadow:0 10px 25px rgba(212,175,55,.15);
 }
 
-.btn:hover {
-    transform:
-        translateY(-4px)
-        scale(1.02);
-
-    box-shadow:
-        0 15px 35px rgba(212,175,55,.3);
+.btn:hover{
+    transform:translateY(-4px) scale(1.02);
+    box-shadow:0 15px 35px rgba(212,175,55,.3);
 }
 
-.btn-outline {
-    background: transparent;
-    color: #e2c45b;
-    border:
-        1px solid #d4af37;
-    box-shadow: none;
+.btn-outline{
+    background:transparent;
+    color:#e2c45b;
+    border:1px solid #d4af37;
+    box-shadow:none;
 }
 
-
-/* =====================================================
-   PIN
-===================================================== */
-
-.pin-screen {
-    min-height: 620px;
-
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+.pin-screen{
+    min-height:620px;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
 }
 
-.lock-circle {
-    width: 85px;
-    height: 85px;
-
-    border-radius: 50%;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    border:
-        1px solid #d4af37;
-
-    font-size: 32px;
-    margin-bottom: 25px;
-
-    animation: pulse 2s infinite;
+.lock-circle{
+    width:85px;
+    height:85px;
+    border-radius:50%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    border:1px solid #d4af37;
+    font-size:32px;
+    margin-bottom:25px;
+    animation:pulse 2s infinite;
 }
 
-@keyframes pulse {
-    0%,100% {
-        box-shadow:
-            0 0 10px rgba(212,175,55,.1);
+@keyframes pulse{
+    0%,100%{
+        box-shadow:0 0 10px rgba(212,175,55,.1);
     }
-
-    50% {
-        box-shadow:
-            0 0 35px rgba(212,175,55,.35);
+    50%{
+        box-shadow:0 0 35px rgba(212,175,55,.35);
     }
 }
 
-.gold-title {
-    color: #e3c45d;
-    font-size: 12px;
-    letter-spacing: 5px;
-    margin-bottom: 15px;
+.gold-title{
+    color:#e3c45d;
+    font-size:12px;
+    letter-spacing:5px;
+    margin-bottom:15px;
 }
 
-.pin-heading {
-    font-size: clamp(30px,7vw,48px);
-    font-weight: normal;
+.pin-heading{
+    font-size:clamp(30px,7vw,48px);
+    font-weight:normal;
 }
 
-.pin-text {
-    max-width: 430px;
-    margin: 20px auto;
-    color: #999;
-    line-height: 1.8;
+.pin-text{
+    max-width:430px;
+    margin:20px auto;
+    color:#999;
+    line-height:1.8;
 }
 
-.pin-input {
-    width: 100%;
-    max-width: 350px;
-
-    padding: 17px 20px;
-
-    background: #070707;
-
-    border:
-        1px solid #cda932;
-
-    border-radius: 50px;
-
-    outline: none;
-
-    text-align: center;
-
-    color: #fff;
-
-    font-size: 18px;
-
-    font-family: inherit;
-
-    transition: .3s;
+.pin-input{
+    width:100%;
+    max-width:350px;
+    padding:17px 20px;
+    background:#070707;
+    border:1px solid #cda932;
+    border-radius:50px;
+    outline:none;
+    text-align:center;
+    color:#fff;
+    font-size:18px;
+    font-family:inherit;
+    transition:.3s;
 }
 
-.pin-input:focus {
-    border-color: #f2d66b;
-
-    box-shadow:
-        0 0 30px rgba(212,175,55,.2);
+.pin-input:focus{
+    border-color:#f2d66b;
+    box-shadow:0 0 30px rgba(212,175,55,.2);
 }
 
-.pin-input::placeholder {
-    color: #666;
+.pin-input::placeholder{
+    color:#666;
 }
 
-.error {
-    margin-top: 15px;
-    color: #ff7777;
-    font-size: 14px;
+.error{
+    margin-top:15px;
+    color:#ff7777;
+    font-size:14px;
 }
 
-
-/* =====================================================
-   NÚMERO DO CONVITE
-===================================================== */
-
-.invite-number {
-    color: #777;
-    font-size: 11px;
-    letter-spacing: 6px;
-    text-transform: uppercase;
-    margin-bottom: 25px;
+.invite-number{
+    color:#777;
+    font-size:11px;
+    letter-spacing:6px;
+    text-transform:uppercase;
+    margin-bottom:25px;
 }
 
-.big-number {
-    font-size: clamp(70px,20vw,130px);
-    line-height: .8;
-
-    color: #d9b948;
-
-    opacity: .95;
-
-    text-shadow:
-        0 0 30px rgba(212,175,55,.15);
+.big-number{
+    font-size:clamp(70px,20vw,130px);
+    line-height:.8;
+    color:#d9b948;
+    opacity:.95;
+    text-shadow:0 0 30px rgba(212,175,55,.15);
 }
 
-.reveal-text {
-    margin-top: 35px;
-    color: #888;
-    font-size: 13px;
-    letter-spacing: 3px;
-    text-transform: uppercase;
+.reveal-text{
+    margin-top:35px;
+    color:#888;
+    font-size:13px;
+    letter-spacing:3px;
+    text-transform:uppercase;
 }
 
-
-/* =====================================================
-   NOME
-===================================================== */
-
-.guest-name {
-    margin-top: 18px;
-
-    color: #efd263;
-
-    font-size: clamp(35px,9vw,62px);
-
-    font-weight: normal;
-
-    animation:
-        nameReveal 1.2s ease;
+.guest-name{
+    margin-top:18px;
+    color:#efd263;
+    font-size:clamp(35px,9vw,62px);
+    font-weight:normal;
+    animation:nameReveal 1.2s ease;
 }
 
-@keyframes nameReveal {
-    0% {
-        opacity: 0;
-        transform:
-            translateY(30px)
-            scale(.8);
-        filter: blur(8px);
+@keyframes nameReveal{
+    0%{
+        opacity:0;
+        transform:translateY(30px) scale(.8);
+        filter:blur(8px);
     }
-
-    100% {
-        opacity: 1;
-        transform:
-            translateY(0)
-            scale(1);
-        filter: blur(0);
+    100%{
+        opacity:1;
+        transform:translateY(0) scale(1);
+        filter:blur(0);
     }
 }
 
-
-/* =====================================================
-   LINHA
-===================================================== */
-
-.line {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    gap: 12px;
-
-    margin: 28px auto;
+.line{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:12px;
+    margin:28px auto;
 }
 
-.line span {
-    display: block;
+.line span{
+    display:block;
+    width:75px;
+    height:1px;
+    background:linear-gradient(to right,transparent,#d4af37);
+}
 
-    width: 75px;
-    height: 1px;
+.line span:last-child{
+    background:linear-gradient(to left,transparent,#d4af37);
+}
 
+.line b{
+    color:#d4af37;
+    font-size:12px;
+}
+
+.message{
+    color:#d1d1d1;
+    line-height:1.9;
+    font-size:17px;
+}
+
+.highlight{
+    margin:25px auto;
+    color:#e4c65f;
+    font-size:21px;
+    line-height:1.7;
+    max-width:540px;
+}
+
+.couple{
+    margin:35px 0;
+}
+
+.couple-name{
+    color:#f0d469;
+    font-size:clamp(37px,9vw,58px);
+    line-height:1.2;
+}
+
+.ampersand{
+    margin:8px;
+    color:#777;
+    font-size:18px;
+    font-style:italic;
+}
+
+.event{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:10px;
+    margin:30px 0;
+}
+
+.event-item{
+    padding:20px 8px;
+    border:1px solid rgba(212,175,55,.3);
+    border-radius:18px;
+    background:rgba(212,175,55,.035);
+}
+
+.event-icon{
+    font-size:24px;
+    margin-bottom:10px;
+}
+
+.event-label{
+    color:#777;
+    font-size:9px;
+    letter-spacing:2px;
+    text-transform:uppercase;
+    margin-bottom:7px;
+}
+
+.event-value{
+    color:#e4c65f;
+    font-size:14px;
+    line-height:1.4;
+}
+
+.count-title{
+    margin-top:35px;
+    color:#777;
+    font-size:10px;
+    letter-spacing:4px;
+    text-transform:uppercase;
+}
+
+.countdown{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:8px;
+    margin-top:15px;
+}
+
+.count-box{
+    padding:15px 5px;
+    border:1px solid rgba(212,175,55,.3);
+    border-radius:15px;
+    background:rgba(0,0,0,.3);
+}
+
+.count-number{
+    display:block;
+    color:#e4c65f;
+    font-size:24px;
+    font-weight:bold;
+}
+
+.count-label{
+    display:block;
+    margin-top:5px;
+    color:#666;
+    font-size:8px;
+    letter-spacing:1px;
+}
+
+.location{
+    margin-top:30px;
+    padding:25px;
+    border-top:1px solid rgba(212,175,55,.25);
+    border-bottom:1px solid rgba(212,175,55,.25);
+}
+
+.location-small{
+    color:#d4af37;
+    font-size:10px;
+    letter-spacing:4px;
+    margin-bottom:10px;
+}
+
+.location-name{
+    font-size:24px;
+    color:#eee;
+}
+
+.confirm{
+    margin-top:35px;
+}
+
+.success{
+    margin-top:25px;
+    padding:25px;
+    border:1px solid #d4af37;
+    border-radius:20px;
+    background:rgba(212,175,55,.06);
+    animation:fadeIn .8s ease;
+}
+
+.success h3{
+    color:#e4c65f;
+    font-size:24px;
+    margin-bottom:10px;
+}
+
+.success p{
+    color:#aaa;
+    line-height:1.7;
+}
+
+.ines{
     background:
-        linear-gradient(
-            to right,
-            transparent,
-            #d4af37
-        );
-}
-
-.line span:last-child {
-    background:
-        linear-gradient(
-            to left,
-            transparent,
-            #d4af37
-        );
-}
-
-.line b {
-    color: #d4af37;
-    font-size: 12px;
-}
-
-
-/* =====================================================
-   TEXTO
-===================================================== */
-
-.message {
-    color: #d1d1d1;
-    line-height: 1.9;
-    font-size: 17px;
-}
-
-.highlight {
-    margin: 25px auto;
-
-    color: #e4c65f;
-
-    font-size: 21px;
-
-    line-height: 1.7;
-
-    max-width: 540px;
-}
-
-
-/* =====================================================
-   CASAL
-===================================================== */
-
-.couple {
-    margin: 35px 0;
-}
-
-.couple-name {
-    color: #f0d469;
-    font-size: clamp(37px,9vw,58px);
-    line-height: 1.2;
-}
-
-.ampersand {
-    margin: 8px;
-    color: #777;
-    font-size: 18px;
-    font-style: italic;
-}
-
-
-/* =====================================================
-   EVENTO
-===================================================== */
-
-.event {
-    display: grid;
-
-    grid-template-columns:
-        repeat(3,1fr);
-
-    gap: 10px;
-
-    margin: 30px 0;
-}
-
-.event-item {
-    padding: 20px 8px;
-
-    border:
-        1px solid rgba(212,175,55,.3);
-
-    border-radius: 18px;
-
-    background:
-        rgba(212,175,55,.035);
-}
-
-.event-icon {
-    font-size: 24px;
-    margin-bottom: 10px;
-}
-
-.event-label {
-    color: #777;
-    font-size: 9px;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    margin-bottom: 7px;
-}
-
-.event-value {
-    color: #e4c65f;
-    font-size: 14px;
-    line-height: 1.4;
-}
-
-
-/* =====================================================
-   CONTAGEM
-===================================================== */
-
-.count-title {
-    margin-top: 35px;
-
-    color: #777;
-
-    font-size: 10px;
-
-    letter-spacing: 4px;
-
-    text-transform: uppercase;
-}
-
-.countdown {
-    display: grid;
-
-    grid-template-columns:
-        repeat(4,1fr);
-
-    gap: 8px;
-
-    margin-top: 15px;
-}
-
-.count-box {
-    padding: 15px 5px;
-
-    border:
-        1px solid rgba(212,175,55,.3);
-
-    border-radius: 15px;
-
-    background:
-        rgba(0,0,0,.3);
-}
-
-.count-number {
-    display: block;
-
-    color: #e4c65f;
-
-    font-size: 24px;
-
-    font-weight: bold;
-}
-
-.count-label {
-    display: block;
-
-    margin-top: 5px;
-
-    color: #666;
-
-    font-size: 8px;
-
-    letter-spacing: 1px;
-}
-
-
-/* =====================================================
-   LOCAL
-===================================================== */
-
-.location {
-    margin-top: 30px;
-
-    padding: 25px;
-
-    border-top:
-        1px solid rgba(212,175,55,.25);
-
-    border-bottom:
-        1px solid rgba(212,175,55,.25);
-}
-
-.location-small {
-    color: #d4af37;
-
-    font-size: 10px;
-
-    letter-spacing: 4px;
-
-    margin-bottom: 10px;
-}
-
-.location-name {
-    font-size: 24px;
-    color: #eee;
-}
-
-
-/* =====================================================
-   CONFIRMAÇÃO
-===================================================== */
-
-.confirm {
-    margin-top: 35px;
-}
-
-.success {
-    margin-top: 25px;
-
-    padding: 25px;
-
-    border:
-        1px solid #d4af37;
-
-    border-radius: 20px;
-
-    background:
-        rgba(212,175,55,.06);
-
-    animation: fadeIn .8s ease;
-}
-
-.success h3 {
-    color: #e4c65f;
-
-    font-size: 24px;
-
-    margin-bottom: 10px;
-}
-
-.success p {
-    color: #aaa;
-    line-height: 1.7;
-}
-
-
-/* =====================================================
-   INÊS
-===================================================== */
-
-.ines {
-    background:
-        radial-gradient(
-            circle at 50% 0%,
-            rgba(222,185,66,.22),
-            transparent 40%
-        ),
-        linear-gradient(
-            145deg,
-            #070604,
-            #241b06,
-            #070604
-        );
-
-    border-color: #efd067;
-
+        radial-gradient(circle at 50% 0%,rgba(222,185,66,.22),transparent 40%),
+        linear-gradient(145deg,#070604,#241b06,#070604);
+    border-color:#efd067;
     box-shadow:
         0 30px 100px rgba(0,0,0,.9),
         0 0 80px rgba(212,175,55,.16);
 }
 
-.heart {
-    font-size: 55px;
-
-    animation:
-        heartbeat 1.5s infinite;
+.heart{
+    font-size:55px;
+    animation:heartbeat 1.5s infinite;
 }
 
-@keyframes heartbeat {
-    0%,100% {
-        transform: scale(1);
+@keyframes heartbeat{
+    0%,100%{
+        transform:scale(1);
     }
-
-    50% {
-        transform: scale(1.15);
+    50%{
+        transform:scale(1.15);
     }
 }
 
-.ines-label {
-    margin-top: 25px;
-
-    color: #e6c65b;
-
-    font-size: 11px;
-
-    letter-spacing: 5px;
-
-    text-transform: uppercase;
+.ines-label{
+    margin-top:25px;
+    color:#e6c65b;
+    font-size:11px;
+    letter-spacing:5px;
+    text-transform:uppercase;
 }
 
-.ines-name {
-    margin-top: 18px;
-
-    color: #f4d873;
-
-    font-size: clamp(55px,13vw,85px);
-
-    font-weight: normal;
-
-    text-shadow:
-        0 0 30px rgba(212,175,55,.2);
+.ines-name{
+    margin-top:18px;
+    color:#f4d873;
+    font-size:clamp(55px,13vw,85px);
+    font-weight:normal;
+    text-shadow:0 0 30px rgba(212,175,55,.2);
 }
 
-.ines-message {
-    color: #e8dcae;
-
-    font-size: 19px;
-
-    line-height: 2;
-
-    margin: 25px auto;
-
-    max-width: 540px;
+.ines-message{
+    color:#e8dcae;
+    font-size:19px;
+    line-height:2;
+    margin:25px auto;
+    max-width:540px;
 }
 
-
-/* =====================================================
-   RODAPÉ
-===================================================== */
-
-.footer {
-    margin-top: 35px;
-
-    color: #555;
-
-    font-size: 10px;
-
-    letter-spacing: 2px;
+.footer{
+    margin-top:35px;
+    color:#555;
+    font-size:10px;
+    letter-spacing:2px;
 }
 
+@media(max-width:600px){
 
-/* =====================================================
-   MOBILE
-===================================================== */
-
-@media(max-width:600px) {
-
-    .wrapper {
-        padding:
-            10px
-            8px
-            30px;
+    .wrapper{
+        padding:10px 8px 30px;
     }
 
-    .card {
-        padding:
-            40px
-            18px;
-
-        border-radius: 28px;
+    .card{
+        padding:40px 18px;
+        border-radius:28px;
     }
 
-    .event {
-        grid-template-columns: 1fr;
+    .event{
+        grid-template-columns:1fr;
     }
 
-    .event-item {
-        display: grid;
-
-        grid-template-columns:
-            35px 1fr;
-
-        text-align: left;
-
-        align-items: center;
+    .event-item{
+        display:grid;
+        grid-template-columns:35px 1fr;
+        text-align:left;
+        align-items:center;
     }
 
-    .event-icon {
-        grid-row: span 2;
-
-        text-align: center;
-
-        margin: 0;
+    .event-icon{
+        grid-row:span 2;
+        text-align:center;
+        margin:0;
     }
 
-    .event-label {
-        margin: 0;
+    .event-label{
+        margin:0;
     }
 
-    .count-number {
-        font-size: 19px;
+    .count-number{
+        font-size:19px;
     }
 
-    .btn {
-        width: 90%;
+    .btn{
+        width:90%;
     }
 
-    .envelope {
-        transform: scale(.9);
+    .envelope{
+        transform:scale(.9);
     }
 
-    .envelope:hover {
-        transform:
-            scale(.9)
-            translateY(-5px);
+    .envelope:hover{
+        transform:scale(.9) translateY(-5px);
     }
 }
-
 </style>
 </head>
 
-
 <body>
-
-
-<!-- =====================================================
-     PARTÍCULAS
-===================================================== -->
-
-<script>
-
-for(let i = 0; i < 45; i++){
-
-    const light =
-        document.createElement("div");
-
-    light.className = "light";
-
-    light.style.left =
-        Math.random() * 100 + "%";
-
-    light.style.animationDuration =
-        (5 + Math.random() * 8) + "s";
-
-    light.style.animationDelay =
-        Math.random() * 8 + "s";
-
-    const size =
-        2 + Math.random() * 4;
-
-    light.style.width =
-        size + "px";
-
-    light.style.height =
-        size + "px";
-
-    document.body.appendChild(light);
-}
-
-</script>
-
 
 <div class="wrapper">
 
-
-<!-- =====================================================
-     ABERTURA
-===================================================== -->
-
-<section
-    id="intro"
-    class="card intro">
+<section id="intro" class="card intro">
 
     <div class="intro-small">
         Você recebeu algo especial
     </div>
 
     <h1 class="intro-title">
-
         <span>Layerson</span>
-
         <br>
-
-        <small style="
-            font-size:.35em;
-            color:#777;
-        ">
+        <small style="font-size:.35em;color:#777;">
             &amp;
         </small>
-
         <br>
-
         <span>Naira</span>
-
     </h1>
 
     <div class="line">
-
         <span></span>
-
         <b>◆</b>
-
         <span></span>
-
     </div>
 
     <p class="intro-subtitle">
-
         Um momento especial merece
         uma forma especial de convidar.
-
         <br><br>
-
         Preparamos este convite especialmente
         para você.
-
     </p>
 
-    <div
-        class="envelope-area"
-        onclick="abrirEnvelope()">
-
-        <div
-            id="envelope"
-            class="envelope">
-        </div>
-
+    <div class="envelope-area" onclick="abrirEnvelope()">
+        <div id="envelope" class="envelope"></div>
         <div class="envelope-text">
             TOQUE PARA ABRIR
         </div>
-
     </div>
 
-    <button
-        class="btn"
-        onclick="abrirEnvelope()">
-
+    <button class="btn" onclick="abrirEnvelope()">
         ABRIR CONVITE ✦
-
     </button>
 
 </section>
 
 
-<!-- =====================================================
-     PIN
-===================================================== -->
-
-<section
-    id="pinScreen"
-    class="card pin-screen hidden">
+<section id="pinScreen" class="card pin-screen hidden">
 
     <div class="lock-circle">
         🔐
@@ -1102,15 +710,11 @@ for(let i = 0; i < 45; i++){
     </h2>
 
     <p class="pin-text">
-
         Este convite foi preparado
         especialmente para você.
-
         <br>
-
         Digite o PIN que recebeu
         para continuar.
-
     </p>
 
     <input
@@ -1121,18 +725,11 @@ for(let i = 0; i < 45; i++){
         autocomplete="off"
     >
 
-    <button
-        class="btn"
-        onclick="verificarPin()">
-
+    <button class="btn" onclick="verificarPin()">
         CONTINUAR ✦
-
     </button>
 
-    <div
-        id="erro"
-        class="error">
-    </div>
+    <div id="erro" class="error"></div>
 
     <div class="footer">
         Seu convite é pessoal e exclusivo.
@@ -1141,99 +738,60 @@ for(let i = 0; i < 45; i++){
 </section>
 
 
-<!-- =====================================================
-     NÚMERO DO CONVITE
-===================================================== -->
-
-<section
-    id="numberScreen"
-    class="card hidden">
+<section id="numberScreen" class="card hidden">
 
     <div class="invite-number">
         SEU CONVITE
     </div>
 
-    <div
-        id="numeroConvite"
-        class="big-number">
+    <div id="numeroConvite" class="big-number">
         01
     </div>
 
     <div class="line">
-
         <span></span>
-
         <b>◆</b>
-
         <span></span>
-
     </div>
 
     <p class="reveal-text">
         Preparado especialmente para você
     </p>
 
-    <button
-        class="btn"
-        onclick="revelarNome()">
-
+    <button class="btn" onclick="revelarNome()">
         REVELAR CONVITE
-
     </button>
 
 </section>
 
 
-<!-- =====================================================
-     CONVITE AMIGOS
-===================================================== -->
-
-<section
-    id="friendScreen"
-    class="card hidden">
+<section id="friendScreen" class="card hidden">
 
     <div class="invite-number">
-        CONVITE Nº
-        <span id="numeroAmigo">
-            01
-        </span>
+        CONVITE Nº <span id="numeroAmigo">01</span>
     </div>
 
-    <div
-        id="nomeAmigo"
-        class="guest-name">
-    </div>
+    <div id="nomeAmigo" class="guest-name"></div>
 
     <div class="line">
-
         <span></span>
-
         <b>◆</b>
-
         <span></span>
-
     </div>
 
     <p class="highlight">
-
         Você é uma das pessoas que queremos
         ter conosco neste momento especial. ❤️
-
     </p>
 
     <p class="message">
-
         A vida fica muito melhor quando
         temos amigos com quem compartilhar
         momentos importantes.
-
         <br><br>
-
         Por isso, queremos celebrar este dia
         contigo.
-
     </p>
-
 
     <div class="couple">
 
@@ -1251,59 +809,33 @@ for(let i = 0; i < 45; i++){
 
     </div>
 
-
     <div class="event">
 
         <div class="event-item">
-
-            <div class="event-icon">
-                📅
-            </div>
-
-            <div class="event-label">
-                Data
-            </div>
-
+            <div class="event-icon">📅</div>
+            <div class="event-label">Data</div>
             <div class="event-value">
                 19 de setembro de 2026
             </div>
-
         </div>
 
         <div class="event-item">
-
-            <div class="event-icon">
-                🕕
-            </div>
-
-            <div class="event-label">
-                Hora
-            </div>
-
+            <div class="event-icon">🕕</div>
+            <div class="event-label">Hora</div>
             <div class="event-value">
                 18h00
             </div>
-
         </div>
 
         <div class="event-item">
-
-            <div class="event-icon">
-                📍
-            </div>
-
-            <div class="event-label">
-                Local
-            </div>
-
+            <div class="event-icon">📍</div>
+            <div class="event-label">Local</div>
             <div class="event-value">
                 Salão Rosita
             </div>
-
         </div>
 
     </div>
-
 
     <div class="count-title">
         Faltam
@@ -1312,63 +844,26 @@ for(let i = 0; i < 45; i++){
     <div class="countdown">
 
         <div class="count-box">
-
-            <span
-                id="dias"
-                class="count-number">
-                0
-            </span>
-
-            <span class="count-label">
-                DIAS
-            </span>
-
+            <span id="dias" class="count-number">0</span>
+            <span class="count-label">DIAS</span>
         </div>
 
         <div class="count-box">
-
-            <span
-                id="horas"
-                class="count-number">
-                0
-            </span>
-
-            <span class="count-label">
-                HORAS
-            </span>
-
+            <span id="horas" class="count-number">0</span>
+            <span class="count-label">HORAS</span>
         </div>
 
         <div class="count-box">
-
-            <span
-                id="minutos"
-                class="count-number">
-                0
-            </span>
-
-            <span class="count-label">
-                MINUTOS
-            </span>
-
+            <span id="minutos" class="count-number">0</span>
+            <span class="count-label">MINUTOS</span>
         </div>
 
         <div class="count-box">
-
-            <span
-                id="segundos"
-                class="count-number">
-                0
-            </span>
-
-            <span class="count-label">
-                SEGUNDOS
-            </span>
-
+            <span id="segundos" class="count-number">0</span>
+            <span class="count-label">SEGUNDOS</span>
         </div>
 
     </div>
-
 
     <div class="location">
 
@@ -1380,16 +875,11 @@ for(let i = 0; i < 45; i++){
             📍 Salão Rosita
         </div>
 
-        <button
-            class="btn btn-outline"
-            onclick="abrirMapa()">
-
+        <button class="btn btn-outline" onclick="abrirMapa()">
             VER NO MAPA
-
         </button>
 
     </div>
-
 
     <div class="confirm">
 
@@ -1397,20 +887,13 @@ for(let i = 0; i < 45; i++){
             Esperamos ver você lá! ❤️
         </p>
 
-        <button
-            class="btn"
-            onclick="confirmarAmigo()">
-
+        <button class="btn" onclick="confirmarAmigo()">
             CONFIRMAR PRESENÇA
-
         </button>
 
     </div>
 
-
-    <div
-        id="successFriend"
-        class="success hidden">
+    <div id="successFriend" class="success hidden">
 
         <h3>
             ✨ Obrigado!
@@ -1419,14 +902,11 @@ for(let i = 0; i < 45; i++){
         <p>
             Ficamos muito felizes por saber
             que estarás conosco.
-
             <br><br>
-
             Nos vemos dia 19 de setembro! ❤️
         </p>
 
     </div>
-
 
     <div class="footer">
         Layerson &amp; Naira • 19.09.2026
@@ -1435,13 +915,7 @@ for(let i = 0; i < 45; i++){
 </section>
 
 
-<!-- =====================================================
-     INÊS
-===================================================== -->
-
-<section
-    id="inesScreen"
-    class="card ines hidden">
+<section id="inesScreen" class="card ines hidden">
 
     <div class="heart">
         ❤️
@@ -1456,33 +930,24 @@ for(let i = 0; i < 45; i++){
     </div>
 
     <div class="line">
-
         <span></span>
-
         <b>◆</b>
-
         <span></span>
-
     </div>
 
     <p class="ines-message">
 
         Entre todas as pessoas que estarão
         presentes neste dia,
-
         <br><br>
-
         existe alguém que tem um lugar
         muito especial no meu coração.
-
         <br><br>
-
         <strong>
             Essa pessoa é você. ❤️
         </strong>
 
     </p>
-
 
     <div class="couple">
 
@@ -1500,156 +965,78 @@ for(let i = 0; i < 45; i++){
 
     </div>
 
-
     <div class="event">
 
         <div class="event-item">
-
-            <div class="event-icon">
-                📅
-            </div>
-
-            <div class="event-label">
-                Data
-            </div>
-
+            <div class="event-icon">📅</div>
+            <div class="event-label">Data</div>
             <div class="event-value">
                 19 de setembro de 2026
             </div>
-
         </div>
 
         <div class="event-item">
-
-            <div class="event-icon">
-                🕕
-            </div>
-
-            <div class="event-label">
-                Hora
-            </div>
-
+            <div class="event-icon">🕕</div>
+            <div class="event-label">Hora</div>
             <div class="event-value">
                 18h00
             </div>
-
         </div>
 
         <div class="event-item">
-
-            <div class="event-icon">
-                📍
-            </div>
-
-            <div class="event-label">
-                Local
-            </div>
-
+            <div class="event-icon">📍</div>
+            <div class="event-label">Local</div>
             <div class="event-value">
                 Salão Rosita
             </div>
-
         </div>
 
     </div>
-
 
     <div class="count-title">
         Contagem para o grande dia
     </div>
 
-
     <div class="countdown">
 
         <div class="count-box">
-
-            <span
-                id="diasInes"
-                class="count-number">
-                0
-            </span>
-
-            <span class="count-label">
-                DIAS
-            </span>
-
+            <span id="diasInes" class="count-number">0</span>
+            <span class="count-label">DIAS</span>
         </div>
 
         <div class="count-box">
-
-            <span
-                id="horasInes"
-                class="count-number">
-                0
-            </span>
-
-            <span class="count-label">
-                HORAS
-            </span>
-
+            <span id="horasInes" class="count-number">0</span>
+            <span class="count-label">HORAS</span>
         </div>
 
         <div class="count-box">
-
-            <span
-                id="minutosInes"
-                class="count-number">
-                0
-            </span>
-
-            <span class="count-label">
-                MINUTOS
-            </span>
-
+            <span id="minutosInes" class="count-number">0</span>
+            <span class="count-label">MINUTOS</span>
         </div>
 
         <div class="count-box">
-
-            <span
-                id="segundosInes"
-                class="count-number">
-                0
-            </span>
-
-            <span class="count-label">
-                SEGUNDOS
-            </span>
-
+            <span id="segundosInes" class="count-number">0</span>
+            <span class="count-label">SEGUNDOS</span>
         </div>
 
     </div>
 
-
     <p class="ines-message">
-
         Quero muito ter você ao meu lado
         para viver este momento comigo. ❤️
-
     </p>
 
-
-    <button
-        class="btn btn-outline"
-        onclick="abrirMapa()">
-
+    <button class="btn btn-outline" onclick="abrirMapa()">
         📍 VER LOCAL
-
     </button>
 
     <br>
 
-    <button
-        class="btn"
-        onclick="confirmarInes()">
-
+    <button class="btn" onclick="confirmarInes()">
         ❤️ CONFIRMAR PRESENÇA
-
     </button>
 
-
-    <div
-        id="successInes"
-        class="success hidden">
+    <div id="successInes" class="success hidden">
 
         <h3>
             ❤️ Obrigado, meu amor!
@@ -1658,14 +1045,11 @@ for(let i = 0; i < 45; i++){
         <p>
             Saber que estarás comigo torna
             este momento ainda mais especial.
-
             <br><br>
-
             Vejo-te no dia 19. ❤️
         </p>
 
     </div>
-
 
     <div class="footer">
         Com amor • Layerson
@@ -1673,149 +1057,133 @@ for(let i = 0; i < 45; i++){
 
 </section>
 
-
 </div>
 
 
 <script>
 
 /* =====================================================
-   CRIAR PARTÍCULAS
+   PARTÍCULAS
 ===================================================== */
 
-for(let i = 0; i < 45; i++){
+for(let i=0;i<45;i++){
 
-    const light =
-        document.createElement("div");
+    const light=document.createElement("div");
 
-    light.className = "light";
+    light.className="light";
 
-    light.style.left =
-        Math.random() * 100 + "%";
+    light.style.left=
+        Math.random()*100+"%";
 
-    light.style.animationDuration =
-        (5 + Math.random() * 8) + "s";
+    light.style.animationDuration=
+        (5+Math.random()*8)+"s";
 
-    light.style.animationDelay =
-        Math.random() * 8 + "s";
+    light.style.animationDelay=
+        Math.random()*8+"s";
 
-    const size =
-        2 + Math.random() * 4;
+    const size=
+        2+Math.random()*4;
 
-    light.style.width =
-        size + "px";
-
-    light.style.height =
-        size + "px";
+    light.style.width=size+"px";
+    light.style.height=size+"px";
 
     document.body.appendChild(light);
 }
 
 
 /* =====================================================
-   CONVIDADOS
+   CONVIDADOS / PIN
 ===================================================== */
 
-const convidados = {
+const convidados={
 
-    "da graca": {
-        nome: "Allen da Graça",
-        numero: "01"
+    "da graca":{
+        nome:"Allen da Graça",
+        numero:"01"
     },
 
-    "maiquel": {
-        nome: "Erik",
-        numero: "02"
+    "maiquel":{
+        nome:"Erik",
+        numero:"02"
     },
 
-    "mulato": {
-        nome: "Zozó",
-        numero: "03"
+    "mulato":{
+        nome:"Zozó",
+        numero:"03"
     },
 
-    "best": {
-        nome: "Lenia",
-        numero: "04"
+    "best":{
+        nome:"Lenia",
+        numero:"04"
     },
 
-    "eltonisso": {
-        nome: "Elton",
-        numero: "05"
+    "eltonisso":{
+        nome:"Elton",
+        numero:"05"
     },
 
-    "te amo": {
-        nome: "Inês",
-        numero: "Especial"
+    "te amo":{
+        nome:"Inês",
+        numero:"Especial"
     }
 
 };
 
-
-let convidadoAtual = null;
+let convidadoAtual=null;
 
 
 /* =====================================================
-   ABRIR ENVELOPE
+   ABRIR
 ===================================================== */
 
 function abrirEnvelope(){
 
-    const envelope =
-        document.getElementById("envelope");
+    document
+        .getElementById("envelope")
+        .classList.add("open");
 
-    envelope.classList.add("open");
-
-
-    setTimeout(function(){
+    setTimeout(()=>{
 
         document
             .getElementById("intro")
             .classList.add("hidden");
 
-
-        const pin =
+        const pin=
             document.getElementById("pinScreen");
 
         pin.classList.remove("hidden");
-
         pin.classList.add("fade-in");
 
-
-        setTimeout(function(){
-
+        setTimeout(()=>{
             document
                 .getElementById("pin")
                 .focus();
-
         },500);
 
     },900);
-
 }
 
 
 /* =====================================================
-   VERIFICAR PIN
+   PIN
 ===================================================== */
 
 function verificarPin(){
 
-    const campo =
+    const campo=
         document.getElementById("pin");
 
-    const erro =
+    const erro=
         document.getElementById("erro");
 
-
-    const pin =
+    const pin=
         campo.value
         .trim()
         .toLowerCase();
 
+    if(pin===""){
 
-    if(pin === ""){
-
-        erro.textContent =
+        erro.textContent=
             "Digite o PIN para continuar.";
 
         campo.focus();
@@ -1823,32 +1191,25 @@ function verificarPin(){
         return;
     }
 
-
     if(!convidados[pin]){
 
-        erro.textContent =
+        erro.textContent=
             "PIN incorreto. Tente novamente.";
 
-        campo.value = "";
-
+        campo.value="";
         campo.focus();
 
         return;
     }
 
-
-    convidadoAtual =
+    convidadoAtual=
         convidados[pin];
-
 
     document
         .getElementById("pinScreen")
         .classList.add("hidden");
 
-
-    /* INÊS */
-
-    if(pin === "te amo"){
+    if(pin==="te amo"){
 
         document
             .getElementById("inesScreen")
@@ -1861,14 +1222,10 @@ function verificarPin(){
         return;
     }
 
-
-    /* NÚMERO */
-
     document
         .getElementById("numeroConvite")
-        .textContent =
+        .textContent=
         convidadoAtual.numero;
-
 
     document
         .getElementById("numberScreen")
@@ -1877,7 +1234,6 @@ function verificarPin(){
     document
         .getElementById("numberScreen")
         .classList.add("fade-in");
-
 }
 
 
@@ -1891,36 +1247,31 @@ function revelarNome(){
         .getElementById("numberScreen")
         .classList.add("hidden");
 
-
     document
         .getElementById("nomeAmigo")
-        .textContent =
+        .textContent=
         convidadoAtual.nome;
-
 
     document
         .getElementById("numeroAmigo")
-        .textContent =
+        .textContent=
         convidadoAtual.numero;
-
 
     document
         .getElementById("friendScreen")
         .classList.remove("hidden");
 
-
     document
         .getElementById("friendScreen")
         .classList.add("fade-in");
-
 }
 
 
 /* =====================================================
-   CONTAGEM REGRESSIVA
+   CONTAGEM
 ===================================================== */
 
-const dataFesta =
+const dataFesta=
     new Date(
         "2026-09-19T18:00:00"
     ).getTime();
@@ -1928,55 +1279,41 @@ const dataFesta =
 
 function atualizarContagem(){
 
-    const agora =
+    const agora=
         new Date().getTime();
 
+    const distancia=
+        dataFesta-agora;
 
-    const distancia =
-        dataFesta - agora;
-
-
-    if(distancia <= 0){
+    if(distancia<=0){
 
         zerarContagem();
 
         return;
     }
 
-
-    const dias =
+    const dias=
         Math.floor(
-            distancia /
-            (1000*60*60*24)
+            distancia/(1000*60*60*24)
         );
 
-
-    const horas =
+    const horas=
         Math.floor(
-            (distancia %
-            (1000*60*60*24))
-            /
-            (1000*60*60)
+            (distancia%(1000*60*60*24))
+            /(1000*60*60)
         );
 
-
-    const minutos =
+    const minutos=
         Math.floor(
-            (distancia %
-            (1000*60*60))
-            /
-            (1000*60)
+            (distancia%(1000*60*60))
+            /(1000*60)
         );
 
-
-    const segundos =
+    const segundos=
         Math.floor(
-            (distancia %
-            (1000*60))
-            /
-            1000
+            (distancia%(1000*60))
+            /1000
         );
-
 
     escrever("dias",dias);
     escrever("horas",horas);
@@ -1987,56 +1324,35 @@ function atualizarContagem(){
     escrever("horasInes",horas);
     escrever("minutosInes",minutos);
     escrever("segundosInes",segundos);
-
 }
 
 
 function escrever(id,valor){
 
-    const elemento =
+    const elemento=
         document.getElementById(id);
 
-    if(elemento){
-
-        elemento.textContent =
-            valor;
-
-    }
-
+    if(elemento)
+        elemento.textContent=valor;
 }
 
 
 function zerarContagem(){
 
-    const ids = [
-
+    [
         "dias",
         "horas",
         "minutos",
         "segundos",
-
         "diasInes",
         "horasInes",
         "minutosInes",
         "segundosInes"
-
-    ];
-
-
-    ids.forEach(function(id){
-
-        escrever(id,0);
-
-    });
-
+    ].forEach(id=>escrever(id,0));
 }
 
 
-setInterval(
-    atualizarContagem,
-    1000
-);
-
+setInterval(atualizarContagem,1000);
 atualizarContagem();
 
 
@@ -2046,33 +1362,25 @@ atualizarContagem();
 
 function abrirMapa(){
 
-    const local =
-        "Salão Rosita";
-
-
-    const url =
-        "https://www.google.com/maps/search/?api=1&query="
-        +
-        encodeURIComponent(local);
-
+    const local=
+        encodeURIComponent("Salão Rosita");
 
     window.open(
-        url,
+        "https://www.google.com/maps/search/?api=1&query="+local,
         "_blank"
     );
-
 }
 
 
 /* =====================================================
-   NÚMEROS DE WHATSAPP
+   📱 NÚMEROS PARA CONFIRMAÇÃO
 ===================================================== */
 
-const numeroWhatsApp1 =
+const numeroWhatsApp1=
     "258870739955";
 
-const numeroWhatsApp2 =
-    "258875947320";
+const numeroWhatsApp2=
+    "258875790814";
 
 
 /* =====================================================
@@ -2081,72 +1389,48 @@ const numeroWhatsApp2 =
 
 function confirmarAmigo(){
 
-    if(!convidadoAtual){
-
+    if(!convidadoAtual)
         return;
 
-    }
-
-
-    const mensagem =
-        "Olá! Confirmo a minha presença no aniversário de Layerson e Naira, dia 19 de setembro de 2026, às 18h, no Salão Rosita. Meu nome é "
-        +
-        convidadoAtual.nome
-        +
+    const mensagem=
+        "Olá! Confirmo a minha presença no aniversário de Layerson e Naira, dia 19 de setembro de 2026, às 18h, no Salão Rosita. Meu nome é "+
+        convidadoAtual.nome+
         ". ❤️";
 
-
-    const texto =
-        encodeURIComponent(
-            mensagem
-        );
+    const texto=
+        encodeURIComponent(mensagem);
 
 
-    /* PRIMEIRO WHATSAPP */
+    /* PRIMEIRO NÚMERO */
 
     window.open(
-
-        "https://wa.me/"
-        +
-        numeroWhatsApp1
-        +
-        "?text="
-        +
+        "https://wa.me/"+
+        numeroWhatsApp1+
+        "?text="+
         texto,
-
         "_blank"
-
     );
 
 
-    /* SEGUNDO WHATSAPP */
+    /* SEGUNDO NÚMERO */
 
     setTimeout(function(){
 
         window.open(
-
-            "https://wa.me/"
-            +
-            numeroWhatsApp2
-            +
-            "?text="
-            +
+            "https://wa.me/"+
+            numeroWhatsApp2+
+            "?text="+
             texto,
-
             "_blank"
-
         );
 
     },1200);
 
 
     document
-        .getElementById(
-            "successFriend"
-        )
+        .getElementById("successFriend")
         .classList
         .remove("hidden");
-
 }
 
 
@@ -2156,61 +1440,39 @@ function confirmarAmigo(){
 
 function confirmarInes(){
 
-    const mensagem =
+    const mensagem=
         "Olá! ❤️ Confirmo a minha presença no aniversário de Layerson e Naira, dia 19 de setembro de 2026, às 18h, no Salão Rosita. ❤️";
 
+    const texto=
+        encodeURIComponent(mensagem);
 
-    const texto =
-        encodeURIComponent(
-            mensagem
-        );
-
-
-    /* PRIMEIRO */
 
     window.open(
-
-        "https://wa.me/"
-        +
-        numeroWhatsApp1
-        +
-        "?text="
-        +
+        "https://wa.me/"+
+        numeroWhatsApp1+
+        "?text="+
         texto,
-
         "_blank"
-
     );
 
-
-    /* SEGUNDO */
 
     setTimeout(function(){
 
         window.open(
-
-            "https://wa.me/"
-            +
-            numeroWhatsApp2
-            +
-            "?text="
-            +
+            "https://wa.me/"+
+            numeroWhatsApp2+
+            "?text="+
             texto,
-
             "_blank"
-
         );
 
     },1200);
 
 
     document
-        .getElementById(
-            "successInes"
-        )
+        .getElementById("successInes")
         .classList
         .remove("hidden");
-
 }
 
 
@@ -2224,13 +1486,8 @@ document
         "keydown",
         function(event){
 
-            if(
-                event.key === "Enter"
-            ){
-
+            if(event.key==="Enter")
                 verificarPin();
-
-            }
 
         }
     );
