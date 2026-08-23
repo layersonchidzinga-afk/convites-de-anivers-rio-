@@ -4,11 +4,18 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Convite de Aniversário - Layerson & Naira</title>
+<title>Convite Especial | Layerson & Naira</title>
 
 <style>
+
+/* =====================================================
+   CONFIGURAÇÃO GERAL
+===================================================== */
+
 * {
     box-sizing: border-box;
+    margin: 0;
+    padding: 0;
 }
 
 html {
@@ -16,112 +23,145 @@ html {
 }
 
 body {
-    margin: 0;
     min-height: 100vh;
-    font-family: Georgia, "Times New Roman", serif;
-    background:
-        radial-gradient(circle at top, #4b3b0b 0%, #111 45%, #000 100%);
-    color: white;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 20px;
     overflow-x: hidden;
+    font-family: Georgia, "Times New Roman", serif;
+    color: #fff;
+
+    background:
+        radial-gradient(
+            circle at 50% 0%,
+            #5b4610 0%,
+            #211903 25%,
+            #080705 58%,
+            #000 100%
+        );
 }
 
-/* PARTÍCULAS DOURADAS */
-
-.particle {
+body::before {
+    content: "";
     position: fixed;
-    top: -20px;
+    width: 700px;
+    height: 700px;
+    top: -350px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(212,175,55,0.08);
+    border-radius: 50%;
+    filter: blur(80px);
+    pointer-events: none;
+}
+
+
+/* =====================================================
+   PARTÍCULAS
+===================================================== */
+
+.light {
+    position: fixed;
     width: 5px;
     height: 5px;
-    background: #d4af37;
+    background: #e6c65c;
     border-radius: 50%;
     pointer-events: none;
-    animation: cair linear infinite;
-    opacity: 0.8;
-    z-index: 0;
+    animation: fall linear infinite;
+    z-index: 1;
 }
 
-@keyframes cair {
-    from {
-        transform: translateY(-20px) rotate(0deg);
+@keyframes fall {
+    0% {
+        transform: translateY(-30px) scale(0);
         opacity: 0;
     }
 
     15% {
-        opacity: 0.8;
+        opacity: 1;
+        transform: scale(1);
     }
 
-    to {
-        transform: translateY(110vh) rotate(360deg);
+    100% {
+        transform: translateY(110vh) scale(.2);
         opacity: 0;
     }
 }
 
-/* CONTAINER */
 
-.container {
-    width: 100%;
-    max-width: 620px;
+/* =====================================================
+   CONTAINER
+===================================================== */
+
+.wrapper {
     position: relative;
-    z-index: 2;
+    z-index: 5;
+    width: 100%;
+    max-width: 720px;
+    margin: auto;
+    padding: 20px 14px 50px;
 }
 
-/* CARTÃO */
+
+/* =====================================================
+   CARTÃO
+===================================================== */
 
 .card {
+    position: relative;
     width: 100%;
-    background: rgba(12,12,12,0.97);
-    border: 2px solid #d4af37;
-    border-radius: 28px;
-    padding: 42px 25px;
+    min-height: 600px;
+    padding: 45px 28px;
     text-align: center;
 
-    box-shadow:
-        0 0 30px rgba(212,175,55,0.3),
-        0 0 80px rgba(212,175,55,0.08);
+    background:
+        linear-gradient(
+            145deg,
+            rgba(25,22,14,0.98),
+            rgba(4,4,4,0.98)
+        );
 
-    animation: aparecer 0.8s ease;
+    border:
+        1px solid rgba(221,188,79,0.8);
+
+    border-radius: 35px;
+
+    box-shadow:
+        0 30px 100px rgba(0,0,0,0.8),
+        0 0 60px rgba(212,175,55,0.1);
+
+    overflow: hidden;
 }
+
+.card::before {
+    content: "";
+    position: absolute;
+    top: 13px;
+    left: 13px;
+    right: 13px;
+    bottom: 13px;
+
+    border:
+        1px solid rgba(212,175,55,0.25);
+
+    border-radius: 26px;
+    pointer-events: none;
+}
+
+
+/* =====================================================
+   TELAS
+===================================================== */
 
 .hidden {
-    display: none;
+    display: none !important;
 }
 
-.gold {
-    color: #d4af37;
+.fade-in {
+    animation: fadeIn 1s ease;
 }
 
-.logo {
-    font-size: 17px;
-    letter-spacing: 3px;
-    color: #d4af37;
-    margin-bottom: 20px;
-}
-
-h1 {
-    font-size: 40px;
-    margin: 15px 0;
-}
-
-h2 {
-    font-size: 25px;
-    margin: 15px 0;
-}
-
-p {
-    font-size: 18px;
-    line-height: 1.7;
-}
-
-/* ANIMAÇÃO */
-
-@keyframes aparecer {
+@keyframes fadeIn {
     from {
         opacity: 0;
-        transform: translateY(30px) scale(0.96);
+        transform: translateY(40px) scale(.94);
     }
 
     to {
@@ -130,204 +170,663 @@ p {
     }
 }
 
-/* PIN */
 
-.pin-title {
-    font-size: 34px;
-    font-weight: bold;
-    color: #d4af37;
-    letter-spacing: 3px;
-    margin-bottom: 20px;
+/* =====================================================
+   INTRODUÇÃO
+===================================================== */
+
+.intro {
+    min-height: 650px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
 
-input {
-    width: 88%;
-    max-width: 330px;
-    padding: 15px;
-    margin-top: 10px;
-    border-radius: 30px;
-    border: 2px solid #d4af37;
-    background: #080808;
-    color: white;
-    text-align: center;
-    font-size: 18px;
-    outline: none;
+.intro-small {
+    color: #d8b94e;
+    font-size: 12px;
+    letter-spacing: 5px;
+    text-transform: uppercase;
+    margin-bottom: 35px;
 }
 
-input:focus {
-    box-shadow: 0 0 15px rgba(212,175,55,0.5);
+.intro-title {
+    font-size: clamp(35px, 9vw, 62px);
+    font-weight: normal;
+    line-height: 1.1;
 }
 
-input::placeholder {
-    color: #999;
+.intro-title span {
+    color: #e4c45b;
 }
 
-/* BOTÕES */
-
-button {
-    border: none;
-    border-radius: 30px;
-    padding: 14px 25px;
-    margin-top: 17px;
+.intro-subtitle {
+    margin-top: 25px;
+    color: #aaa;
     font-size: 16px;
-    font-weight: bold;
+    line-height: 1.8;
+    max-width: 450px;
+}
+
+
+/* =====================================================
+   ENVELOPE
+===================================================== */
+
+.envelope-area {
+    margin: 35px 0;
     cursor: pointer;
-    background: #d4af37;
-    color: #111;
-    transition: 0.25s;
 }
 
-button:hover {
-    transform: scale(1.05);
-    box-shadow: 0 0 20px rgba(212,175,55,0.4);
+.envelope {
+    position: relative;
+    width: 230px;
+    height: 150px;
+    margin: auto;
+
+    background:
+        linear-gradient(
+            145deg,
+            #d4af37,
+            #8e6815
+        );
+
+    border-radius: 5px;
+
+    box-shadow:
+        0 25px 50px rgba(0,0,0,.5),
+        0 0 35px rgba(212,175,55,.18);
+
+    transition: .4s;
 }
 
-button.secondary {
+.envelope:hover {
+    transform: translateY(-8px) scale(1.03);
+}
+
+.envelope::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    border-left: 115px solid transparent;
+    border-right: 115px solid transparent;
+    border-top: 85px solid #f0d76a;
+
+    transform-origin: top;
+    transition: .8s;
+    z-index: 3;
+}
+
+.envelope.open::before {
+    transform: rotateX(180deg);
+}
+
+.envelope::after {
+    content: "✦";
+    position: absolute;
+    top: 53px;
+    left: 50%;
+    transform: translateX(-50%);
+
+    width: 55px;
+    height: 55px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 50%;
+    background: #17130a;
+    color: #e5c354;
+    font-size: 24px;
+
+    border:
+        1px solid #e5c354;
+
+    z-index: 4;
+}
+
+.envelope-text {
+    margin-top: 18px;
+    color: #d9c16b;
+    font-size: 12px;
+    letter-spacing: 3px;
+}
+
+
+/* =====================================================
+   BOTÕES
+===================================================== */
+
+.btn {
+    display: inline-block;
+    border: none;
+
+    padding: 15px 30px;
+    margin-top: 20px;
+
+    border-radius: 50px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #b88b20,
+            #f0d56a,
+            #b88b20
+        );
+
+    color: #100e08;
+
+    font-family: inherit;
+    font-size: 13px;
+    font-weight: bold;
+    letter-spacing: 1.5px;
+
+    cursor: pointer;
+    transition: .3s;
+
+    box-shadow:
+        0 10px 25px rgba(212,175,55,.15);
+}
+
+.btn:hover {
+    transform:
+        translateY(-4px)
+        scale(1.02);
+
+    box-shadow:
+        0 15px 35px rgba(212,175,55,.3);
+}
+
+.btn-outline {
     background: transparent;
-    color: #d4af37;
-    border: 1px solid #d4af37;
+    color: #e2c45b;
+    border:
+        1px solid #d4af37;
+    box-shadow: none;
 }
 
-/* ERRO */
+
+/* =====================================================
+   PIN
+===================================================== */
+
+.pin-screen {
+    min-height: 620px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.lock-circle {
+    width: 85px;
+    height: 85px;
+
+    border-radius: 50%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border:
+        1px solid #d4af37;
+
+    font-size: 32px;
+    margin-bottom: 25px;
+
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0%,100% {
+        box-shadow:
+            0 0 10px rgba(212,175,55,.1);
+    }
+
+    50% {
+        box-shadow:
+            0 0 35px rgba(212,175,55,.35);
+    }
+}
+
+.gold-title {
+    color: #e3c45d;
+    font-size: 12px;
+    letter-spacing: 5px;
+    margin-bottom: 15px;
+}
+
+.pin-heading {
+    font-size: clamp(30px,7vw,48px);
+    font-weight: normal;
+}
+
+.pin-text {
+    max-width: 430px;
+    margin: 20px auto;
+    color: #999;
+    line-height: 1.8;
+}
+
+.pin-input {
+    width: 100%;
+    max-width: 350px;
+
+    padding: 17px 20px;
+
+    background: #070707;
+
+    border:
+        1px solid #cda932;
+
+    border-radius: 50px;
+
+    outline: none;
+
+    text-align: center;
+
+    color: #fff;
+
+    font-size: 18px;
+
+    font-family: inherit;
+
+    transition: .3s;
+}
+
+.pin-input:focus {
+    border-color: #f2d66b;
+
+    box-shadow:
+        0 0 30px rgba(212,175,55,.2);
+}
+
+.pin-input::placeholder {
+    color: #666;
+}
 
 .error {
-    color: #ff7777;
     margin-top: 15px;
-    font-weight: bold;
+    color: #ff7777;
+    font-size: 14px;
 }
 
-/* INFORMAÇÕES */
 
-.info {
-    border: 1px solid #d4af37;
-    border-radius: 20px;
-    padding: 20px;
-    margin: 25px 0;
-    background: rgba(212,175,55,0.08);
+/* =====================================================
+   NÚMERO DO CONVITE
+===================================================== */
+
+.invite-number {
+    color: #777;
+    font-size: 11px;
+    letter-spacing: 6px;
+    text-transform: uppercase;
+    margin-bottom: 25px;
 }
 
-.info p {
-    margin: 9px 0;
+.big-number {
+    font-size: clamp(70px,20vw,130px);
+    line-height: .8;
+
+    color: #d9b948;
+
+    opacity: .95;
+
+    text-shadow:
+        0 0 30px rgba(212,175,55,.15);
 }
 
-/* MENSAGEM */
-
-.friend-message {
-    color: #f0d568;
-    font-size: 21px;
-    line-height: 1.7;
+.reveal-text {
+    margin-top: 35px;
+    color: #888;
+    font-size: 13px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
 }
 
-/* CONTAGEM */
 
-.countdown-title {
+/* =====================================================
+   NOME
+===================================================== */
+
+.guest-name {
+    margin-top: 18px;
+
+    color: #efd263;
+
+    font-size: clamp(35px,9vw,62px);
+
+    font-weight: normal;
+
+    animation:
+        nameReveal 1.2s ease;
+}
+
+@keyframes nameReveal {
+    0% {
+        opacity: 0;
+        transform:
+            translateY(30px)
+            scale(.8);
+        filter: blur(8px);
+    }
+
+    100% {
+        opacity: 1;
+        transform:
+            translateY(0)
+            scale(1);
+        filter: blur(0);
+    }
+}
+
+
+/* =====================================================
+   LINHA
+===================================================== */
+
+.line {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    gap: 12px;
+
+    margin: 28px auto;
+}
+
+.line span {
+    display: block;
+
+    width: 75px;
+    height: 1px;
+
+    background:
+        linear-gradient(
+            to right,
+            transparent,
+            #d4af37
+        );
+}
+
+.line span:last-child {
+    background:
+        linear-gradient(
+            to left,
+            transparent,
+            #d4af37
+        );
+}
+
+.line b {
     color: #d4af37;
-    font-size: 15px;
+    font-size: 12px;
+}
+
+
+/* =====================================================
+   TEXTO
+===================================================== */
+
+.message {
+    color: #d1d1d1;
+    line-height: 1.9;
+    font-size: 17px;
+}
+
+.highlight {
+    margin: 25px auto;
+
+    color: #e4c65f;
+
+    font-size: 21px;
+
+    line-height: 1.7;
+
+    max-width: 540px;
+}
+
+
+/* =====================================================
+   CASAL
+===================================================== */
+
+.couple {
+    margin: 35px 0;
+}
+
+.couple-name {
+    color: #f0d469;
+    font-size: clamp(37px,9vw,58px);
+    line-height: 1.2;
+}
+
+.ampersand {
+    margin: 8px;
+    color: #777;
+    font-size: 18px;
+    font-style: italic;
+}
+
+
+/* =====================================================
+   EVENTO
+===================================================== */
+
+.event {
+    display: grid;
+
+    grid-template-columns:
+        repeat(3,1fr);
+
+    gap: 10px;
+
+    margin: 30px 0;
+}
+
+.event-item {
+    padding: 20px 8px;
+
+    border:
+        1px solid rgba(212,175,55,.3);
+
+    border-radius: 18px;
+
+    background:
+        rgba(212,175,55,.035);
+}
+
+.event-icon {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+.event-label {
+    color: #777;
+    font-size: 9px;
     letter-spacing: 2px;
-    margin-top: 25px;
+    text-transform: uppercase;
+    margin-bottom: 7px;
+}
+
+.event-value {
+    color: #e4c65f;
+    font-size: 14px;
+    line-height: 1.4;
+}
+
+
+/* =====================================================
+   CONTAGEM
+===================================================== */
+
+.count-title {
+    margin-top: 35px;
+
+    color: #777;
+
+    font-size: 10px;
+
+    letter-spacing: 4px;
+
+    text-transform: uppercase;
 }
 
 .countdown {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+
+    grid-template-columns:
+        repeat(4,1fr);
+
     gap: 8px;
-    margin: 15px 0 25px;
+
+    margin-top: 15px;
 }
 
-.time-box {
-    border: 1px solid #d4af37;
-    border-radius: 12px;
-    padding: 10px 5px;
-    background: rgba(212,175,55,0.08);
+.count-box {
+    padding: 15px 5px;
+
+    border:
+        1px solid rgba(212,175,55,.3);
+
+    border-radius: 15px;
+
+    background:
+        rgba(0,0,0,.3);
 }
 
-.time-number {
+.count-number {
     display: block;
-    color: #d4af37;
-    font-size: 25px;
+
+    color: #e4c65f;
+
+    font-size: 24px;
+
     font-weight: bold;
 }
 
-.time-label {
+.count-label {
     display: block;
-    font-size: 11px;
-    color: #ccc;
-    margin-top: 4px;
+
+    margin-top: 5px;
+
+    color: #666;
+
+    font-size: 8px;
+
+    letter-spacing: 1px;
 }
 
-/* MÚSICA */
 
-.music-button {
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
+/* =====================================================
+   LOCAL
+===================================================== */
 
-    width: 52px;
-    height: 52px;
+.location {
+    margin-top: 30px;
 
-    padding: 0;
-    margin: 0;
+    padding: 25px;
 
-    border-radius: 50%;
-    z-index: 10;
-    font-size: 20px;
+    border-top:
+        1px solid rgba(212,175,55,.25);
+
+    border-bottom:
+        1px solid rgba(212,175,55,.25);
 }
 
-/* ABERTURA */
+.location-small {
+    color: #d4af37;
 
-.opening {
-    animation: abrir 1s ease forwards;
+    font-size: 10px;
+
+    letter-spacing: 4px;
+
+    margin-bottom: 10px;
 }
 
-@keyframes abrir {
-    0% {
-        opacity: 0;
-        transform: scale(0.75) rotateX(20deg);
-    }
-
-    60% {
-        opacity: 1;
-        transform: scale(1.04) rotateX(0);
-    }
-
-    100% {
-        transform: scale(1);
-    }
+.location-name {
+    font-size: 24px;
+    color: #eee;
 }
 
-/* INÊS */
 
-.special {
+/* =====================================================
+   CONFIRMAÇÃO
+===================================================== */
+
+.confirm {
+    margin-top: 35px;
+}
+
+.success {
+    margin-top: 25px;
+
+    padding: 25px;
+
+    border:
+        1px solid #d4af37;
+
+    border-radius: 20px;
+
     background:
+        rgba(212,175,55,.06);
+
+    animation: fadeIn .8s ease;
+}
+
+.success h3 {
+    color: #e4c65f;
+
+    font-size: 24px;
+
+    margin-bottom: 10px;
+}
+
+.success p {
+    color: #aaa;
+    line-height: 1.7;
+}
+
+
+/* =====================================================
+   INÊS
+===================================================== */
+
+.ines {
+    background:
+        radial-gradient(
+            circle at 50% 0%,
+            rgba(222,185,66,.22),
+            transparent 40%
+        ),
         linear-gradient(
-            135deg,
-            #100b01,
-            #4a3405,
-            #181001,
-            #5a4109,
-            #100b01
+            145deg,
+            #070604,
+            #241b06,
+            #070604
         );
 
-    border: 3px solid #f5d76e;
+    border-color: #efd067;
 
     box-shadow:
-        0 0 30px rgba(245,215,110,0.55),
-        0 0 80px rgba(212,175,55,0.3);
-}
-
-.special h1,
-.special h2,
-.special p {
-    color: #f5d76e;
+        0 30px 100px rgba(0,0,0,.9),
+        0 0 80px rgba(212,175,55,.16);
 }
 
 .heart {
-    font-size: 45px;
-    animation: pulsar 1.5s infinite;
+    font-size: 55px;
+
+    animation:
+        heartbeat 1.5s infinite;
 }
 
-@keyframes pulsar {
-    0%, 100% {
+@keyframes heartbeat {
+    0%,100% {
         transform: scale(1);
     }
 
@@ -336,480 +835,970 @@ button.secondary {
     }
 }
 
-.special-message {
-    font-size: 21px;
-    line-height: 1.8;
-}
-
-/* AGRADECIMENTO */
-
-.thanks {
+.ines-label {
     margin-top: 25px;
-    padding: 25px 15px;
 
-    border: 1px solid #d4af37;
-    border-radius: 20px;
+    color: #e6c65b;
 
-    background: rgba(212,175,55,0.08);
+    font-size: 11px;
 
-    animation: aparecer 0.8s ease;
+    letter-spacing: 5px;
+
+    text-transform: uppercase;
 }
 
-.thanks h2 {
-    color: #d4af37;
+.ines-name {
+    margin-top: 18px;
+
+    color: #f4d873;
+
+    font-size: clamp(55px,13vw,85px);
+
+    font-weight: normal;
+
+    text-shadow:
+        0 0 30px rgba(212,175,55,.2);
 }
 
-/* RODAPÉ */
+.ines-message {
+    color: #e8dcae;
+
+    font-size: 19px;
+
+    line-height: 2;
+
+    margin: 25px auto;
+
+    max-width: 540px;
+}
+
+
+/* =====================================================
+   RODAPÉ
+===================================================== */
 
 .footer {
-    margin-top: 25px;
-    font-size: 13px;
-    color: #999;
+    margin-top: 35px;
+
+    color: #555;
+
+    font-size: 10px;
+
+    letter-spacing: 2px;
 }
 
-/* CELULAR */
 
-@media (max-width: 500px) {
+/* =====================================================
+   MOBILE
+===================================================== */
+
+@media(max-width:600px) {
+
+    .wrapper {
+        padding:
+            10px
+            8px
+            30px;
+    }
 
     .card {
-        padding: 32px 18px;
+        padding:
+            40px
+            18px;
+
+        border-radius: 28px;
     }
 
-    h1 {
-        font-size: 32px;
+    .event {
+        grid-template-columns: 1fr;
     }
 
-    h2 {
-        font-size: 22px;
+    .event-item {
+        display: grid;
+
+        grid-template-columns:
+            35px 1fr;
+
+        text-align: left;
+
+        align-items: center;
     }
 
-    p {
-        font-size: 16px;
+    .event-icon {
+        grid-row: span 2;
+
+        text-align: center;
+
+        margin: 0;
     }
 
-    .countdown {
-        gap: 5px;
+    .event-label {
+        margin: 0;
     }
 
-    .time-number {
-        font-size: 21px;
+    .count-number {
+        font-size: 19px;
+    }
+
+    .btn {
+        width: 90%;
+    }
+
+    .envelope {
+        transform: scale(.9);
+    }
+
+    .envelope:hover {
+        transform:
+            scale(.9)
+            translateY(-5px);
     }
 }
+
 </style>
 </head>
 
+
 <body>
 
-<!-- PARTÍCULAS -->
+
+<!-- =====================================================
+     PARTÍCULAS
+===================================================== -->
 
 <script>
 
-for (let i = 0; i < 35; i++) {
+for(let i = 0; i < 45; i++){
 
-    const particle = document.createElement("div");
+    const light =
+        document.createElement("div");
 
-    particle.className = "particle";
+    light.className = "light";
 
-    particle.style.left =
+    light.style.left =
         Math.random() * 100 + "%";
 
-    particle.style.animationDuration =
+    light.style.animationDuration =
         (5 + Math.random() * 8) + "s";
 
-    particle.style.animationDelay =
+    light.style.animationDelay =
         Math.random() * 8 + "s";
 
-    particle.style.width =
-        (2 + Math.random() * 5) + "px";
+    const size =
+        2 + Math.random() * 4;
 
-    particle.style.height =
-        particle.style.width;
+    light.style.width =
+        size + "px";
 
-    document.body.appendChild(particle);
+    light.style.height =
+        size + "px";
+
+    document.body.appendChild(light);
 }
 
 </script>
 
 
-<!-- MÚSICA -->
-
-<audio id="musica" loop>
-    <source src="musica.mp3" type="audio/mpeg">
-</audio>
-
-<button
-    id="musicButton"
-    class="music-button"
-    onclick="alternarMusica()"
-    title="Música">
-
-    🔇
-
-</button>
+<div class="wrapper">
 
 
-<div class="container">
+<!-- =====================================================
+     ABERTURA
+===================================================== -->
 
-<!-- =========================
-     LOGIN
-========================= -->
+<section
+    id="intro"
+    class="card intro">
 
-<div id="login" class="card">
-
-    <div class="logo">
-        ✨ CONVITE DE ANIVERSÁRIO ✨
+    <div class="intro-small">
+        Você recebeu algo especial
     </div>
 
-    <div class="pin-title">
-        🔐 CONVITE
+    <h1 class="intro-title">
+
+        <span>Layerson</span>
+
+        <br>
+
+        <small style="
+            font-size:.35em;
+            color:#777;
+        ">
+            &amp;
+        </small>
+
+        <br>
+
+        <span>Naira</span>
+
+    </h1>
+
+    <div class="line">
+
+        <span></span>
+
+        <b>◆</b>
+
+        <span></span>
+
     </div>
 
-    <p>
-        Este convite é exclusivo para você.
+    <p class="intro-subtitle">
+
+        Um momento especial merece
+        uma forma especial de convidar.
+
+        <br><br>
+
+        Preparamos este convite especialmente
+        para você.
+
     </p>
 
-    <p class="gold">
-        Digite o seu PIN para abrir o seu convite.
+    <div
+        class="envelope-area"
+        onclick="abrirEnvelope()">
+
+        <div
+            id="envelope"
+            class="envelope">
+        </div>
+
+        <div class="envelope-text">
+            TOQUE PARA ABRIR
+        </div>
+
+    </div>
+
+    <button
+        class="btn"
+        onclick="abrirEnvelope()">
+
+        ABRIR CONVITE ✦
+
+    </button>
+
+</section>
+
+
+<!-- =====================================================
+     PIN
+===================================================== -->
+
+<section
+    id="pinScreen"
+    class="card pin-screen hidden">
+
+    <div class="lock-circle">
+        🔐
+    </div>
+
+    <div class="gold-title">
+        CONVITE PRIVADO
+    </div>
+
+    <h2 class="pin-heading">
+        Qual é o seu PIN?
+    </h2>
+
+    <p class="pin-text">
+
+        Este convite foi preparado
+        especialmente para você.
+
+        <br>
+
+        Digite o PIN que recebeu
+        para continuar.
+
     </p>
 
     <input
-        type="password"
         id="pin"
-        placeholder="Digite o seu PIN"
-        autocomplete="off">
+        class="pin-input"
+        type="password"
+        placeholder="Digite o PIN"
+        autocomplete="off"
+    >
 
-    <br>
+    <button
+        class="btn"
+        onclick="verificarPin()">
 
-    <button onclick="abrirConvite()">
-        ENTRAR ❤️
+        CONTINUAR ✦
+
     </button>
 
-    <div id="erro" class="error"></div>
+    <div
+        id="erro"
+        class="error">
+    </div>
 
     <div class="footer">
-        O seu nome aparecerá somente depois
-        de inserir o PIN correto.
+        Seu convite é pessoal e exclusivo.
     </div>
 
-</div>
+</section>
 
 
-<!-- =========================
-     AMIGOS
-========================= -->
+<!-- =====================================================
+     NÚMERO DO CONVITE
+===================================================== -->
 
-<div id="amigo" class="card hidden">
+<section
+    id="numberScreen"
+    class="card hidden">
 
-    <div class="logo">
-        ✨ CONVITE ESPECIAL ✨
+    <div class="invite-number">
+        SEU CONVITE
     </div>
 
-    <h1 id="nomeAmigo"></h1>
+    <div
+        id="numeroConvite"
+        class="big-number">
+        01
+    </div>
 
-    <h2 class="gold">
-        Meu amigo ❤️
-    </h2>
+    <div class="line">
 
-    <p class="friend-message">
-        A tua presença vai tornar este dia
-        ainda mais especial.
+        <span></span>
+
+        <b>◆</b>
+
+        <span></span>
+
+    </div>
+
+    <p class="reveal-text">
+        Preparado especialmente para você
     </p>
 
-    <p>
-        Quero compartilhar contigo este
-        momento de alegria, amizade,
-        risadas e boas memórias.
+    <button
+        class="btn"
+        onclick="revelarNome()">
+
+        REVELAR CONVITE
+
+    </button>
+
+</section>
+
+
+<!-- =====================================================
+     CONVITE AMIGOS
+===================================================== -->
+
+<section
+    id="friendScreen"
+    class="card hidden">
+
+    <div class="invite-number">
+        CONVITE Nº
+        <span id="numeroAmigo">
+            01
+        </span>
+    </div>
+
+    <div
+        id="nomeAmigo"
+        class="guest-name">
+    </div>
+
+    <div class="line">
+
+        <span></span>
+
+        <b>◆</b>
+
+        <span></span>
+
+    </div>
+
+    <p class="highlight">
+
+        Você é uma das pessoas que queremos
+        ter conosco neste momento especial. ❤️
+
+    </p>
+
+    <p class="message">
+
+        A vida fica muito melhor quando
+        temos amigos com quem compartilhar
+        momentos importantes.
+
+        <br><br>
+
+        Por isso, queremos celebrar este dia
+        contigo.
+
     </p>
 
 
-    <div class="countdown-title">
-        ✨ CONTAGEM PARA O GRANDE DIA ✨
+    <div class="couple">
+
+        <div class="couple-name">
+            Layerson
+        </div>
+
+        <div class="ampersand">
+            &amp;
+        </div>
+
+        <div class="couple-name">
+            Naira
+        </div>
+
+    </div>
+
+
+    <div class="event">
+
+        <div class="event-item">
+
+            <div class="event-icon">
+                📅
+            </div>
+
+            <div class="event-label">
+                Data
+            </div>
+
+            <div class="event-value">
+                19 de setembro de 2026
+            </div>
+
+        </div>
+
+        <div class="event-item">
+
+            <div class="event-icon">
+                🕕
+            </div>
+
+            <div class="event-label">
+                Hora
+            </div>
+
+            <div class="event-value">
+                18h00
+            </div>
+
+        </div>
+
+        <div class="event-item">
+
+            <div class="event-icon">
+                📍
+            </div>
+
+            <div class="event-label">
+                Local
+            </div>
+
+            <div class="event-value">
+                Salão Rosita
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <div class="count-title">
+        Faltam
     </div>
 
     <div class="countdown">
 
-        <div class="time-box">
-            <span id="dias" class="time-number">0</span>
-            <span class="time-label">DIAS</span>
+        <div class="count-box">
+
+            <span
+                id="dias"
+                class="count-number">
+                0
+            </span>
+
+            <span class="count-label">
+                DIAS
+            </span>
+
         </div>
 
-        <div class="time-box">
-            <span id="horas" class="time-number">0</span>
-            <span class="time-label">HORAS</span>
+        <div class="count-box">
+
+            <span
+                id="horas"
+                class="count-number">
+                0
+            </span>
+
+            <span class="count-label">
+                HORAS
+            </span>
+
         </div>
 
-        <div class="time-box">
-            <span id="minutos" class="time-number">0</span>
-            <span class="time-label">MIN</span>
+        <div class="count-box">
+
+            <span
+                id="minutos"
+                class="count-number">
+                0
+            </span>
+
+            <span class="count-label">
+                MINUTOS
+            </span>
+
         </div>
 
-        <div class="time-box">
-            <span id="segundos" class="time-number">0</span>
-            <span class="time-label">SEG</span>
+        <div class="count-box">
+
+            <span
+                id="segundos"
+                class="count-number">
+                0
+            </span>
+
+            <span class="count-label">
+                SEGUNDOS
+            </span>
+
         </div>
 
     </div>
 
 
-    <div class="info">
+    <div class="location">
 
-        <p>
-            🎂
-            <strong>
-                Aniversário de Layerson & Naira
-            </strong>
-        </p>
+        <div class="location-small">
+            NOSSO LOCAL
+        </div>
 
-        <p>
-            📅
-            <strong>
-                19 de setembro de 2026
-            </strong>
-        </p>
+        <div class="location-name">
+            📍 Salão Rosita
+        </div>
 
-        <p>
-            🕕
-            <strong>
-                18h
-            </strong>
-        </p>
+        <button
+            class="btn btn-outline"
+            onclick="abrirMapa()">
 
-        <p>
-            📍
-            <strong>
-                Salão Rosita
-            </strong>
-        </p>
+            VER NO MAPA
+
+        </button>
 
     </div>
 
 
-    <p class="gold">
-        Contamos contigo para celebrar
-        este momento conosco! 🥳
-    </p>
+    <div class="confirm">
+
+        <p class="message">
+            Esperamos ver você lá! ❤️
+        </p>
+
+        <button
+            class="btn"
+            onclick="confirmarAmigo()">
+
+            CONFIRMAR PRESENÇA
+
+        </button>
+
+    </div>
 
 
-    <button onclick="abrirMapa()">
-        📍 COMO CHEGAR
-    </button>
+    <div
+        id="successFriend"
+        class="success hidden">
 
-    <br>
-
-    <button onclick="confirmarAmigo()">
-        💌 CONFIRMAR PRESENÇA
-    </button>
-
-
-    <div id="agradecimentoAmigo"
-         class="thanks hidden">
-
-        <h2>
-            ❤️ Obrigado!
-        </h2>
+        <h3>
+            ✨ Obrigado!
+        </h3>
 
         <p>
             Ficamos muito felizes por saber
-            que estarás conosco neste momento.
+            que estarás conosco.
+
+            <br><br>
+
+            Nos vemos dia 19 de setembro! ❤️
         </p>
 
     </div>
 
-</div>
+
+    <div class="footer">
+        Layerson &amp; Naira • 19.09.2026
+    </div>
+
+</section>
 
 
-<!-- =========================
+<!-- =====================================================
      INÊS
-========================= -->
+===================================================== -->
 
-<div id="ines" class="card special hidden">
+<section
+    id="inesScreen"
+    class="card ines hidden">
 
     <div class="heart">
         ❤️
     </div>
 
-    <div class="logo">
-        ✨ PARA O AMOR DA MINHA VIDA ✨
+    <div class="ines-label">
+        PARA O AMOR DA MINHA VIDA
     </div>
 
-    <h1>
+    <div class="ines-name">
         Inês
-    </h1>
-
-    <h2>
-        Este convite é especialmente para você ❤️
-    </h2>
-
-    <p class="special-message">
-        Entre todas as pessoas que estarão
-        presentes neste dia, existe alguém
-        que ocupa um lugar ainda mais
-        especial no meu coração.
-    </p>
-
-    <p class="special-message">
-        ❤️ Você, Inês. ❤️
-    </p>
-
-
-    <div class="countdown-title">
-        ✨ CONTAGEM PARA O NOSSO DIA ✨
     </div>
+
+    <div class="line">
+
+        <span></span>
+
+        <b>◆</b>
+
+        <span></span>
+
+    </div>
+
+    <p class="ines-message">
+
+        Entre todas as pessoas que estarão
+        presentes neste dia,
+
+        <br><br>
+
+        existe alguém que tem um lugar
+        muito especial no meu coração.
+
+        <br><br>
+
+        <strong>
+            Essa pessoa é você. ❤️
+        </strong>
+
+    </p>
+
+
+    <div class="couple">
+
+        <div class="couple-name">
+            Layerson
+        </div>
+
+        <div class="ampersand">
+            &amp;
+        </div>
+
+        <div class="couple-name">
+            Naira
+        </div>
+
+    </div>
+
+
+    <div class="event">
+
+        <div class="event-item">
+
+            <div class="event-icon">
+                📅
+            </div>
+
+            <div class="event-label">
+                Data
+            </div>
+
+            <div class="event-value">
+                19 de setembro de 2026
+            </div>
+
+        </div>
+
+        <div class="event-item">
+
+            <div class="event-icon">
+                🕕
+            </div>
+
+            <div class="event-label">
+                Hora
+            </div>
+
+            <div class="event-value">
+                18h00
+            </div>
+
+        </div>
+
+        <div class="event-item">
+
+            <div class="event-icon">
+                📍
+            </div>
+
+            <div class="event-label">
+                Local
+            </div>
+
+            <div class="event-value">
+                Salão Rosita
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <div class="count-title">
+        Contagem para o grande dia
+    </div>
+
 
     <div class="countdown">
 
-        <div class="time-box">
-            <span id="diasInes"
-                  class="time-number">0</span>
+        <div class="count-box">
 
-            <span class="time-label">
+            <span
+                id="diasInes"
+                class="count-number">
+                0
+            </span>
+
+            <span class="count-label">
                 DIAS
             </span>
+
         </div>
 
-        <div class="time-box">
-            <span id="horasInes"
-                  class="time-number">0</span>
+        <div class="count-box">
 
-            <span class="time-label">
+            <span
+                id="horasInes"
+                class="count-number">
+                0
+            </span>
+
+            <span class="count-label">
                 HORAS
             </span>
+
         </div>
 
-        <div class="time-box">
-            <span id="minutosInes"
-                  class="time-number">0</span>
+        <div class="count-box">
 
-            <span class="time-label">
-                MIN
+            <span
+                id="minutosInes"
+                class="count-number">
+                0
             </span>
+
+            <span class="count-label">
+                MINUTOS
+            </span>
+
         </div>
 
-        <div class="time-box">
-            <span id="segundosInes"
-                  class="time-number">0</span>
+        <div class="count-box">
 
-            <span class="time-label">
-                SEG
+            <span
+                id="segundosInes"
+                class="count-number">
+                0
             </span>
+
+            <span class="count-label">
+                SEGUNDOS
+            </span>
+
         </div>
 
     </div>
 
 
-    <div class="info">
+    <p class="ines-message">
 
-        <p>
-            🎂
-            <strong>
-                Aniversário de Layerson & Naira
-            </strong>
-        </p>
-
-        <p>
-            📅
-            <strong>
-                19 de setembro de 2026
-            </strong>
-        </p>
-
-        <p>
-            🕕
-            <strong>
-                18h
-            </strong>
-        </p>
-
-        <p>
-            📍
-            <strong>
-                Salão Rosita
-            </strong>
-        </p>
-
-    </div>
-
-
-    <p class="special-message">
         Quero muito ter você ao meu lado
-        para viver este momento comigo.
-    </p>
+        para viver este momento comigo. ❤️
 
-    <p>
-        Com muito amor ❤️
     </p>
 
 
-    <button onclick="abrirMapa()">
-        📍 COMO CHEGAR
+    <button
+        class="btn btn-outline"
+        onclick="abrirMapa()">
+
+        📍 VER LOCAL
+
     </button>
 
     <br>
 
-    <button onclick="confirmarInes()">
-        💌 CONFIRMAR PRESENÇA
+    <button
+        class="btn"
+        onclick="confirmarInes()">
+
+        ❤️ CONFIRMAR PRESENÇA
+
     </button>
 
 
-    <div id="agradecimentoInes"
-         class="thanks hidden">
+    <div
+        id="successInes"
+        class="success hidden">
 
-        <h2>
+        <h3>
             ❤️ Obrigado, meu amor!
-        </h2>
+        </h3>
 
         <p>
             Saber que estarás comigo torna
             este momento ainda mais especial.
+
+            <br><br>
+
+            Vejo-te no dia 19. ❤️
         </p>
 
     </div>
 
-</div>
+
+    <div class="footer">
+        Com amor • Layerson
+    </div>
+
+</section>
+
 
 </div>
 
 
 <script>
 
-/* =========================
-   PINs DOS CONVIDADOS
-========================= */
+/* =====================================================
+   CRIAR PARTÍCULAS
+===================================================== */
+
+for(let i = 0; i < 45; i++){
+
+    const light =
+        document.createElement("div");
+
+    light.className = "light";
+
+    light.style.left =
+        Math.random() * 100 + "%";
+
+    light.style.animationDuration =
+        (5 + Math.random() * 8) + "s";
+
+    light.style.animationDelay =
+        Math.random() * 8 + "s";
+
+    const size =
+        2 + Math.random() * 4;
+
+    light.style.width =
+        size + "px";
+
+    light.style.height =
+        size + "px";
+
+    document.body.appendChild(light);
+}
+
+
+/* =====================================================
+   CONVIDADOS
+===================================================== */
 
 const convidados = {
 
     "da graca": {
-        nome: "Allen da Graça"
+        nome: "Allen da Graça",
+        numero: "01"
     },
 
     "maiquel": {
-        nome: "Erik"
+        nome: "Erik",
+        numero: "02"
     },
 
     "mulato": {
-        nome: "Zozó"
+        nome: "Zozó",
+        numero: "03"
     },
 
     "best": {
-        nome: "Lenia"
+        nome: "Lenia",
+        numero: "04"
     },
 
     "eltonisso": {
-        nome: "Elton"
+        nome: "Elton",
+        numero: "05"
     },
 
     "te amo": {
-        nome: "Inês"
+        nome: "Inês",
+        numero: "Especial"
     }
 
 };
 
 
-/* =========================
-   ABRIR CONVITE
-========================= */
+let convidadoAtual = null;
 
-function abrirConvite() {
+
+/* =====================================================
+   ABRIR ENVELOPE
+===================================================== */
+
+function abrirEnvelope(){
+
+    const envelope =
+        document.getElementById("envelope");
+
+    envelope.classList.add("open");
+
+
+    setTimeout(function(){
+
+        document
+            .getElementById("intro")
+            .classList.add("hidden");
+
+
+        const pin =
+            document.getElementById("pinScreen");
+
+        pin.classList.remove("hidden");
+
+        pin.classList.add("fade-in");
+
+
+        setTimeout(function(){
+
+            document
+                .getElementById("pin")
+                .focus();
+
+        },500);
+
+    },900);
+
+}
+
+
+/* =====================================================
+   VERIFICAR PIN
+===================================================== */
+
+function verificarPin(){
 
     const campo =
         document.getElementById("pin");
@@ -817,14 +1806,17 @@ function abrirConvite() {
     const erro =
         document.getElementById("erro");
 
-    let pin =
-        campo.value.trim().toLowerCase();
+
+    const pin =
+        campo.value
+        .trim()
+        .toLowerCase();
 
 
-    if (pin === "") {
+    if(pin === ""){
 
-        erro.innerText =
-            "⚠️ Digite o seu PIN.";
+        erro.textContent =
+            "Digite o PIN para continuar.";
 
         campo.focus();
 
@@ -832,10 +1824,10 @@ function abrirConvite() {
     }
 
 
-    if (!convidados[pin]) {
+    if(!convidados[pin]){
 
-        erro.innerText =
-            "❌ PIN incorreto. Tente novamente.";
+        erro.textContent =
+            "PIN incorreto. Tente novamente.";
 
         campo.value = "";
 
@@ -845,75 +1837,108 @@ function abrirConvite() {
     }
 
 
-    iniciarMusica();
+    convidadoAtual =
+        convidados[pin];
 
 
     document
-        .getElementById("login")
+        .getElementById("pinScreen")
         .classList.add("hidden");
 
 
     /* INÊS */
 
-    if (pin === "te amo") {
+    if(pin === "te amo"){
 
-        const convite =
-            document.getElementById("ines");
+        document
+            .getElementById("inesScreen")
+            .classList.remove("hidden");
 
-        convite.classList.remove("hidden");
-
-        convite.classList.add("opening");
+        document
+            .getElementById("inesScreen")
+            .classList.add("fade-in");
 
         return;
     }
 
 
-    /* AMIGOS */
+    /* NÚMERO */
 
-    const convite =
-        document.getElementById("amigo");
-
-    convite.classList.remove("hidden");
-
-    convite.classList.add("opening");
+    document
+        .getElementById("numeroConvite")
+        .textContent =
+        convidadoAtual.numero;
 
 
     document
-        .getElementById("nomeAmigo")
-        .innerText =
-        convidados[pin].nome;
+        .getElementById("numberScreen")
+        .classList.remove("hidden");
+
+    document
+        .getElementById("numberScreen")
+        .classList.add("fade-in");
 
 }
 
 
-/* =========================
-   CONTAGEM
-========================= */
+/* =====================================================
+   REVELAR NOME
+===================================================== */
+
+function revelarNome(){
+
+    document
+        .getElementById("numberScreen")
+        .classList.add("hidden");
+
+
+    document
+        .getElementById("nomeAmigo")
+        .textContent =
+        convidadoAtual.nome;
+
+
+    document
+        .getElementById("numeroAmigo")
+        .textContent =
+        convidadoAtual.numero;
+
+
+    document
+        .getElementById("friendScreen")
+        .classList.remove("hidden");
+
+
+    document
+        .getElementById("friendScreen")
+        .classList.add("fade-in");
+
+}
+
+
+/* =====================================================
+   CONTAGEM REGRESSIVA
+===================================================== */
 
 const dataFesta =
-    new Date("2026-09-19T18:00:00").getTime();
+    new Date(
+        "2026-09-19T18:00:00"
+    ).getTime();
 
 
-function atualizarContagem() {
+function atualizarContagem(){
 
     const agora =
         new Date().getTime();
+
 
     const distancia =
         dataFesta - agora;
 
 
-    if (distancia <= 0) {
+    if(distancia <= 0){
 
-        document.getElementById("dias").innerText = "0";
-        document.getElementById("horas").innerText = "0";
-        document.getElementById("minutos").innerText = "0";
-        document.getElementById("segundos").innerText = "0";
-
-        document.getElementById("diasInes").innerText = "0";
-        document.getElementById("horasInes").innerText = "0";
-        document.getElementById("minutosInes").innerText = "0";
-        document.getElementById("segundosInes").innerText = "0";
+        zerarContagem();
 
         return;
     }
@@ -922,55 +1947,87 @@ function atualizarContagem() {
     const dias =
         Math.floor(
             distancia /
-            (1000 * 60 * 60 * 24)
+            (1000*60*60*24)
         );
+
 
     const horas =
         Math.floor(
             (distancia %
-            (1000 * 60 * 60 * 24)) /
-            (1000 * 60 * 60)
+            (1000*60*60*24))
+            /
+            (1000*60*60)
         );
+
 
     const minutos =
         Math.floor(
             (distancia %
-            (1000 * 60 * 60)) /
-            (1000 * 60)
+            (1000*60*60))
+            /
+            (1000*60)
         );
+
 
     const segundos =
         Math.floor(
             (distancia %
-            (1000 * 60)) /
+            (1000*60))
+            /
             1000
         );
 
 
-    document.getElementById("dias").innerText =
-        dias;
+    escrever("dias",dias);
+    escrever("horas",horas);
+    escrever("minutos",minutos);
+    escrever("segundos",segundos);
 
-    document.getElementById("horas").innerText =
-        horas;
+    escrever("diasInes",dias);
+    escrever("horasInes",horas);
+    escrever("minutosInes",minutos);
+    escrever("segundosInes",segundos);
 
-    document.getElementById("minutos").innerText =
-        minutos;
-
-    document.getElementById("segundos").innerText =
-        segundos;
+}
 
 
-    document.getElementById("diasInes").innerText =
-        dias;
+function escrever(id,valor){
 
-    document.getElementById("horasInes").innerText =
-        horas;
+    const elemento =
+        document.getElementById(id);
 
-    document.getElementById("minutosInes").innerText =
-        minutos;
+    if(elemento){
 
-    document.getElementById("segundosInes").innerText =
-        segundos;
+        elemento.textContent =
+            valor;
+
+    }
+
+}
+
+
+function zerarContagem(){
+
+    const ids = [
+
+        "dias",
+        "horas",
+        "minutos",
+        "segundos",
+
+        "diasInes",
+        "horasInes",
+        "minutosInes",
+        "segundosInes"
+
+    ];
+
+
+    ids.forEach(function(id){
+
+        escrever(id,0);
+
+    });
 
 }
 
@@ -983,72 +2040,21 @@ setInterval(
 atualizarContagem();
 
 
-/* =========================
-   MÚSICA
-========================= */
+/* =====================================================
+   MAPA
+===================================================== */
 
-const musica =
-    document.getElementById("musica");
-
-const musicButton =
-    document.getElementById("musicButton");
-
-
-function iniciarMusica() {
-
-    musica.play()
-    .then(() => {
-
-        musicButton.innerText =
-            "🔊";
-
-    })
-    .catch(() => {
-
-        musicButton.innerText =
-            "🔇";
-
-    });
-
-}
-
-
-function alternarMusica() {
-
-    if (musica.paused) {
-
-        musica.play()
-        .then(() => {
-
-            musicButton.innerText =
-                "🔊";
-
-        });
-
-    } else {
-
-        musica.pause();
-
-        musicButton.innerText =
-            "🔇";
-
-    }
-
-}
-
-
-/* =========================
-   GOOGLE MAPS
-========================= */
-
-function abrirMapa() {
+function abrirMapa(){
 
     const local =
         "Salão Rosita";
 
+
     const url =
-        "https://www.google.com/maps/search/?api=1&query=" +
+        "https://www.google.com/maps/search/?api=1&query="
+        +
         encodeURIComponent(local);
+
 
     window.open(
         url,
@@ -1058,87 +2064,171 @@ function abrirMapa() {
 }
 
 
-/* =========================
-   CONFIRMAÇÃO AMIGOS
-========================= */
+/* =====================================================
+   NÚMEROS DE WHATSAPP
+===================================================== */
 
-function confirmarAmigo() {
+const numeroWhatsApp1 =
+    "258870739955";
 
-    const nome =
-        document
-        .getElementById("nomeAmigo")
-        .innerText;
+const numeroWhatsApp2 =
+    "258875947320";
+
+
+/* =====================================================
+   CONFIRMAR AMIGO
+===================================================== */
+
+function confirmarAmigo(){
+
+    if(!convidadoAtual){
+
+        return;
+
+    }
 
 
     const mensagem =
-        "Olá! Confirmo a minha presença no aniversário de Layerson e Naira, dia 19 de setembro de 2026, às 18h, no Salão Rosita. Meu nome é " +
-        nome +
+        "Olá! Confirmo a minha presença no aniversário de Layerson e Naira, dia 19 de setembro de 2026, às 18h, no Salão Rosita. Meu nome é "
+        +
+        convidadoAtual.nome
+        +
         ". ❤️";
 
 
-    const numero =
-        "258870739955";
+    const texto =
+        encodeURIComponent(
+            mensagem
+        );
 
+
+    /* PRIMEIRO WHATSAPP */
 
     window.open(
-        "https://wa.me/" +
-        numero +
-        "?text=" +
-        encodeURIComponent(mensagem),
+
+        "https://wa.me/"
+        +
+        numeroWhatsApp1
+        +
+        "?text="
+        +
+        texto,
+
         "_blank"
+
     );
 
 
+    /* SEGUNDO WHATSAPP */
+
+    setTimeout(function(){
+
+        window.open(
+
+            "https://wa.me/"
+            +
+            numeroWhatsApp2
+            +
+            "?text="
+            +
+            texto,
+
+            "_blank"
+
+        );
+
+    },1200);
+
+
     document
-        .getElementById("agradecimentoAmigo")
-        .classList.remove("hidden");
+        .getElementById(
+            "successFriend"
+        )
+        .classList
+        .remove("hidden");
 
 }
 
 
-/* =========================
-   CONFIRMAÇÃO INÊS
-========================= */
+/* =====================================================
+   CONFIRMAR INÊS
+===================================================== */
 
-function confirmarInes() {
+function confirmarInes(){
 
     const mensagem =
-        "Olá Layerson! ❤️ Confirmo a minha presença no teu aniversário com a Naira, dia 19 de setembro de 2026, às 18h, no Salão Rosita. ❤️";
+        "Olá! ❤️ Confirmo a minha presença no aniversário de Layerson e Naira, dia 19 de setembro de 2026, às 18h, no Salão Rosita. ❤️";
 
 
-    const numero =
-        "258739955";
+    const texto =
+        encodeURIComponent(
+            mensagem
+        );
 
+
+    /* PRIMEIRO */
 
     window.open(
-        "https://wa.me/" +
-        numero +
-        "?text=" +
-        encodeURIComponent(mensagem),
+
+        "https://wa.me/"
+        +
+        numeroWhatsApp1
+        +
+        "?text="
+        +
+        texto,
+
         "_blank"
+
     );
 
 
+    /* SEGUNDO */
+
+    setTimeout(function(){
+
+        window.open(
+
+            "https://wa.me/"
+            +
+            numeroWhatsApp2
+            +
+            "?text="
+            +
+            texto,
+
+            "_blank"
+
+        );
+
+    },1200);
+
+
     document
-        .getElementById("agradecimentoInes")
-        .classList.remove("hidden");
+        .getElementById(
+            "successInes"
+        )
+        .classList
+        .remove("hidden");
 
 }
 
 
-/* =========================
+/* =====================================================
    ENTER NO PIN
-========================= */
+===================================================== */
 
 document
     .getElementById("pin")
     .addEventListener(
         "keydown",
-        function(event) {
+        function(event){
 
-            if (event.key === "Enter") {
+            if(
+                event.key === "Enter"
+            ){
 
-                abrirConvite();
+                verificarPin();
 
             }
 
