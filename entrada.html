@@ -1,1 +1,802 @@
 
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Controle de Entrada | Layerson & Naira</title>
+
+<style>
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    min-height: 100vh;
+    background:
+        radial-gradient(circle at top, #604b16 0%, #211906 28%, #060606 70%, #000 100%);
+    color: white;
+    font-family: Arial, sans-serif;
+    padding: 20px;
+}
+
+.container {
+    width: 100%;
+    max-width: 700px;
+    margin: auto;
+}
+
+.card {
+    background: rgba(8,8,8,.97);
+    border: 1px solid #d4af37;
+    border-radius: 25px;
+    padding: 30px 20px;
+    margin-bottom: 20px;
+    box-shadow: 0 0 60px rgba(212,175,55,.15);
+}
+
+h1 {
+    text-align: center;
+    color: #e5c65a;
+    font-size: 30px;
+    margin-bottom: 10px;
+}
+
+.subtitle {
+    text-align: center;
+    color: #aaa;
+    line-height: 1.7;
+    margin-bottom: 25px;
+}
+
+.scanner {
+    width: 100%;
+    min-height: 300px;
+    border: 2px dashed #d4af37;
+    border-radius: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: #aaa;
+    padding: 20px;
+}
+
+.scanner-icon {
+    font-size: 60px;
+    margin-bottom: 15px;
+}
+
+video {
+    width: 100%;
+    max-height: 450px;
+    object-fit: cover;
+    border-radius: 15px;
+}
+
+button {
+    width: 100%;
+    padding: 17px;
+    margin-top: 15px;
+    border: 0;
+    border-radius: 40px;
+    background: linear-gradient(135deg,#a77a18,#f0d66b,#a77a18);
+    color: #080808;
+    font-weight: bold;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.hidden {
+    display: none !important;
+}
+
+.result {
+    margin-top: 25px;
+    padding: 25px;
+    border-radius: 20px;
+    text-align: center;
+}
+
+.valid {
+    background: rgba(40,150,70,.15);
+    border: 1px solid #4bea7d;
+}
+
+.invalid {
+    background: rgba(170,30,30,.15);
+    border: 1px solid #ff5555;
+}
+
+.result-number {
+    font-size: 65px;
+    color: #e5c65a;
+    margin-bottom: 10px;
+}
+
+.result-name {
+    font-size: 30px;
+    margin-bottom: 18px;
+}
+
+.status {
+    font-size: 18px;
+    line-height: 1.7;
+}
+
+.small {
+    text-align: center;
+    color: #666;
+    font-size: 12px;
+    margin-top: 20px;
+}
+
+.lista {
+    margin-top: 20px;
+}
+
+.pessoa {
+    padding: 18px 5px;
+    border-bottom: 1px solid rgba(212,175,55,.2);
+}
+
+.pessoa strong {
+    color: #e5c65a;
+}
+
+.pessoa span {
+    display: block;
+    margin-top: 7px;
+}
+
+.entrou {
+    color: #55ed82;
+}
+
+.confirmado {
+    color: #ffca58;
+}
+
+.pendente {
+    color: #888;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<div class="card">
+
+<h1>🎟️ CONTROLE DE ENTRADA</h1>
+
+<div class="subtitle">
+<strong>LAYESON &amp; NAIRA</strong>
+<br>
+19 de setembro de 2026
+<br>
+18h00 — Salão Rosita
+</div>
+
+<div id="scannerBox" class="scanner">
+
+<div>
+<div class="scanner-icon">📷</div>
+
+<strong>LEITOR DE QR CODE</strong>
+
+<br><br>
+
+Clique no botão abaixo para abrir a câmera.
+
+</div>
+
+</div>
+
+<video
+id="video"
+class="hidden"
+autoplay
+playsinline>
+</video>
+
+<button
+id="btnIniciar"
+onclick="iniciarScanner()">
+📷 ESCANEAR QR CODE
+</button>
+
+<button
+id="btnParar"
+class="hidden"
+onclick="pararScanner()">
+⛔ PARAR CÂMERA
+</button>
+
+<div id="resultado" class="hidden"></div>
+
+<div class="small">
+Sistema de validação dos convites
+</div>
+
+</div>
+
+
+<div class="card">
+
+<h1>📋 CONVIDADOS</h1>
+
+<div id="lista" class="lista">
+A carregar convidados...
+</div>
+
+</div>
+
+</div>
+
+
+<script type="module">
+
+import {
+    initializeApp
+}
+from
+"https://www.gstatic.com/firebasejs/12.1.0/firebase-app.js";
+
+import {
+    getDatabase,
+    ref,
+    get,
+    update
+}
+from
+"https://www.gstatic.com/firebasejs/12.1.0/firebase-database.js";
+
+
+const firebaseConfig = {
+
+    apiKey:
+    "AIzaSyBWrcrW1MiiklxpzOgQN7yCVsOJ2MWnhGM",
+
+    authDomain:
+    "convite-layerson-naira.firebaseapp.com",
+
+    databaseURL:
+    "https://convite-layerson-naira-default-rtdb.firebaseio.com",
+
+    projectId:
+    "convite-layerson-naira",
+
+    storageBucket:
+    "convite-layerson-naira.firebasestorage.app",
+
+    messagingSenderId:
+    "680240896134",
+
+    appId:
+    "1:680240896134:web:2d2aa2f97fb491e2001907"
+};
+
+
+const app = initializeApp(firebaseConfig);
+const db = getDatabase(app);
+
+
+let stream = null;
+let scanning = false;
+let detector = null;
+
+
+window.iniciarScanner = async function() {
+
+    try {
+
+        if (!("BarcodeDetector" in window)) {
+
+            mostrarResultado(
+                false,
+                "",
+                "",
+                "O navegador não possui leitor QR integrado. Use o Google Chrome atualizado."
+            );
+
+            return;
+        }
+
+        detector = new BarcodeDetector({
+            formats: ["qr_code"]
+        });
+
+        stream = await navigator.mediaDevices.getUserMedia({
+
+            video: {
+                facingMode: {
+                    ideal: "environment"
+                }
+            },
+
+            audio: false
+
+        });
+
+
+        const video = document.getElementById("video");
+
+        video.srcObject = stream;
+
+        video.classList.remove("hidden");
+
+        document
+        .getElementById("scannerBox")
+        .classList.add("hidden");
+
+        document
+        .getElementById("btnIniciar")
+        .classList.add("hidden");
+
+        document
+        .getElementById("btnParar")
+        .classList.remove("hidden");
+
+        scanning = true;
+
+        procurarQR();
+
+    }
+
+    catch(error) {
+
+        mostrarResultado(
+            false,
+            "",
+            "",
+            "Não foi possível abrir a câmera. Permita o acesso à câmera."
+        );
+
+        console.error(error);
+    }
+};
+
+
+async function procurarQR() {
+
+    if (!scanning) return;
+
+    const video = document.getElementById("video");
+
+    if (
+        video.readyState >= 2 &&
+        video.videoWidth > 0
+    ) {
+
+        try {
+
+            const codes = await detector.detect(video);
+
+            if (codes.length > 0) {
+
+                const texto = codes[0].rawValue;
+
+                scanning = false;
+
+                pararScanner();
+
+                await processarQR(texto);
+
+                return;
+            }
+
+        }
+
+        catch(error) {
+            console.log(error);
+        }
+    }
+
+    if (scanning) {
+        requestAnimationFrame(procurarQR);
+    }
+}
+
+
+async function processarQR(texto) {
+
+    try {
+
+        const dados = JSON.parse(texto);
+
+        if (!dados.convite || !dados.nome) {
+
+            mostrarResultado(
+                false,
+                "",
+                "",
+                "Este QR Code não pertence ao sistema de convites."
+            );
+
+            return;
+        }
+
+        await verificarConvite(
+            dados.convite,
+            dados.nome
+        );
+
+    }
+
+    catch(error) {
+
+        mostrarResultado(
+            false,
+            "",
+            "",
+            "QR Code inválido."
+        );
+    }
+}
+
+
+async function verificarConvite(numero, nome) {
+
+    const caminho = "convites/" + numero;
+
+    const snapshot = await get(
+        ref(db, caminho)
+    );
+
+    if (!snapshot.exists()) {
+
+        mostrarResultado(
+            false,
+            numero,
+            nome,
+            "Este convite ainda não foi confirmado."
+        );
+
+        return;
+    }
+
+    const dados = snapshot.val();
+
+    if (dados.entrou === true) {
+
+        mostrarResultado(
+            false,
+            numero,
+            dados.nome || nome,
+            "ESTE CONVITE JÁ FOI UTILIZADO."
+        );
+
+        return;
+    }
+
+    mostrarResultado(
+        true,
+        numero,
+        dados.nome || nome,
+        "CONVITE VÁLIDO — ENTRADA AUTORIZADA."
+    );
+}
+
+
+function mostrarResultado(
+    valido,
+    numero,
+    nome,
+    mensagem
+) {
+
+    const resultado =
+    document.getElementById("resultado");
+
+    resultado.className =
+    valido
+    ? "result valid"
+    : "result invalid";
+
+    resultado.innerHTML = `
+
+        ${
+            numero
+            ?
+            `<div class="result-number">
+                ${numero}
+            </div>`
+            :
+            ""
+        }
+
+        ${
+            nome
+            ?
+            `<div class="result-name">
+                ${nome}
+            </div>`
+            :
+            ""
+        }
+
+        <div class="status">
+
+            ${valido ? "🟢" : "🔴"}
+
+            <br><br>
+
+            ${mensagem}
+
+        </div>
+
+        ${
+            valido
+            ?
+            `<button onclick="marcarEntrada('${numero}')">
+                ✅ MARCAR COMO ENTROU
+            </button>`
+            :
+            ""
+        }
+
+    `;
+
+    resultado.classList.remove("hidden");
+}
+
+
+window.marcarEntrada = async function(numero) {
+
+    try {
+
+        const caminho = "convites/" + numero;
+
+        const agora = new Date();
+
+        await update(
+            ref(db, caminho),
+            {
+
+                entrou: true,
+
+                horaEntrada:
+                agora.toLocaleTimeString("pt-PT"),
+
+                dataEntrada:
+                agora.toLocaleDateString("pt-PT")
+
+            }
+        );
+
+
+        const resultado =
+        document.getElementById("resultado");
+
+        resultado.className = "result valid";
+
+        resultado.innerHTML = `
+
+            <div class="result-number">
+                ${numero}
+            </div>
+
+            <div class="result-name">
+                ENTRADA REGISTRADA
+            </div>
+
+            <div class="status">
+
+                🟢
+
+                <br><br>
+
+                CONVITE AUTORIZADO
+
+                <br><br>
+
+                ✅ A PESSOA PODE ENTRAR
+
+            </div>
+
+        `;
+
+        carregarLista();
+
+    }
+
+    catch(error) {
+
+        mostrarResultado(
+            false,
+            numero,
+            "",
+            "Erro ao registrar a entrada."
+        );
+
+        console.error(error);
+    }
+
+};
+
+
+window.pararScanner = function() {
+
+    scanning = false;
+
+    if (stream) {
+
+        stream
+        .getTracks()
+        .forEach(
+            track => track.stop()
+        );
+
+        stream = null;
+    }
+
+    document
+    .getElementById("video")
+    .classList
+    .add("hidden");
+
+    document
+    .getElementById("btnParar")
+    .classList
+    .add("hidden");
+
+    document
+    .getElementById("btnIniciar")
+    .classList
+    .remove("hidden");
+
+    document
+    .getElementById("scannerBox")
+    .classList
+    .remove("hidden");
+};
+
+
+async function carregarLista() {
+
+    const lista =
+    document.getElementById("lista");
+
+    lista.innerHTML = "";
+
+    const convidados = [
+
+        {
+            numero: "01",
+            nome: "ALLEN DA GRAÇA"
+        },
+
+        {
+            numero: "02",
+            nome: "ERIK"
+        },
+
+        {
+            numero: "03",
+            nome: "ZOZÓ"
+        },
+
+        {
+            numero: "04",
+            nome: "LENIA"
+        },
+
+        {
+            numero: "05",
+            nome: "ELTON"
+        }
+
+    ];
+
+
+    for (const pessoa of convidados) {
+
+        const snapshot =
+        await get(
+            ref(
+                db,
+                "convites/" + pessoa.numero
+            )
+        );
+
+        const div =
+        document.createElement("div");
+
+        div.className = "pessoa";
+
+
+        if (snapshot.exists()) {
+
+            const dados = snapshot.val();
+
+            if (dados.entrou === true) {
+
+                div.innerHTML = `
+
+                    <strong>
+                        CONVITE ${pessoa.numero}
+                        — ${dados.nome}
+                    </strong>
+
+                    <span class="entrou">
+                        🟢 JÁ ENTROU
+                    </span>
+
+                `;
+
+            }
+
+            else if (dados.confirmado === true) {
+
+                div.innerHTML = `
+
+                    <strong>
+                        CONVITE ${pessoa.numero}
+                        — ${dados.nome}
+                    </strong>
+
+                    <span class="confirmado">
+                        🟡 CONFIRMADO —
+                        AINDA NÃO ENTROU
+                    </span>
+
+                `;
+
+            }
+
+            else {
+
+                div.innerHTML = `
+
+                    <strong>
+                        CONVITE ${pessoa.numero}
+                        — ${dados.nome}
+                    </strong>
+
+                    <span class="pendente">
+                        ⚪ AINDA NÃO CONFIRMADO
+                    </span>
+
+                `;
+            }
+
+        }
+
+        else {
+
+            div.innerHTML = `
+
+                <strong>
+                    CONVITE ${pessoa.numero}
+                    — ${pessoa.nome}
+                </strong>
+
+                <span class="pendente">
+                    ⚪ AINDA NÃO CONFIRMADO
+                </span>
+
+            `;
+        }
+
+
+        lista.appendChild(div);
+    }
+}
+
+
+carregarLista();
+
+setInterval(
+    carregarLista,
+    5000
+);
+
+</script>
+
+</body>
+</html>
