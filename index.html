@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Convite de Aniversário - Layerson & Naira</title>
+<title>Convites de Aniversário</title>
 
 <style>
 * {
@@ -14,26 +14,32 @@
 body {
     margin: 0;
     min-height: 100vh;
-    font-family: Georgia, serif;
-    background: linear-gradient(135deg, #080808, #1b1b1b, #080808);
+    font-family: Georgia, "Times New Roman", serif;
+    background:
+        radial-gradient(circle at top, #3a300f, #0b0b0b 55%, #000);
     color: white;
     display: flex;
     justify-content: center;
     align-items: center;
+    padding: 20px;
 }
 
 .container {
-    width: 92%;
+    width: 100%;
     max-width: 600px;
-    text-align: center;
 }
 
 .card {
-    padding: 45px 25px;
-    border-radius: 25px;
-    background: rgba(20,20,20,0.95);
+    background: rgba(15,15,15,0.96);
     border: 2px solid #d4af37;
-    box-shadow: 0 0 35px rgba(212,175,55,0.35);
+    border-radius: 25px;
+    padding: 40px 25px;
+    text-align: center;
+    box-shadow: 0 0 40px rgba(212,175,55,0.30);
+}
+
+.hidden {
+    display: none;
 }
 
 .gold {
@@ -42,12 +48,12 @@ body {
 
 h1 {
     font-size: 38px;
-    margin-bottom: 10px;
+    margin: 10px 0;
 }
 
 h2 {
-    font-size: 27px;
-    margin: 10px 0 25px;
+    font-size: 25px;
+    margin: 15px 0;
 }
 
 p {
@@ -55,43 +61,75 @@ p {
     line-height: 1.7;
 }
 
+.number {
+    font-size: 32px;
+    font-weight: bold;
+    color: #d4af37;
+    letter-spacing: 2px;
+}
+
 .info {
-    margin: 25px 0;
-    padding: 20px;
-    border-radius: 15px;
     border: 1px solid #d4af37;
-    background: rgba(212,175,55,0.08);
+    border-radius: 18px;
+    padding: 18px;
+    margin: 25px 0;
+    background: rgba(212,175,55,0.07);
 }
 
 .info p {
     margin: 8px 0;
 }
 
+input {
+    width: 85%;
+    max-width: 320px;
+    padding: 14px;
+    border-radius: 30px;
+    border: 2px solid #d4af37;
+    background: #111;
+    color: white;
+    text-align: center;
+    font-size: 18px;
+    outline: none;
+}
+
 button {
     border: none;
-    padding: 14px 25px;
     border-radius: 30px;
+    padding: 14px 25px;
+    margin-top: 15px;
     font-size: 17px;
+    font-weight: bold;
     cursor: pointer;
     background: #d4af37;
     color: #111;
-    font-weight: bold;
-    margin-top: 15px;
 }
 
 button:hover {
-    transform: scale(1.05);
+    transform: scale(1.04);
 }
 
-.hidden {
-    display: none;
+.error {
+    color: #ff7777;
+    margin-top: 12px;
 }
 
-/* Convite especial */
+.friend-message {
+    font-size: 20px;
+    color: #f1d66b;
+    margin: 25px 0;
+}
+
+/* INÊS */
+
 .special {
-    background: linear-gradient(135deg, #1a1203, #4b3508, #1a1203);
+    background:
+        linear-gradient(135deg,
+        #120d02,
+        #4b3607,
+        #120d02);
     border: 3px solid #f5d76e;
-    box-shadow: 0 0 45px rgba(245,215,110,0.55);
+    box-shadow: 0 0 55px rgba(245,215,110,0.55);
 }
 
 .special h1,
@@ -100,26 +138,15 @@ button:hover {
     color: #f5d76e;
 }
 
-.special .message {
+.heart {
+    font-size: 35px;
+}
+
+.special-message {
     font-size: 21px;
-    margin: 25px 0;
+    line-height: 1.8;
 }
 
-input {
-    width: 85%;
-    max-width: 300px;
-    padding: 13px;
-    border-radius: 25px;
-    border: 1px solid #d4af37;
-    text-align: center;
-    font-size: 16px;
-    outline: none;
-}
-
-.error {
-    color: #ff7777;
-    margin-top: 10px;
-}
 </style>
 </head>
 
@@ -127,189 +154,154 @@ input {
 
 <div class="container">
 
-    <!-- CONVITE NORMAL -->
-    <div id="normal" class="card">
+    <!-- TELA DO PIN -->
+    <div id="login" class="card">
 
-        <div class="gold">✨ VOCÊ É NOSSO CONVIDADO ESPECIAL ✨</div>
-
-        <h1>Aniversário</h1>
-
-        <h2 class="gold">Layerson & Naira</h2>
-
-        <p>
-            É com muita alegria que convidamos você
-            para celebrar conosco este momento
-            tão especial das nossas vidas.
-        </p>
-
-        <div class="info">
-
-            <p>📅 <strong>Data:</strong><br>
-            19 de Dezembro de 2026</p>
-
-            <p>🕕 <strong>Hora:</strong><br>
-            18h</p>
-
-            <p>📍 <strong>Local:</strong><br>
-            Salão Rosita</p>
-
+        <div class="number" id="numeroConvite">
+            CONVITE
         </div>
 
-        <p class="gold">
-            Sua presença será muito importante
-            para tornar esta celebração ainda mais especial. ❤️
-        </p>
-
-        <button onclick="abrirConfirmacao()">
-            💌 Confirmar Presença
-        </button>
-
-        <br>
-
-        <button onclick="abrirEspecial()">
-            🔐 Convite Especial
-        </button>
-
-    </div>
-
-
-    <!-- CONFIRMAÇÃO -->
-    <div id="confirmacao" class="card hidden">
-
-        <h1 class="gold">💌 Confirmação</h1>
-
         <p>
-            Obrigado por confirmar a sua presença
-            no aniversário de Layerson & Naira.
-        </p>
-
-        <p>
-            📅 19 de Dezembro de 2026<br>
-            🕕 18h<br>
-            📍 Salão Rosita
-        </p>
-
-        <button onclick="confirmarWhatsApp()">
-            📱 Confirmar pelo WhatsApp
-        </button>
-
-        <br>
-
-        <button onclick="voltarNormal()">
-            ← Voltar
-        </button>
-
-    </div>
-
-
-    <!-- LOGIN DO CONVITE ESPECIAL -->
-    <div id="senha" class="card hidden">
-
-        <h1 class="gold">🔐 Convite Especial</h1>
-
-        <p>
-            Este convite é reservado para uma
-            pessoa muito especial. ❤️
+            🔐 Este convite é exclusivo.
         </p>
 
         <p class="gold">
-            Digite a senha para continuar:
+            Digite o seu PIN para continuar.
         </p>
 
         <input
             type="password"
-            id="password"
-            placeholder="Digite a senha">
+            id="pin"
+            placeholder="Digite o seu PIN"
+            autocomplete="off"
+        >
 
         <br>
 
-        <button onclick="verificarSenha()">
-            Entrar ❤️
+        <button onclick="entrar()">
+            ENTRAR ❤️
         </button>
 
         <div id="erro" class="error"></div>
 
-        <br>
+    </div>
 
-        <button onclick="voltarNormal()">
-            ← Voltar
+
+    <!-- CONVITE DO AMIGO -->
+    <div id="amigo" class="card hidden">
+
+        <div class="gold">
+            ✨ CONVITE ESPECIAL ✨
+        </div>
+
+        <h1 id="nomeAmigo"></h1>
+
+        <h2 class="gold">
+            Meu amigo ❤️
+        </h2>
+
+        <p class="friend-message">
+            A tua presença vai tornar este dia
+            ainda mais especial.
+        </p>
+
+        <p>
+            Quero compartilhar contigo este
+            momento de alegria, amizade,
+            risadas e boas memórias.
+        </p>
+
+        <div class="info">
+
+            <p>
+                🎂 <strong>Aniversário de Layerson & Naira</strong>
+            </p>
+
+            <p>
+                📅 <strong>19 de setembro de 2026</strong>
+            </p>
+
+            <p>
+                🕕 <strong>18h</strong>
+            </p>
+
+            <p>
+                📍 <strong>Salão Rosita</strong>
+            </p>
+
+        </div>
+
+        <p class="gold">
+            Contamos contigo para celebrar
+            este momento conosco! 🥳
+        </p>
+
+        <button onclick="confirmarAmigo()">
+            💌 Confirmar Presença
         </button>
 
     </div>
 
 
     <!-- CONVITE ESPECIAL DA INÊS -->
-    <div id="especial" class="card special hidden">
+    <div id="ines" class="card special hidden">
 
-        <div>✨ PARA O AMOR DA MINHA VIDA ✨</div>
+        <div class="heart">
+            ❤️
+        </div>
 
-        <h1>Inês ❤️</h1>
-
-        <h2>Este convite é especialmente para você</h2>
-
-        <p class="message">
-            Entre todas as pessoas que estarão
-            presentes neste dia, existe alguém
-            que ocupa um lugar ainda mais especial
-            no meu coração.
+        <p>
+            ✨ PARA O AMOR DA MINHA VIDA ✨
         </p>
 
-        <p class="message">
+        <h1>Inês</h1>
+
+        <h2>
+            Este convite é especialmente para você ❤️
+        </h2>
+
+        <p class="special-message">
+            Entre todas as pessoas que estarão
+            presentes neste dia, existe alguém
+            que ocupa um lugar ainda mais
+            especial no meu coração.
+        </p>
+
+        <p class="special-message">
             ❤️ Você, Inês. ❤️
         </p>
 
         <div class="info">
 
-            <p>🎂 <strong>Aniversário de Layerson & Naira</strong></p>
+            <p>
+                🎂 <strong>Aniversário de Layerson & Naira</strong>
+            </p>
 
-            <p>📅 19 de Dezembro de 2026</p>
+            <p>
+                📅 <strong>19 de setembro de 2026</strong>
+            </p>
 
-            <p>🕕 18h</p>
+            <p>
+                🕕 <strong>18h</strong>
+            </p>
 
-            <p>📍 Salão Rosita</p>
+            <p>
+                📍 <strong>Salão Rosita</strong>
+            </p>
 
         </div>
 
-        <p class="message">
+        <p class="special-message">
             Quero muito ter você ao meu lado
-            para viver esse momento comigo.
+            para viver este momento comigo.
         </p>
 
-        <p class="gold">
+        <p>
             Com muito amor ❤️
         </p>
 
-        <button onclick="abrirConfirmacaoEspecial()">
+        <button onclick="confirmarInes()">
             💌 Confirmar Presença
-        </button>
-
-        <br>
-
-        <button onclick="voltarNormal()">
-            ← Voltar ao convite
-        </button>
-
-    </div>
-
-
-    <!-- CONFIRMAÇÃO ESPECIAL -->
-    <div id="confirmacaoEspecial" class="card special hidden">
-
-        <h1>❤️ Inês</h1>
-
-        <p class="message">
-            A tua presença vai tornar
-            este dia ainda mais especial.
-        </p>
-
-        <button onclick="confirmarWhatsAppEspecial()">
-            📱 Confirmar Presença
-        </button>
-
-        <br>
-
-        <button onclick="voltarEspecial()">
-            ← Voltar
         </button>
 
     </div>
@@ -319,91 +311,165 @@ input {
 
 <script>
 
-function esconderTudo() {
+/* ===========================
+   CONFIGURAÇÃO DOS CONVITES
+=========================== */
 
-    document.getElementById("normal").classList.add("hidden");
-    document.getElementById("confirmacao").classList.add("hidden");
-    document.getElementById("senha").classList.add("hidden");
-    document.getElementById("especial").classList.add("hidden");
-    document.getElementById("confirmacaoEspecial").classList.add("hidden");
+const convidados = {
+
+    "01": {
+        nome: "Allen da Graça",
+        pin: "da graca"
+    },
+
+    "02": {
+        nome: "Erik",
+        pin: "maiquel"
+    },
+
+    "03": {
+        nome: "Zozó",
+        pin: "mulato"
+    },
+
+    "04": {
+        nome: "Lenia",
+        pin: "best"
+    }
+
+};
+
+
+/* ===========================
+   NÚMERO DO CONVITE
+=========================== */
+
+const parametros =
+    new URLSearchParams(window.location.search);
+
+let numero =
+    parametros.get("convite");
+
+
+/*
+   Se não existir número,
+   mostra apenas "CONVITE".
+*/
+
+if (numero && convidados[numero]) {
+
+    document.getElementById("numeroConvite")
+        .innerText = "CONVITE " + numero;
+
+} else if (numero === "ines") {
+
+    document.getElementById("numeroConvite")
+        .innerText = "CONVITE ESPECIAL";
+
+} else {
+
+    document.getElementById("numeroConvite")
+        .innerText = "CONVITE";
 
 }
 
 
-function voltarNormal() {
+/* ===========================
+   ENTRAR
+=========================== */
 
-    esconderTudo();
+function entrar() {
 
-    document.getElementById("normal").classList.remove("hidden");
+    const pinDigitado =
+        document.getElementById("pin").value;
 
-}
-
-
-function abrirConfirmacao() {
-
-    esconderTudo();
-
-    document.getElementById("confirmacao").classList.remove("hidden");
-
-}
+    const erro =
+        document.getElementById("erro");
 
 
-function abrirEspecial() {
+    /* INÊS */
 
-    esconderTudo();
+    if (numero === "ines") {
 
-    document.getElementById("senha").classList.remove("hidden");
+        if (pinDigitado === "Te amo") {
 
-}
+            document.getElementById("login")
+                .classList.add("hidden");
+
+            document.getElementById("ines")
+                .classList.remove("hidden");
+
+            erro.innerText = "";
+
+        } else {
+
+            erro.innerText =
+                "❌ PIN incorreto.";
+
+        }
+
+        return;
+    }
 
 
-function verificarSenha() {
+    /* AMIGOS */
 
-    const senha = document.getElementById("password").value;
-    const erro = document.getElementById("erro");
+    if (!numero || !convidados[numero]) {
 
-    if (senha === "Te amo") {
+        erro.innerText =
+            "❌ Convite não encontrado.";
 
-        esconderTudo();
+        return;
+    }
 
-        document.getElementById("especial").classList.remove("hidden");
+
+    const convidado =
+        convidados[numero];
+
+
+    if (pinDigitado.toLowerCase() ===
+        convidado.pin.toLowerCase()) {
+
+        document.getElementById("login")
+            .classList.add("hidden");
+
+        document.getElementById("amigo")
+            .classList.remove("hidden");
+
+        document.getElementById("nomeAmigo")
+            .innerText = convidado.nome;
+
+        erro.innerText = "";
 
     } else {
 
-        erro.innerHTML = "❌ Senha incorreta. Tente novamente.";
+        erro.innerText =
+            "❌ PIN incorreto. Tente novamente.";
 
     }
 
 }
 
 
-function abrirConfirmacaoEspecial() {
+/* ===========================
+   CONFIRMAÇÃO DOS AMIGOS
+=========================== */
 
-    esconderTudo();
+function confirmarAmigo() {
 
-    document.getElementById("confirmacaoEspecial").classList.remove("hidden");
-
-}
-
-
-function voltarEspecial() {
-
-    esconderTudo();
-
-    document.getElementById("especial").classList.remove("hidden");
-
-}
-
-
-function confirmarWhatsApp() {
+    const nome =
+        document.getElementById("nomeAmigo").innerText;
 
     const mensagem =
-        "Olá! Confirmo a minha presença no aniversário de Layerson e Naira, dia 19 de dezembro de 2026, às 18h, no Salão Rosita. ❤️";
+        "Olá! Confirmo a minha presença no aniversário de Layerson e Naira, dia 19 de setembro de 2026, às 18h, no Salão Rosita. Meu nome é " + nome + ". ❤️";
 
-    const numero = "258870739955";
+    const numeroWhatsApp =
+        "258870739955";
 
     window.open(
-        "https://wa.me/" + numero + "?text=" +
+        "https://wa.me/" +
+        numeroWhatsApp +
+        "?text=" +
         encodeURIComponent(mensagem),
         "_blank"
     );
@@ -411,15 +477,22 @@ function confirmarWhatsApp() {
 }
 
 
-function confirmarWhatsAppEspecial() {
+/* ===========================
+   CONFIRMAÇÃO DA INÊS
+=========================== */
+
+function confirmarInes() {
 
     const mensagem =
-        "Olá Layerson! ❤️ Confirmo a minha presença no teu aniversário com a Naira, dia 19 de dezembro de 2026, às 18h, no Salão Rosita. Com muito amor, Inês. ❤️";
+        "Olá Layerson! ❤️ Confirmo a minha presença no teu aniversário com a Naira, dia 19 de setembro de 2026, às 18h, no Salão Rosita. ❤️";
 
-    const numero = "258870739955";
+    const numeroWhatsApp =
+        "258870739955";
 
     window.open(
-        "https://wa.me/" + numero + "?text=" +
+        "https://wa.me/" +
+        numeroWhatsApp +
+        "?text=" +
         encodeURIComponent(mensagem),
         "_blank"
     );
