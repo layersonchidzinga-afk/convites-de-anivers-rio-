@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Convites de Aniversário</title>
+<title>Convite de Aniversário - Layerson & Naira</title>
 
 <style>
 * {
@@ -16,7 +16,7 @@ body {
     min-height: 100vh;
     font-family: Georgia, "Times New Roman", serif;
     background:
-        radial-gradient(circle at top, #3a300f, #0b0b0b 55%, #000);
+        radial-gradient(circle at top, #4a3a0b 0%, #151515 45%, #000 100%);
     color: white;
     display: flex;
     justify-content: center;
@@ -26,16 +26,17 @@ body {
 
 .container {
     width: 100%;
-    max-width: 600px;
+    max-width: 620px;
 }
 
 .card {
-    background: rgba(15,15,15,0.96);
+    width: 100%;
+    background: rgba(15, 15, 15, 0.97);
     border: 2px solid #d4af37;
-    border-radius: 25px;
-    padding: 40px 25px;
+    border-radius: 28px;
+    padding: 42px 25px;
     text-align: center;
-    box-shadow: 0 0 40px rgba(212,175,55,0.30);
+    box-shadow: 0 0 45px rgba(212,175,55,0.35);
 }
 
 .hidden {
@@ -46,9 +47,16 @@ body {
     color: #d4af37;
 }
 
+.logo {
+    font-size: 18px;
+    letter-spacing: 3px;
+    color: #d4af37;
+    margin-bottom: 20px;
+}
+
 h1 {
-    font-size: 38px;
-    margin: 10px 0;
+    font-size: 40px;
+    margin: 15px 0;
 }
 
 h2 {
@@ -61,75 +69,93 @@ p {
     line-height: 1.7;
 }
 
-.number {
-    font-size: 32px;
+.pin-title {
+    font-size: 34px;
     font-weight: bold;
     color: #d4af37;
-    letter-spacing: 2px;
-}
-
-.info {
-    border: 1px solid #d4af37;
-    border-radius: 18px;
-    padding: 18px;
-    margin: 25px 0;
-    background: rgba(212,175,55,0.07);
-}
-
-.info p {
-    margin: 8px 0;
+    letter-spacing: 3px;
+    margin-bottom: 20px;
 }
 
 input {
-    width: 85%;
-    max-width: 320px;
-    padding: 14px;
+    width: 88%;
+    max-width: 330px;
+    padding: 15px;
+    margin-top: 10px;
     border-radius: 30px;
     border: 2px solid #d4af37;
-    background: #111;
+    background: #080808;
     color: white;
     text-align: center;
     font-size: 18px;
     outline: none;
 }
 
+input::placeholder {
+    color: #aaa;
+}
+
 button {
     border: none;
     border-radius: 30px;
-    padding: 14px 25px;
-    margin-top: 15px;
+    padding: 15px 28px;
+    margin-top: 18px;
     font-size: 17px;
     font-weight: bold;
     cursor: pointer;
     background: #d4af37;
     color: #111;
+    transition: 0.2s;
 }
 
 button:hover {
-    transform: scale(1.04);
+    transform: scale(1.05);
 }
 
 .error {
     color: #ff7777;
-    margin-top: 12px;
+    margin-top: 15px;
+    font-weight: bold;
+}
+
+.info {
+    border: 1px solid #d4af37;
+    border-radius: 20px;
+    padding: 20px;
+    margin: 25px 0;
+    background: rgba(212,175,55,0.08);
+}
+
+.info p {
+    margin: 8px 0;
 }
 
 .friend-message {
-    font-size: 20px;
-    color: #f1d66b;
-    margin: 25px 0;
+    color: #f0d568;
+    font-size: 21px;
+    line-height: 1.7;
 }
 
-/* INÊS */
+/* =========================
+   CONVITE DA INÊS
+========================= */
 
 .special {
     background:
-        linear-gradient(135deg,
-        #120d02,
-        #4b3607,
-        #120d02);
+        linear-gradient(
+            135deg,
+            #100b01,
+            #4a3405,
+            #181001,
+            #5a4109,
+            #100b01
+        );
+
     border: 3px solid #f5d76e;
-    box-shadow: 0 0 55px rgba(245,215,110,0.55);
+
+    box-shadow:
+        0 0 25px rgba(245,215,110,0.5),
+        0 0 70px rgba(212,175,55,0.3);
 }
 
 .special h1,
@@ -139,7 +165,8 @@ button:hover {
 }
 
 .heart {
-    font-size: 35px;
+    font-size: 45px;
+    margin-bottom: 10px;
 }
 
 .special-message {
@@ -147,6 +174,11 @@ button:hover {
     line-height: 1.8;
 }
 
+.footer {
+    margin-top: 25px;
+    font-size: 14px;
+    color: #aaa;
+}
 </style>
 </head>
 
@@ -154,19 +186,27 @@ button:hover {
 
 <div class="container">
 
-    <!-- TELA DO PIN -->
+    <!-- ==================================================
+         TELA INICIAL
+         O MESMO LINK SERVE PARA TODOS
+    =================================================== -->
+
     <div id="login" class="card">
 
-        <div class="number" id="numeroConvite">
-            CONVITE
+        <div class="logo">
+            ✨ CONVITE DE ANIVERSÁRIO ✨
+        </div>
+
+        <div class="pin-title">
+            🔐 CONVITE
         </div>
 
         <p>
-            🔐 Este convite é exclusivo.
+            Este convite é exclusivo para você.
         </p>
 
         <p class="gold">
-            Digite o seu PIN para continuar.
+            Digite o seu PIN para abrir o seu convite.
         </p>
 
         <input
@@ -178,19 +218,27 @@ button:hover {
 
         <br>
 
-        <button onclick="entrar()">
+        <button onclick="abrirConvite()">
             ENTRAR ❤️
         </button>
 
         <div id="erro" class="error"></div>
 
+        <div class="footer">
+            O seu nome aparecerá somente depois
+            de inserir o PIN correto.
+        </div>
+
     </div>
 
 
-    <!-- CONVITE DO AMIGO -->
+    <!-- ==================================================
+         CONVITE DOS AMIGOS
+    =================================================== -->
+
     <div id="amigo" class="card hidden">
 
-        <div class="gold">
+        <div class="logo">
             ✨ CONVITE ESPECIAL ✨
         </div>
 
@@ -214,19 +262,31 @@ button:hover {
         <div class="info">
 
             <p>
-                🎂 <strong>Aniversário de Layerson & Naira</strong>
+                🎂
+                <strong>
+                    Aniversário de Layerson & Naira
+                </strong>
             </p>
 
             <p>
-                📅 <strong>19 de setembro de 2026</strong>
+                📅
+                <strong>
+                    19 de setembro de 2026
+                </strong>
             </p>
 
             <p>
-                🕕 <strong>18h</strong>
+                🕕
+                <strong>
+                    18h
+                </strong>
             </p>
 
             <p>
-                📍 <strong>Salão Rosita</strong>
+                📍
+                <strong>
+                    Salão Rosita
+                </strong>
             </p>
 
         </div>
@@ -243,18 +303,23 @@ button:hover {
     </div>
 
 
-    <!-- CONVITE ESPECIAL DA INÊS -->
+    <!-- ==================================================
+         CONVITE ESPECIAL DA INÊS
+    =================================================== -->
+
     <div id="ines" class="card special hidden">
 
         <div class="heart">
             ❤️
         </div>
 
-        <p>
+        <div class="logo">
             ✨ PARA O AMOR DA MINHA VIDA ✨
-        </p>
+        </div>
 
-        <h1>Inês</h1>
+        <h1>
+            Inês
+        </h1>
 
         <h2>
             Este convite é especialmente para você ❤️
@@ -274,19 +339,31 @@ button:hover {
         <div class="info">
 
             <p>
-                🎂 <strong>Aniversário de Layerson & Naira</strong>
+                🎂
+                <strong>
+                    Aniversário de Layerson & Naira
+                </strong>
             </p>
 
             <p>
-                📅 <strong>19 de setembro de 2026</strong>
+                📅
+                <strong>
+                    19 de setembro de 2026
+                </strong>
             </p>
 
             <p>
-                🕕 <strong>18h</strong>
+                🕕
+                <strong>
+                    18h
+                </strong>
             </p>
 
             <p>
-                📍 <strong>Salão Rosita</strong>
+                📍
+                <strong>
+                    Salão Rosita
+                </strong>
             </p>
 
         </div>
@@ -311,160 +388,140 @@ button:hover {
 
 <script>
 
-/* ===========================
-   CONFIGURAÇÃO DOS CONVITES
-=========================== */
+/* ==================================================
+   LISTA DOS CONVIDADOS E SEUS PINs
+================================================== */
 
 const convidados = {
 
-    "01": {
-        nome: "Allen da Graça",
-        pin: "da graca"
+    "da graca": {
+        nome: "Allen da Graça"
     },
 
-    "02": {
-        nome: "Erik",
-        pin: "maiquel"
+    "maiquel": {
+        nome: "Erik"
     },
 
-    "03": {
-        nome: "Zozó",
-        pin: "mulato"
+    "mulato": {
+        nome: "Zozó"
     },
 
-    "04": {
-        nome: "Lenia",
-        pin: "best"
+    "best": {
+        nome: "Lenia"
+    },
+
+    "te amo": {
+        nome: "Inês"
     }
 
 };
 
 
-/* ===========================
-   NÚMERO DO CONVITE
-=========================== */
+/* ==================================================
+   ABRIR CONVITE PELO PIN
+================================================== */
 
-const parametros =
-    new URLSearchParams(window.location.search);
+function abrirConvite() {
 
-let numero =
-    parametros.get("convite");
-
-
-/*
-   Se não existir número,
-   mostra apenas "CONVITE".
-*/
-
-if (numero && convidados[numero]) {
-
-    document.getElementById("numeroConvite")
-        .innerText = "CONVITE " + numero;
-
-} else if (numero === "ines") {
-
-    document.getElementById("numeroConvite")
-        .innerText = "CONVITE ESPECIAL";
-
-} else {
-
-    document.getElementById("numeroConvite")
-        .innerText = "CONVITE";
-
-}
-
-
-/* ===========================
-   ENTRAR
-=========================== */
-
-function entrar() {
-
-    const pinDigitado =
-        document.getElementById("pin").value;
+    const campo =
+        document.getElementById("pin");
 
     const erro =
         document.getElementById("erro");
 
-
-    /* INÊS */
-
-    if (numero === "ines") {
-
-        if (pinDigitado === "Te amo") {
-
-            document.getElementById("login")
-                .classList.add("hidden");
-
-            document.getElementById("ines")
-                .classList.remove("hidden");
-
-            erro.innerText = "";
-
-        } else {
-
-            erro.innerText =
-                "❌ PIN incorreto.";
-
-        }
-
-        return;
-    }
+    let pin =
+        campo.value.trim().toLowerCase();
 
 
-    /* AMIGOS */
-
-    if (!numero || !convidados[numero]) {
+    if (pin === "") {
 
         erro.innerText =
-            "❌ Convite não encontrado.";
+            "⚠️ Digite o seu PIN.";
+
+        campo.focus();
 
         return;
     }
 
 
-    const convidado =
-        convidados[numero];
+    /*
+       Aceita o PIN mesmo que a pessoa
+       escreva letras maiúsculas.
+    */
 
-
-    if (pinDigitado.toLowerCase() ===
-        convidado.pin.toLowerCase()) {
-
-        document.getElementById("login")
-            .classList.add("hidden");
-
-        document.getElementById("amigo")
-            .classList.remove("hidden");
-
-        document.getElementById("nomeAmigo")
-            .innerText = convidado.nome;
-
-        erro.innerText = "";
-
-    } else {
+    if (!convidados[pin]) {
 
         erro.innerText =
             "❌ PIN incorreto. Tente novamente.";
 
+        campo.value = "";
+
+        campo.focus();
+
+        return;
     }
+
+
+    /*
+       PIN CORRETO
+    */
+
+    document
+        .getElementById("login")
+        .classList.add("hidden");
+
+
+    /*
+       INÊS
+    */
+
+    if (pin === "te amo") {
+
+        document
+            .getElementById("ines")
+            .classList.remove("hidden");
+
+        return;
+    }
+
+
+    /*
+       AMIGOS
+    */
+
+    document
+        .getElementById("amigo")
+        .classList.remove("hidden");
+
+
+    document
+        .getElementById("nomeAmigo")
+        .innerText = convidados[pin].nome;
 
 }
 
 
-/* ===========================
-   CONFIRMAÇÃO DOS AMIGOS
-=========================== */
+/* ==================================================
+   CONFIRMAR PRESENÇA DOS AMIGOS
+================================================== */
 
 function confirmarAmigo() {
 
     const nome =
-        document.getElementById("nomeAmigo").innerText;
+        document
+        .getElementById("nomeAmigo")
+        .innerText;
+
 
     const mensagem =
-        "Olá! Confirmo a minha presença no aniversário de Layerson e Naira, dia 19 de setembro de 2026, às 18h, no Salão Rosita. Meu nome é " + nome + ". ❤️";
+        "Olá! Confirmo a minha presença no aniversário de Layerson e Naira, dia 19 de setembro de 2026, às 18h, no Salão Rosita. Meu nome é " +
+        nome +
+        ". ❤️";
+
 
     const numeroWhatsApp =
         "258870739955";
+
 
     window.open(
         "https://wa.me/" +
@@ -477,17 +534,19 @@ function confirmarAmigo() {
 }
 
 
-/* ===========================
-   CONFIRMAÇÃO DA INÊS
-=========================== */
+/* ==================================================
+   CONFIRMAR PRESENÇA DA INÊS
+================================================== */
 
 function confirmarInes() {
 
     const mensagem =
         "Olá Layerson! ❤️ Confirmo a minha presença no teu aniversário com a Naira, dia 19 de setembro de 2026, às 18h, no Salão Rosita. ❤️";
 
+
     const numeroWhatsApp =
         "258870739955";
+
 
     window.open(
         "https://wa.me/" +
@@ -498,6 +557,26 @@ function confirmarInes() {
     );
 
 }
+
+
+/* ==================================================
+   PERMITIR ENTER NO CAMPO DO PIN
+================================================== */
+
+document
+    .getElementById("pin")
+    .addEventListener(
+        "keydown",
+        function(event) {
+
+            if (event.key === "Enter") {
+
+                abrirConvite();
+
+            }
+
+        }
+    );
 
 </script>
 
