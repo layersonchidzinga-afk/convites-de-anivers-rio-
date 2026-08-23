@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="pt">
 <head>
@@ -52,29 +51,16 @@ h1 {
     margin-bottom: 25px;
 }
 
-.scanner {
+#reader {
     width: 100%;
-    min-height: 300px;
-    border: 2px dashed #d4af37;
+    max-width: 500px;
+    margin: auto;
     border-radius: 20px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    color: #aaa;
-    padding: 20px;
+    overflow: hidden;
 }
 
-.scanner-icon {
-    font-size: 60px;
-    margin-bottom: 15px;
-}
-
-video {
-    width: 100%;
-    max-height: 450px;
-    object-fit: cover;
-    border-radius: 15px;
+#reader video {
+    border-radius: 15px !important;
 }
 
 button {
@@ -83,15 +69,20 @@ button {
     margin-top: 15px;
     border: 0;
     border-radius: 40px;
-    background: linear-gradient(135deg,#a77a18,#f0d66b,#a77a18);
+    background: linear-gradient(
+        135deg,
+        #a77a18,
+        #f0d66b,
+        #a77a18
+    );
     color: #080808;
     font-weight: bold;
     font-size: 16px;
     cursor: pointer;
 }
 
-.hidden {
-    display: none !important;
+button:active {
+    transform: scale(.98);
 }
 
 .result {
@@ -112,13 +103,13 @@ button {
 }
 
 .result-number {
-    font-size: 65px;
+    font-size: 60px;
     color: #e5c65a;
     margin-bottom: 10px;
 }
 
 .result-name {
-    font-size: 30px;
+    font-size: 28px;
     margin-bottom: 18px;
 }
 
@@ -127,11 +118,8 @@ button {
     line-height: 1.7;
 }
 
-.small {
-    text-align: center;
-    color: #666;
-    font-size: 12px;
-    margin-top: 20px;
+.hidden {
+    display: none;
 }
 
 .lista {
@@ -163,6 +151,42 @@ button {
 .pendente {
     color: #888;
 }
+
+.info {
+    text-align: center;
+    color: #aaa;
+    line-height: 1.6;
+    margin: 15px 0;
+}
+
+.erro {
+    color: #ff7777;
+    text-align: center;
+    margin-top: 15px;
+}
+
+.sucesso {
+    color: #55ed82;
+}
+
+@media(max-width:500px) {
+
+    .card {
+        padding: 22px 15px;
+    }
+
+    h1 {
+        font-size: 25px;
+    }
+
+    .result-number {
+        font-size: 50px;
+    }
+
+    .result-name {
+        font-size: 24px;
+    }
+}
 </style>
 </head>
 
@@ -170,74 +194,111 @@ button {
 
 <div class="container">
 
+<!-- =====================================
+     CONTROLE DE ENTRADA
+===================================== -->
+
 <div class="card">
 
 <h1>🎟️ CONTROLE DE ENTRADA</h1>
 
 <div class="subtitle">
+
 <strong>LAYESON &amp; NAIRA</strong>
+
 <br>
+
 19 de setembro de 2026
+
 <br>
+
 18h00 — Salão Rosita
-</div>
-
-<div id="scannerBox" class="scanner">
-
-<div>
-<div class="scanner-icon">📷</div>
-
-<strong>LEITOR DE QR CODE</strong>
-
-<br><br>
-
-Clique no botão abaixo para abrir a câmera.
 
 </div>
 
+
+<div class="info">
+
+Aponte a câmera para o QR Code
+do convite do convidado.
+
 </div>
 
-<video
-id="video"
-class="hidden"
-autoplay
-playsinline>
-</video>
+
+<!-- LEITOR QR -->
+
+<div id="reader"></div>
+
+
+<div id="mensagemCamera" class="info">
+
+Clique em <strong>INICIAR LEITOR</strong>
+para abrir a câmera.
+
+</div>
+
 
 <button
 id="btnIniciar"
-onclick="iniciarScanner()">
-📷 ESCANEAR QR CODE
+onclick="iniciarLeitor()">
+
+📷 INICIAR LEITOR QR
+
 </button>
+
 
 <button
 id="btnParar"
-class="hidden"
-onclick="pararScanner()">
-⛔ PARAR CÂMERA
+onclick="pararLeitor()"
+style="display:none;">
+
+⛔ PARAR LEITOR
+
 </button>
 
-<div id="resultado" class="hidden"></div>
 
-<div class="small">
-Sistema de validação dos convites
+<!-- RESULTADO -->
+
+<div
+id="resultado"
+style="display:none;">
 </div>
 
+
 </div>
 
+
+<!-- =====================================
+     LISTA DE CONVIDADOS
+===================================== -->
 
 <div class="card">
 
 <h1>📋 CONVIDADOS</h1>
 
-<div id="lista" class="lista">
+<div id="lista">
+
 A carregar convidados...
-</div>
 
 </div>
 
 </div>
 
+
+</div>
+
+
+<!-- =====================================
+     BIBLIOTECA QR CODE
+===================================== -->
+
+<script src="https://unpkg.com/html5-qrcode"
+crossorigin="anonymous"></script>
+
+
+<!-- =====================================
+     FIREBASE
+===================================== -->
 
 <script type="module">
 
@@ -246,6 +307,7 @@ import {
 }
 from
 "https://www.gstatic.com/firebasejs/12.1.0/firebase-app.js";
+
 
 import {
     getDatabase,
@@ -256,6 +318,10 @@ import {
 from
 "https://www.gstatic.com/firebasejs/12.1.0/firebase-database.js";
 
+
+/* =====================================
+   CONFIGURAÇÃO FIREBASE
+===================================== */
 
 const firebaseConfig = {
 
@@ -279,224 +345,411 @@ const firebaseConfig = {
 
     appId:
     "1:680240896134:web:2d2aa2f97fb491e2001907"
+
 };
 
 
-const app = initializeApp(firebaseConfig);
-const db = getDatabase(app);
+const app =
+initializeApp(firebaseConfig);
 
 
-let stream = null;
-let scanning = false;
-let detector = null;
+const db =
+getDatabase(app);
 
 
-window.iniciarScanner = async function() {
+/* =====================================
+   VARIÁVEL DO LEITOR
+===================================== */
+
+let scanner = null;
+
+let leitorAtivo = false;
+
+
+/* =====================================
+   INICIAR LEITOR
+===================================== */
+
+window.iniciarLeitor = async function() {
+
+    const mensagem =
+    document.getElementById("mensagemCamera");
 
     try {
 
-        if (!("BarcodeDetector" in window)) {
+        if (leitorAtivo) {
+            return;
+        }
 
-            mostrarResultado(
-                false,
-                "",
-                "",
-                "O navegador não possui leitor QR integrado. Use o Google Chrome atualizado."
-            );
+
+        scanner =
+        new Html5Qrcode("reader");
+
+
+        const cameras =
+        await Html5Qrcode.getCameras();
+
+
+        if (!cameras || cameras.length === 0) {
+
+            mensagem.innerHTML =
+            "❌ Nenhuma câmera foi encontrada neste dispositivo.";
+
+            mensagem.className =
+            "erro";
 
             return;
         }
 
-        detector = new BarcodeDetector({
-            formats: ["qr_code"]
-        });
 
-        stream = await navigator.mediaDevices.getUserMedia({
-
-            video: {
-                facingMode: {
-                    ideal: "environment"
-                }
-            },
-
-            audio: false
-
-        });
+        let cameraId =
+        cameras[0].id;
 
 
-        const video = document.getElementById("video");
+        /* Preferir câmera traseira */
 
-        video.srcObject = stream;
+        const traseira =
+        cameras.find(camera =>
+            /back|rear|traseira|environment/i
+            .test(camera.label)
+        );
 
-        video.classList.remove("hidden");
 
-        document
-        .getElementById("scannerBox")
-        .classList.add("hidden");
+        if (traseira) {
+            cameraId = traseira.id;
+        }
+
+
+        leitorAtivo = true;
+
 
         document
         .getElementById("btnIniciar")
-        .classList.add("hidden");
+        .style.display = "none";
+
 
         document
         .getElementById("btnParar")
-        .classList.remove("hidden");
+        .style.display = "block";
 
-        scanning = true;
 
-        procurarQR();
+        mensagem.innerHTML =
+        "📷 Aponte a câmera para o QR Code.";
+
+
+        mensagem.className =
+        "info";
+
+
+        await scanner.start(
+
+            cameraId,
+
+            {
+
+                fps: 10,
+
+                qrbox: {
+                    width: 250,
+                    height: 250
+                },
+
+                aspectRatio: 1.0
+
+            },
+
+            function(decodedText) {
+
+                processarQR(decodedText);
+
+            },
+
+            function(errorMessage) {
+
+                /* Erros normais durante a procura
+                   do QR Code são ignorados. */
+
+            }
+
+        );
 
     }
 
     catch(error) {
 
-        mostrarResultado(
-            false,
-            "",
-            "",
-            "Não foi possível abrir a câmera. Permita o acesso à câmera."
-        );
-
         console.error(error);
+
+        leitorAtivo = false;
+
+
+        document
+        .getElementById("btnIniciar")
+        .style.display = "block";
+
+
+        document
+        .getElementById("btnParar")
+        .style.display = "none";
+
+
+        mensagem.innerHTML =
+        "❌ Não foi possível abrir a câmera.<br><br>" +
+        "Verifique se autorizou o acesso à câmera.";
+
+        mensagem.className =
+        "erro";
+
     }
+
 };
 
 
-async function procurarQR() {
+/* =====================================
+   PARAR LEITOR
+===================================== */
 
-    if (!scanning) return;
-
-    const video = document.getElementById("video");
-
-    if (
-        video.readyState >= 2 &&
-        video.videoWidth > 0
-    ) {
-
-        try {
-
-            const codes = await detector.detect(video);
-
-            if (codes.length > 0) {
-
-                const texto = codes[0].rawValue;
-
-                scanning = false;
-
-                pararScanner();
-
-                await processarQR(texto);
-
-                return;
-            }
-
-        }
-
-        catch(error) {
-            console.log(error);
-        }
-    }
-
-    if (scanning) {
-        requestAnimationFrame(procurarQR);
-    }
-}
-
-
-async function processarQR(texto) {
+window.pararLeitor = async function() {
 
     try {
 
-        const dados = JSON.parse(texto);
+        if (scanner && leitorAtivo) {
 
-        if (!dados.convite || !dados.nome) {
+            await scanner.stop();
+
+            await scanner.clear();
+
+        }
+
+    }
+
+    catch(error) {
+
+        console.log(error);
+
+    }
+
+
+    leitorAtivo = false;
+
+
+    document
+    .getElementById("btnIniciar")
+    .style.display = "block";
+
+
+    document
+    .getElementById("btnParar")
+    .style.display = "none";
+
+
+    document
+    .getElementById("mensagemCamera")
+    .innerHTML =
+    "Clique em <strong>INICIAR LEITOR</strong> para abrir a câmera.";
+
+};
+
+
+/* =====================================
+   PROCESSAR QR
+===================================== */
+
+async function processarQR(texto) {
+
+    /* Para evitar várias leituras
+       do mesmo QR */
+
+    await pararLeitor();
+
+
+    try {
+
+        const dados =
+        JSON.parse(texto);
+
+
+        if (
+            !dados.convite ||
+            !dados.nome
+        ) {
 
             mostrarResultado(
+
                 false,
+
                 "",
+
                 "",
+
                 "Este QR Code não pertence ao sistema de convites."
+
             );
 
             return;
         }
 
+
         await verificarConvite(
+
             dados.convite,
+
             dados.nome
+
         );
 
     }
 
     catch(error) {
 
+        console.error(error);
+
+
         mostrarResultado(
+
             false,
+
             "",
+
             "",
-            "QR Code inválido."
+
+            "❌ QR Code inválido."
+
         );
+
     }
+
 }
 
 
-async function verificarConvite(numero, nome) {
+/* =====================================
+   VERIFICAR CONVITE
+===================================== */
 
-    const caminho = "convites/" + numero;
+async function verificarConvite(
 
-    const snapshot = await get(
-        ref(db, caminho)
-    );
+    numero,
 
-    if (!snapshot.exists()) {
+    nome
 
-        mostrarResultado(
-            false,
-            numero,
-            nome,
-            "Este convite ainda não foi confirmado."
+) {
+
+    try {
+
+        const caminho =
+        "convites/" + numero;
+
+
+        const snapshot =
+        await get(
+            ref(db, caminho)
         );
 
-        return;
-    }
 
-    const dados = snapshot.val();
+        if (!snapshot.exists()) {
 
-    if (dados.entrou === true) {
+            mostrarResultado(
+
+                false,
+
+                numero,
+
+                nome,
+
+                "Este convite ainda não foi confirmado."
+
+            );
+
+            return;
+        }
+
+
+        const dados =
+        snapshot.val();
+
+
+        if (dados.entrou === true) {
+
+            mostrarResultado(
+
+                false,
+
+                numero,
+
+                dados.nome || nome,
+
+                "⚠️ ESTE CONVITE JÁ FOI UTILIZADO."
+
+            );
+
+            return;
+        }
+
 
         mostrarResultado(
-            false,
+
+            true,
+
             numero,
+
             dados.nome || nome,
-            "ESTE CONVITE JÁ FOI UTILIZADO."
+
+            "CONVITE VÁLIDO — ENTRADA AUTORIZADA."
+
         );
 
-        return;
     }
 
-    mostrarResultado(
-        true,
-        numero,
-        dados.nome || nome,
-        "CONVITE VÁLIDO — ENTRADA AUTORIZADA."
-    );
+    catch(error) {
+
+        console.error(error);
+
+
+        mostrarResultado(
+
+            false,
+
+            numero,
+
+            nome,
+
+            "Erro ao consultar o convite."
+
+        );
+
+    }
+
 }
 
+
+/* =====================================
+   MOSTRAR RESULTADO
+===================================== */
 
 function mostrarResultado(
+
     valido,
+
     numero,
+
     nome,
+
     mensagem
+
 ) {
 
     const resultado =
     document.getElementById("resultado");
 
+
+    resultado.style.display =
+    "block";
+
+
     resultado.className =
     valido
     ? "result valid"
     : "result invalid";
+
 
     resultado.innerHTML = `
 
@@ -510,6 +763,7 @@ function mostrarResultado(
             ""
         }
 
+
         ${
             nome
             ?
@@ -519,6 +773,7 @@ function mostrarResultado(
             :
             ""
         }
+
 
         <div class="status">
 
@@ -530,32 +785,51 @@ function mostrarResultado(
 
         </div>
 
+
         ${
             valido
+
             ?
-            `<button onclick="marcarEntrada('${numero}')">
+
+            `<button
+                onclick="marcarEntrada('${numero}')">
+
                 ✅ MARCAR COMO ENTROU
+
             </button>`
+
             :
+
             ""
+
         }
 
     `;
 
-    resultado.classList.remove("hidden");
 }
 
 
-window.marcarEntrada = async function(numero) {
+/* =====================================
+   REGISTRAR ENTRADA
+===================================== */
+
+window.marcarEntrada =
+async function(numero) {
 
     try {
 
-        const caminho = "convites/" + numero;
+        const caminho =
+        "convites/" + numero;
 
-        const agora = new Date();
+
+        const agora =
+        new Date();
+
 
         await update(
+
             ref(db, caminho),
+
             {
 
                 entrou: true,
@@ -567,13 +841,17 @@ window.marcarEntrada = async function(numero) {
                 agora.toLocaleDateString("pt-PT")
 
             }
+
         );
 
 
         const resultado =
         document.getElementById("resultado");
 
-        resultado.className = "result valid";
+
+        resultado.className =
+        "result valid";
+
 
         resultado.innerHTML = `
 
@@ -581,9 +859,13 @@ window.marcarEntrada = async function(numero) {
                 ${numero}
             </div>
 
+
             <div class="result-name">
+
                 ENTRADA REGISTRADA
+
             </div>
+
 
             <div class="status">
 
@@ -601,68 +883,45 @@ window.marcarEntrada = async function(numero) {
 
         `;
 
+
         carregarLista();
 
     }
 
     catch(error) {
 
-        mostrarResultado(
-            false,
-            numero,
-            "",
-            "Erro ao registrar a entrada."
-        );
-
         console.error(error);
-    }
-
-};
 
 
-window.pararScanner = function() {
+        mostrarResultado(
 
-    scanning = false;
+            false,
 
-    if (stream) {
+            numero,
 
-        stream
-        .getTracks()
-        .forEach(
-            track => track.stop()
+            "",
+
+            "Erro ao registrar a entrada."
+
         );
 
-        stream = null;
     }
 
-    document
-    .getElementById("video")
-    .classList
-    .add("hidden");
-
-    document
-    .getElementById("btnParar")
-    .classList
-    .add("hidden");
-
-    document
-    .getElementById("btnIniciar")
-    .classList
-    .remove("hidden");
-
-    document
-    .getElementById("scannerBox")
-    .classList
-    .remove("hidden");
 };
 
+
+/* =====================================
+   LISTA DE CONVIDADOS
+===================================== */
 
 async function carregarLista() {
 
     const lista =
     document.getElementById("lista");
 
+
     lista.innerHTML = "";
+
 
     const convidados = [
 
@@ -694,58 +953,112 @@ async function carregarLista() {
     ];
 
 
-    for (const pessoa of convidados) {
+    for (
+        const pessoa of convidados
+    ) {
 
-        const snapshot =
-        await get(
-            ref(
-                db,
-                "convites/" + pessoa.numero
-            )
-        );
+        try {
 
-        const div =
-        document.createElement("div");
+            const snapshot =
+            await get(
 
-        div.className = "pessoa";
+                ref(
+
+                    db,
+
+                    "convites/" +
+                    pessoa.numero
+
+                )
+
+            );
 
 
-        if (snapshot.exists()) {
+            const div =
+            document.createElement("div");
 
-            const dados = snapshot.val();
 
-            if (dados.entrou === true) {
+            div.className =
+            "pessoa";
 
-                div.innerHTML = `
 
-                    <strong>
-                        CONVITE ${pessoa.numero}
-                        — ${dados.nome}
-                    </strong>
+            if (snapshot.exists()) {
 
-                    <span class="entrou">
-                        🟢 JÁ ENTROU
-                    </span>
+                const dados =
+                snapshot.val();
 
-                `;
 
-            }
+                if (dados.entrou === true) {
 
-            else if (dados.confirmado === true) {
+                    div.innerHTML = `
 
-                div.innerHTML = `
+                        <strong>
 
-                    <strong>
-                        CONVITE ${pessoa.numero}
-                        — ${dados.nome}
-                    </strong>
+                            CONVITE
+                            ${pessoa.numero}
+                            —
+                            ${dados.nome || pessoa.nome}
 
-                    <span class="confirmado">
-                        🟡 CONFIRMADO —
-                        AINDA NÃO ENTROU
-                    </span>
+                        </strong>
 
-                `;
+                        <span class="entrou">
+
+                            🟢 JÁ ENTROU
+
+                        </span>
+
+                    `;
+
+                }
+
+                else if (
+                    dados.confirmado === true
+                ) {
+
+                    div.innerHTML = `
+
+                        <strong>
+
+                            CONVITE
+                            ${pessoa.numero}
+                            —
+                            ${dados.nome || pessoa.nome}
+
+                        </strong>
+
+                        <span class="confirmado">
+
+                            🟡 CONFIRMADO —
+                            AINDA NÃO ENTROU
+
+                        </span>
+
+                    `;
+
+                }
+
+                else {
+
+                    div.innerHTML = `
+
+                        <strong>
+
+                            CONVITE
+                            ${pessoa.numero}
+                            —
+                            ${dados.nome || pessoa.nome}
+
+                        </strong>
+
+                        <span class="pendente">
+
+                            ⚪ AINDA NÃO CONFIRMADO
+
+                        </span>
+
+                    `;
+
+                }
 
             }
 
@@ -754,46 +1067,49 @@ async function carregarLista() {
                 div.innerHTML = `
 
                     <strong>
-                        CONVITE ${pessoa.numero}
-                        — ${dados.nome}
+
+                        CONVITE
+                        ${pessoa.numero}
+                        —
+                        ${pessoa.nome}
+
                     </strong>
 
                     <span class="pendente">
+
                         ⚪ AINDA NÃO CONFIRMADO
+
                     </span>
 
                 `;
+
             }
 
+
+            lista.appendChild(div);
+
         }
 
-        else {
+        catch(error) {
 
-            div.innerHTML = `
+            console.error(error);
 
-                <strong>
-                    CONVITE ${pessoa.numero}
-                    — ${pessoa.nome}
-                </strong>
-
-                <span class="pendente">
-                    ⚪ AINDA NÃO CONFIRMADO
-                </span>
-
-            `;
         }
 
-
-        lista.appendChild(div);
     }
+
 }
 
 
 carregarLista();
 
+
 setInterval(
+
     carregarLista,
+
     5000
+
 );
 
 </script>
