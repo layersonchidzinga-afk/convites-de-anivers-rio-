@@ -179,12 +179,15 @@ button{
     font-weight:bold;
 
     cursor:pointer;
+
+    transition:.2s;
 }
 
 button:hover{
 
     transform:
     translateY(-2px);
+
 }
 
 .number{
@@ -282,6 +285,97 @@ button:hover{
     color:#e5c65a;
 }
 
+/* ================================
+   AVISO DE CONFIRMAÇÃO
+================================ */
+
+.aviso-confirmacao{
+
+    margin:25px auto 15px;
+
+    padding:20px;
+
+    max-width:520px;
+
+    border:1px solid #d4af37;
+
+    border-radius:18px;
+
+    background:
+    rgba(212,175,55,.08);
+
+    color:#f2d66b;
+
+    line-height:1.7;
+
+    font-size:17px;
+
+}
+
+.aviso-confirmacao strong{
+
+    display:block;
+
+    font-size:20px;
+
+    margin-bottom:8px;
+
+}
+
+.btn-whatsapp{
+
+    display:inline-block;
+
+    width:100%;
+
+    max-width:400px;
+
+    padding:17px 25px;
+
+    margin:10px auto;
+
+    border-radius:40px;
+
+    background:
+    linear-gradient(
+        135deg,
+        #15803d,
+        #25d366,
+        #15803d
+    );
+
+    color:white;
+
+    font-weight:bold;
+
+    text-decoration:none;
+
+    font-family:Arial,sans-serif;
+
+    box-shadow:
+    0 5px 25px rgba(37,211,102,.18);
+
+    transition:.2s;
+
+}
+
+.btn-whatsapp:hover{
+
+    transform:
+    translateY(-2px);
+
+}
+
+.confirmacao-status{
+
+    margin-top:15px;
+
+    color:#7dff9b;
+
+    line-height:1.7;
+
+}
+
 .error{
 
     color:#ff7777;
@@ -303,11 +397,13 @@ button:hover{
     .event{
 
         grid-template-columns:1fr;
+
     }
 
     .number{
 
         font-size:90px;
+
     }
 
 }
@@ -505,6 +601,45 @@ button:hover{
     </div>
 
 
+    <!-- ================================
+         AVISO IMPORTANTE
+    ================================= -->
+
+    <div class="aviso-confirmacao">
+
+        <strong>
+            ⚠️ NÃO ESQUEÇA DE CONFIRMAR A PRESENÇA
+        </strong>
+
+        Depois de abrir o convite,
+        confirme a sua presença
+        através do WhatsApp.
+
+    </div>
+
+
+    <!-- ================================
+         BOTÃO WHATSAPP
+    ================================= -->
+
+    <a
+        id="botaoWhatsApp"
+        class="btn-whatsapp"
+        href="#"
+        target="_blank"
+        rel="noopener">
+
+        📱 CONFIRMAR PRESENÇA PELO WHATSAPP
+
+    </a>
+
+
+    <div
+        id="confirmacao"
+        class="confirmacao-status">
+    </div>
+
+
     <div class="status">
 
         🎟️
@@ -547,12 +682,9 @@ button:hover{
     <button
         onclick="confirmarPresenca()">
 
-        CONFIRMAR PRESENÇA
+        ✅ CONFIRMAR PRESENÇA
 
     </button>
-
-
-    <div id="confirmacao"></div>
 
 
 </section>
@@ -592,7 +724,7 @@ from
 const firebaseConfig = {
 
     apiKey:
-    "AIzaSyBWrW1MiiklxpzOgQN7yCVsOJ2MWnhGM",
+    "AIzaSyBWrq1WMiiklxpzOgQN7yCVsOJ2MWnhGM",
 
     authDomain:
     "convite-layerson-naira.firebaseapp.com",
@@ -630,156 +762,130 @@ getDatabase(app);
 
 const convidados = {
 
-
     "da graca":{
         numero:"01",
         nome:"ALLEN DA GRAÇA"
     },
-
 
     "maiquel":{
         numero:"02",
         nome:"ERIK"
     },
 
-
     "mulato":{
         numero:"03",
         nome:"ZOZÓ"
     },
-
 
     "best":{
         numero:"04",
         nome:"LENIA"
     },
 
-
     "eltonisso":{
         numero:"05",
         nome:"ELTON"
     },
-
 
     "te amo":{
         numero:"06",
         nome:"INÊS"
     },
 
-
     "nanas":{
         numero:"07",
         nome:"ADELINO"
     },
-
 
     "the best":{
         numero:"08",
         nome:"CRIPTON"
     },
 
-
     "pretinha":{
         numero:"09",
         nome:"MICHELA"
     },
-
 
     "amiga":{
         numero:"10",
         nome:"MAIDA"
     },
 
-
     "sheshe":{
         numero:"11",
         nome:"SHEIMA"
     },
-
 
     "r":{
         numero:"12",
         nome:"ROSE"
     },
 
-
     "n":{
         numero:"13",
         nome:"NILCA"
     },
-
 
     "gostoso":{
         numero:"14",
         nome:"BENIAS"
     },
 
-
     "marta":{
         numero:"15",
         nome:"MARTINHA"
     },
-
 
     "magwedere":{
         numero:"16",
         nome:"ALICE"
     },
 
-
     "samy":{
         numero:"17",
         nome:"SAMARIA"
     },
-
 
     "eva":{
         numero:"18",
         nome:"EVARCENIA"
     },
 
-
     "baixinha":{
         numero:"19",
         nome:"CHIANA"
     },
-
 
     "belbel":{
         numero:"20",
         nome:"BELISIO"
     },
 
-
     "negro chato":{
         numero:"21",
         nome:"FIGUEREDO"
     },
-
 
     "bangla":{
         numero:"22",
         nome:"ABEL"
     },
 
-
     "momas":{
         numero:"23",
         nome:"MOMED"
     },
-
 
     "tubarao":{
         numero:"24",
         nome:"ERASMO"
     },
 
-
     "del g":{
         numero:"25",
         nome:"IDELIO"
     },
-
 
     "v":{
         numero:"26",
@@ -904,23 +1010,26 @@ window.entrar = function(){
     .src =
     qrURL;
 
+
+    /* =================================
+       PREPARAR WHATSAPP
+    ================================= */
+
+    prepararWhatsApp();
+
 };
 
 
 
 /* =================================
-   CONFIRMAR PRESENÇA
+   PREPARAR WHATSAPP
 ================================= */
 
-window.confirmarPresenca = async function(){
+function prepararWhatsApp(){
 
     if(!convidadoAtual)
         return;
 
-
-    /* =================================
-       ABRIR WHATSAPP IMEDIATAMENTE
-    ================================= */
 
     const numeroWhatsApp =
     "258870739955";
@@ -971,19 +1080,49 @@ window.confirmarPresenca = async function(){
     );
 
 
-    /*
-       Abre o WhatsApp diretamente
-       antes da operação Firebase.
-    */
-
-    window.location.href =
+    document
+    .getElementById("botaoWhatsApp")
+    .href =
     whatsappURL;
 
+}
 
 
-    /* =================================
-       REGISTRAR NO FIREBASE
-    ================================= */
+
+/* =================================
+   CONFIRMAR PRESENÇA
+================================= */
+
+window.confirmarPresenca = async function(){
+
+    if(!convidadoAtual)
+        return;
+
+
+    /* ===============================
+       PRIMEIRO ABRIR WHATSAPP
+    =============================== */
+
+    const botao =
+    document.getElementById("botaoWhatsApp");
+
+
+    if(
+        botao &&
+        botao.href
+    ){
+
+        window.open(
+            botao.href,
+            "_blank"
+        );
+
+    }
+
+
+    /* ===============================
+       GUARDAR NO FIREBASE
+    =============================== */
 
     try{
 
@@ -1025,6 +1164,21 @@ window.confirmarPresenca = async function(){
 
         );
 
+
+        document
+        .getElementById("confirmacao")
+        .innerHTML =
+
+        "✅ PRESENÇA REGISTADA!" +
+
+        "<br>" +
+
+        "O WhatsApp foi aberto com a mensagem pronta." +
+
+        "<br><br>" +
+
+        "Toque em <strong>ENVIAR</strong> no WhatsApp para concluir a confirmação.";
+
     }
 
     catch(error){
@@ -1033,6 +1187,13 @@ window.confirmarPresenca = async function(){
             "Erro ao guardar confirmação:",
             error
         );
+
+        document
+        .getElementById("confirmacao")
+        .innerHTML =
+
+        "⚠️ O WhatsApp foi aberto, " +
+        "mas não foi possível guardar a confirmação.";
 
     }
 
