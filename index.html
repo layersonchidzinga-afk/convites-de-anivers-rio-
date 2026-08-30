@@ -2,8 +2,11 @@
 <!DOCTYPE html>
 <html lang="pt">
 <head>
+
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0">
 
 <title>Convite | Layerson & Naira</title>
 
@@ -16,6 +19,7 @@
 }
 
 body{
+
     min-height:100vh;
 
     background:
@@ -35,15 +39,20 @@ body{
     serif;
 
     display:flex;
+
     justify-content:center;
+
     align-items:center;
 
     padding:15px;
 }
 
 .card{
+
     width:100%;
+
     max-width:700px;
+
     min-height:650px;
 
     padding:45px 25px;
@@ -51,9 +60,11 @@ body{
     text-align:center;
 
     border:1px solid #d4af37;
+
     border-radius:30px;
 
-    background:rgba(5,5,5,.96);
+    background:
+    rgba(5,5,5,.96);
 
     box-shadow:
     0 0 80px
@@ -69,64 +80,90 @@ body{
 }
 
 .small{
+
     color:#b9a76e;
+
     letter-spacing:4px;
+
     font-size:12px;
+
     margin-bottom:25px;
 }
 
 h1{
-    font-size:clamp(45px,10vw,75px);
+
+    font-size:
+    clamp(45px,10vw,75px);
+
     font-weight:normal;
+
     line-height:1.1;
 }
 
 h2{
-    font-size:clamp(30px,8vw,50px);
+
+    font-size:
+    clamp(30px,8vw,50px);
+
     font-weight:normal;
 }
 
 .line{
+
     margin:28px auto;
+
     color:#d4af37;
 }
 
 .text{
+
     color:#bcbcbc;
+
     line-height:1.8;
+
     max-width:520px;
+
     margin:20px auto;
 }
 
 input{
+
     width:100%;
+
     max-width:350px;
 
     padding:17px 20px;
 
     border-radius:40px;
+
     border:1px solid #d4af37;
 
     background:#050505;
+
     color:white;
 
     text-align:center;
+
     font-size:18px;
 
     outline:none;
 }
 
 input:focus{
+
     box-shadow:
     0 0 25px
     rgba(212,175,55,.25);
 }
 
 button{
+
     border:0;
+
     border-radius:40px;
 
     padding:15px 30px;
+
     margin:15px 5px;
 
     background:
@@ -140,35 +177,49 @@ button{
     color:#080808;
 
     font-weight:bold;
-    cursor:pointer;
 
-    transition:.2s;
+    cursor:pointer;
 }
 
 button:hover{
-    transform:translateY(-2px);
+
+    transform:
+    translateY(-2px);
 }
 
 .number{
-    font-size:100px;
+
+    font-size:120px;
+
     color:#d8b845;
+
     margin:15px 0;
 }
 
 .guest{
-    font-size:clamp(35px,9vw,55px);
+
+    font-size:
+    clamp(35px,9vw,55px);
+
     color:#efd167;
+
     margin:20px 0;
 }
 
 .event{
+
     display:grid;
-    grid-template-columns:repeat(3,1fr);
+
+    grid-template-columns:
+    repeat(3,1fr);
+
     gap:10px;
+
     margin:30px 0;
 }
 
 .event div{
+
     padding:20px 8px;
 
     border:
@@ -179,32 +230,47 @@ button:hover{
 }
 
 .label{
+
     color:#777;
+
     font-size:10px;
+
     letter-spacing:2px;
+
     margin-bottom:8px;
 }
 
 .value{
+
     color:#e5c65a;
 }
 
 .qr{
+
     background:#fff;
+
     padding:15px;
+
     border-radius:18px;
+
     display:inline-block;
+
     margin:20px auto;
 }
 
 .qr img{
+
     width:250px;
+
     height:250px;
+
     display:block;
 }
 
 .status{
+
     padding:18px;
+
     margin:20px auto;
 
     border:
@@ -212,53 +278,76 @@ button:hover{
     rgba(212,175,55,.5);
 
     border-radius:15px;
+
     color:#e5c65a;
 }
 
 .error{
+
     color:#ff7777;
+
     margin-top:15px;
 }
 
 .success{
+
     color:#7dff9b;
+
     margin-top:20px;
+
     line-height:1.7;
 }
 
 .whatsapp{
-    background:#25D366;
+
+    background:
+    linear-gradient(
+        135deg,
+        #168c45,
+        #25d366,
+        #168c45
+    );
+
     color:white;
 }
 
 @media(max-width:600px){
 
     .event{
+
         grid-template-columns:1fr;
     }
 
     .number{
-        font-size:80px;
+
+        font-size:90px;
     }
 
 }
 
 </style>
+
 </head>
+
 
 <body>
 
+
 <div class="card">
 
-<!-- =========================
+
+<!-- =================================
      TELA DO PIN
-========================= -->
+================================= -->
 
 <section id="inicio">
 
     <div class="small">
+
         CONVITE ESPECIAL
+
     </div>
+
 
     <h1>
 
@@ -278,9 +367,13 @@ button:hover{
 
     </h1>
 
+
     <div class="line">
+
         ◆ ───────── ◆
+
     </div>
+
 
     <p class="text">
 
@@ -293,6 +386,7 @@ button:hover{
 
     </p>
 
+
     <input
         id="pin"
         type="password"
@@ -300,38 +394,67 @@ button:hover{
         autocomplete="off"
     >
 
+
     <br>
 
+
     <button onclick="entrar()">
+
         ABRIR CONVITE ✦
+
     </button>
 
-    <div id="erro" class="error"></div>
+
+    <div
+        id="erro"
+        class="error">
+    </div>
 
 </section>
 
 
-<!-- =========================
-     CONVITE
-========================= -->
 
-<section id="convite" class="hidden">
+<!-- =================================
+     CONVITE
+================================= -->
+
+<section
+    id="convite"
+    class="hidden"
+>
+
 
     <div class="small">
+
         SEU CONVITE
+
     </div>
 
-    <div id="numero" class="number">
+
+    <div
+        id="numero"
+        class="number">
+
         01
+
     </div>
+
 
     <div class="line">
+
         ◆ ───────── ◆
+
     </div>
 
-    <div id="nome" class="guest">
-        CONVIDADO
+
+    <div
+        id="nome"
+        class="guest">
+
+        ALLEN DA GRAÇA
+
     </div>
+
 
     <p class="text">
 
@@ -343,6 +466,7 @@ button:hover{
         este momento contigo.
 
     </p>
+
 
     <h2>
 
@@ -356,9 +480,12 @@ button:hover{
 
     </h2>
 
+
     <div class="event">
 
+
         <div>
+
             <div class="label">
                 DATA
             </div>
@@ -366,9 +493,12 @@ button:hover{
             <div class="value">
                 19 de setembro de 2026
             </div>
+
         </div>
 
+
         <div>
+
             <div class="label">
                 HORA
             </div>
@@ -376,9 +506,12 @@ button:hover{
             <div class="value">
                 16h30
             </div>
+
         </div>
 
+
         <div>
+
             <div class="label">
                 LOCAL
             </div>
@@ -386,9 +519,12 @@ button:hover{
             <div class="value">
                 Salão Rosita
             </div>
+
         </div>
 
+
     </div>
+
 
     <div class="status">
 
@@ -404,6 +540,7 @@ button:hover{
 
     </div>
 
+
     <div class="qr">
 
         <img
@@ -412,6 +549,7 @@ button:hover{
         >
 
     </div>
+
 
     <p class="text">
 
@@ -426,27 +564,33 @@ button:hover{
 
     </p>
 
-    <button
-        class="whatsapp"
-        onclick="confirmarPresenca()"
-    >
 
-        📲 CONFIRMAR PRESENÇA
+    <button
+        onclick="confirmarPresenca()">
+
+        CONFIRMAR PRESENÇA
 
     </button>
 
-    <div id="confirmacao"></div>
+
+    <div
+        id="confirmacao">
+    </div>
+
 
 </section>
+
 
 </div>
 
 
+
 <script type="module">
 
-/* ==========================================
+
+/* =================================
    FIREBASE
-========================================== */
+================================= */
 
 import {
     initializeApp
@@ -454,10 +598,17 @@ import {
 from
 "https://www.gstatic.com/firebasejs/12.1.0/firebase-app.js";
 
+
 import {
+
     getDatabase,
+
     ref,
-    set
+
+    set,
+
+    get
+
 }
 from
 "https://www.gstatic.com/firebasejs/12.1.0/firebase-database.js";
@@ -492,145 +643,168 @@ const firebaseConfig = {
 const app =
 initializeApp(firebaseConfig);
 
+
 const db =
 getDatabase(app);
 
 
-/* ==========================================
-   26 CONVIDADOS REAIS
-========================================== */
+
+/* =================================
+   CONVIDADOS — 26
+================================= */
 
 const convidados = {
 
-    /* ===== ANTIGOS ===== */
 
     "da graca":{
         numero:"01",
         nome:"ALLEN DA GRAÇA"
     },
 
+
     "maiquel":{
         numero:"02",
         nome:"ERIK"
     },
+
 
     "mulato":{
         numero:"03",
         nome:"ZOZÓ"
     },
 
+
     "best":{
         numero:"04",
         nome:"LENIA"
     },
+
 
     "eltonisso":{
         numero:"05",
         nome:"ELTON"
     },
 
+
     "te amo":{
-        numero:"Especial",
+        numero:"06",
         nome:"INÊS"
     },
 
-
-    /* ===== NOVOS ===== */
 
     "nanas":{
         numero:"07",
         nome:"ADELINO"
     },
 
+
     "the best":{
         numero:"08",
         nome:"CRIPTON"
     },
+
 
     "pretinha":{
         numero:"09",
         nome:"MICHELA"
     },
 
+
     "amiga":{
         numero:"10",
         nome:"MAIDA"
     },
+
 
     "sheshe":{
         numero:"11",
         nome:"SHEIMA"
     },
 
+
     "r":{
         numero:"12",
         nome:"ROSE"
     },
+
 
     "n":{
         numero:"13",
         nome:"NILCA"
     },
 
+
     "gostoso":{
         numero:"14",
         nome:"BENIAS"
     },
+
 
     "marta":{
         numero:"15",
         nome:"MARTINHA"
     },
 
+
     "magwedere":{
         numero:"16",
         nome:"ALICE"
     },
+
 
     "samy":{
         numero:"17",
         nome:"SAMARIA"
     },
 
+
     "eva":{
         numero:"18",
         nome:"EVARCENIA"
     },
+
 
     "baixinha":{
         numero:"19",
         nome:"CHIANA"
     },
 
+
     "belbel":{
         numero:"20",
         nome:"BELISIO"
     },
+
 
     "negro chato":{
         numero:"21",
         nome:"FIGUEREDO"
     },
 
+
     "bangla":{
         numero:"22",
         nome:"ABEL"
     },
+
 
     "momas":{
         numero:"23",
         nome:"MOMED"
     },
 
+
     "tubarao":{
         numero:"24",
         nome:"ERASMO"
     },
 
+
     "del g":{
         numero:"25",
         nome:"IDELIO"
     },
+
 
     "v":{
         numero:"26",
@@ -640,12 +814,14 @@ const convidados = {
 };
 
 
+
 let convidadoAtual = null;
 
 
-/* ==========================================
+
+/* =================================
    ENTRAR
-========================================== */
+================================= */
 
 window.entrar = async function(){
 
@@ -656,17 +832,21 @@ window.entrar = async function(){
     .trim()
     .toLowerCase();
 
+
     const erro =
     document
     .getElementById("erro");
 
 
-    if(!convidados[pin]){
+    if(
+        !convidados[pin]
+    ){
 
         erro.textContent =
         "PIN incorreto. Tente novamente.";
 
         return;
+
     }
 
 
@@ -698,9 +878,10 @@ window.entrar = async function(){
     convidadoAtual.nome;
 
 
-    /* =====================================
+
+    /* ===============================
        QR CODE
-    ===================================== */
+    =============================== */
 
     const dadosQR = {
 
@@ -735,8 +916,11 @@ window.entrar = async function(){
     const qrURL =
 
     "https://api.qrserver.com/v1/create-qr-code/" +
+
     "?size=300x300" +
+
     "&data=" +
+
     encodeURIComponent(textoQR);
 
 
@@ -748,9 +932,10 @@ window.entrar = async function(){
 };
 
 
-/* ==========================================
+
+/* =================================
    CONFIRMAR PRESENÇA
-========================================== */
+================================= */
 
 window.confirmarPresenca =
 async function(){
@@ -759,14 +944,17 @@ async function(){
         return;
 
 
-    /* ===== SALVAR NO FIREBASE ===== */
+    const caminho =
+    "convites/" +
+    convidadoAtual.numero;
+
 
     try{
 
-        const caminho =
-        "convites/" +
-        convidadoAtual.numero;
 
+        /* ============================
+           GRAVAR NO FIREBASE
+        ============================ */
 
         await set(
 
@@ -805,99 +993,148 @@ async function(){
 
         );
 
-    }catch(erro){
 
-        console.log(
-            "Erro Firebase:",
-            erro
+        /* ============================
+           MENSAGEM WHATSAPP
+        ============================ */
+
+        const numeroWhatsApp =
+        "258870739955";
+
+
+        const mensagem =
+
+        "🎉 CONFIRMAÇÃO DE PRESENÇA" +
+
+        "\n\n" +
+
+        "Convidado: " +
+        convidadoAtual.nome +
+
+        "\n" +
+
+        "Convite: " +
+        convidadoAtual.numero +
+
+        "\n\n" +
+
+        "Confirmo a minha presença " +
+        "no aniversário de Layerson & Naira." +
+
+        "\n\n" +
+
+        "📅 19 de setembro de 2026" +
+
+        "\n" +
+
+        "🕟 16h30" +
+
+        "\n" +
+
+        "📍 Salão Rosita";
+
+
+        const whatsappURL =
+
+        "https://wa.me/" +
+
+        numeroWhatsApp +
+
+        "?text=" +
+
+        encodeURIComponent(
+            mensagem
         );
+
+
+        /* Abrir WhatsApp */
+
+        window.open(
+            whatsappURL,
+            "_blank"
+        );
+
+
+        document
+        .getElementById("confirmacao")
+        .innerHTML =
+
+        `
+
+        <div class="success">
+
+            ✅ <strong>
+            PRESENÇA CONFIRMADA!
+            </strong>
+
+            <br><br>
+
+            A confirmação foi registrada.
+
+            <br>
+
+            O WhatsApp foi aberto
+            para enviar a mensagem.
+
+        </div>
+
+        `;
 
     }
 
 
-    /* ===== WHATSAPP ===== */
+    catch(error){
 
-    const numeroWhatsApp =
-    "258870739955";
-
-
-    const mensagem =
-
-    "🎉 CONFIRMAÇÃO DE PRESENÇA" +
-    "\n\n" +
-
-    "👤 Convidado: " +
-    convidadoAtual.nome +
-
-    "\n🎟️ Convite nº: " +
-    convidadoAtual.numero +
-
-    "\n📅 Data: 19 de setembro de 2026" +
-
-    "\n🕟 Hora: 16h30" +
-
-    "\n📍 Local: Salão Rosita" +
-
-    "\n\n✅ O convidado confirmou presença.";
+        console.error(error);
 
 
-    const whatsappURL =
+        document
+        .getElementById("confirmacao")
+        .innerHTML =
 
-    "https://wa.me/" +
-    numeroWhatsApp +
-    "?text=" +
-    encodeURIComponent(mensagem);
+        `
 
+        <div class="error">
 
-    window.open(
-        whatsappURL,
-        "_blank"
-    );
+            ❌ Não foi possível
+            confirmar a presença.
 
+            <br><br>
 
-    /* ===== CONFIRMAÇÃO NA PÁGINA ===== */
+            Tente novamente.
 
-    document
-    .getElementById("confirmacao")
-    .innerHTML =
+        </div>
 
-    `
+        `;
 
-    <div class="success">
-
-        ✅ <strong>
-        PRESENÇA CONFIRMADA!
-        </strong>
-
-        <br><br>
-
-        A confirmação foi preparada
-        para envio no WhatsApp.
-
-    </div>
-
-    `;
+    }
 
 };
 
 
-/* ==========================================
+
+/* =================================
    ENTER NO PIN
-========================================== */
+================================= */
 
 document
 .getElementById("pin")
 .addEventListener(
+
     "keydown",
+
     function(e){
 
-        if(e.key === "Enter"){
+        if(
+            e.key === "Enter"
+        ){
 
             entrar();
 
         }
 
     }
+
 );
 
 </script>
