@@ -1,210 +1,408 @@
+```html
 <!DOCTYPE html>
 <html lang="pt">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Controle de Entrada | Layerson & Naira</title>
+<meta charset="UTF-8">
+
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0">
+
+<title>Entrada | Layerson & Naira</title>
 
 <style>
-* {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
+
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
 }
 
-body {
-    min-height: 100vh;
+body{
+
+    min-height:100vh;
+
     background:
-        radial-gradient(circle at top, #604b16 0%, #211906 28%, #060606 70%, #000 100%);
-    color: white;
-    font-family: Arial, sans-serif;
-    padding: 20px;
+    radial-gradient(
+        circle at top,
+        #604b16 0%,
+        #211906 28%,
+        #060606 70%,
+        #000 100%
+    );
+
+    color:white;
+
+    font-family:Arial,sans-serif;
+
+    padding:20px;
 }
 
-.container {
-    width: 100%;
-    max-width: 700px;
-    margin: auto;
+.container{
+
+    width:100%;
+
+    max-width:750px;
+
+    margin:auto;
 }
 
-.card {
-    background: rgba(8,8,8,.97);
-    border: 1px solid #d4af37;
-    border-radius: 25px;
-    padding: 30px 20px;
-    margin-bottom: 20px;
-    box-shadow: 0 0 60px rgba(212,175,55,.15);
+.card{
+
+    background:rgba(8,8,8,.97);
+
+    border:1px solid #d4af37;
+
+    border-radius:25px;
+
+    padding:30px 20px;
+
+    margin-bottom:20px;
+
+    box-shadow:
+    0 0 60px
+    rgba(212,175,55,.15);
 }
 
-h1 {
-    text-align: center;
-    color: #e5c65a;
-    font-size: 30px;
-    margin-bottom: 10px;
+h1{
+
+    text-align:center;
+
+    color:#e5c65a;
+
+    font-size:30px;
+
+    margin-bottom:10px;
 }
 
-.subtitle {
-    text-align: center;
-    color: #aaa;
-    line-height: 1.7;
-    margin-bottom: 25px;
+.subtitle{
+
+    text-align:center;
+
+    color:#aaa;
+
+    line-height:1.7;
+
+    margin-bottom:25px;
 }
 
-#reader {
-    width: 100%;
-    max-width: 500px;
-    margin: auto;
-    border-radius: 20px;
-    overflow: hidden;
+#reader{
+
+    width:100%;
+
+    max-width:500px;
+
+    margin:auto;
+
+    border-radius:20px;
+
+    overflow:hidden;
 }
 
-#reader video {
-    border-radius: 15px !important;
+#reader video{
+
+    border-radius:15px !important;
 }
 
-button {
-    width: 100%;
-    padding: 17px;
-    margin-top: 15px;
-    border: 0;
-    border-radius: 40px;
-    background: linear-gradient(
+button{
+
+    width:100%;
+
+    padding:17px;
+
+    margin-top:15px;
+
+    border:0;
+
+    border-radius:40px;
+
+    background:
+    linear-gradient(
         135deg,
         #a77a18,
         #f0d66b,
         #a77a18
     );
-    color: #080808;
-    font-weight: bold;
-    font-size: 16px;
-    cursor: pointer;
+
+    color:#080808;
+
+    font-weight:bold;
+
+    font-size:16px;
+
+    cursor:pointer;
 }
 
-button:active {
-    transform: scale(.98);
+button:active{
+
+    transform:scale(.98);
 }
 
-.result {
-    margin-top: 25px;
-    padding: 25px;
-    border-radius: 20px;
-    text-align: center;
+.result{
+
+    margin-top:25px;
+
+    padding:25px;
+
+    border-radius:20px;
+
+    text-align:center;
 }
 
-.valid {
-    background: rgba(40,150,70,.15);
-    border: 1px solid #4bea7d;
+.valid{
+
+    background:rgba(40,150,70,.15);
+
+    border:1px solid #4bea7d;
 }
 
-.invalid {
-    background: rgba(170,30,30,.15);
-    border: 1px solid #ff5555;
+.invalid{
+
+    background:rgba(170,30,30,.15);
+
+    border:1px solid #ff5555;
 }
 
-.result-number {
-    font-size: 60px;
-    color: #e5c65a;
-    margin-bottom: 10px;
+.result-number{
+
+    font-size:60px;
+
+    color:#e5c65a;
+
+    margin-bottom:10px;
 }
 
-.result-name {
-    font-size: 28px;
-    margin-bottom: 18px;
+.result-name{
+
+    font-size:28px;
+
+    margin-bottom:18px;
 }
 
-.status {
-    font-size: 18px;
-    line-height: 1.7;
+.status{
+
+    font-size:18px;
+
+    line-height:1.7;
 }
 
-.hidden {
-    display: none;
+.info{
+
+    text-align:center;
+
+    color:#aaa;
+
+    line-height:1.6;
+
+    margin:15px 0;
 }
 
-.lista {
-    margin-top: 20px;
+.erro{
+
+    color:#ff7777;
+
+    text-align:center;
+
+    margin-top:15px;
 }
 
-.pessoa {
-    padding: 18px 5px;
-    border-bottom: 1px solid rgba(212,175,55,.2);
+.success{
+
+    color:#55ed82;
+
+    margin-top:20px;
+
+    line-height:1.7;
 }
 
-.pessoa strong {
-    color: #e5c65a;
+
+/* ==============================
+   CONTADORES
+============================== */
+
+.contadores{
+
+    display:grid;
+
+    grid-template-columns:
+    repeat(4,1fr);
+
+    gap:10px;
+
+    margin:25px 0;
 }
 
-.pessoa span {
-    display: block;
-    margin-top: 7px;
+.contador{
+
+    padding:15px 5px;
+
+    border:1px solid
+    rgba(212,175,55,.3);
+
+    border-radius:15px;
+
+    text-align:center;
 }
 
-.entrou {
-    color: #55ed82;
+.contador-numero{
+
+    font-size:30px;
+
+    color:#e5c65a;
+
+    font-weight:bold;
 }
 
-.confirmado {
-    color: #ffca58;
+.contador-label{
+
+    color:#999;
+
+    font-size:11px;
+
+    margin-top:7px;
+
+    line-height:1.3;
 }
 
-.pendente {
-    color: #888;
+
+/* ==============================
+   LISTA
+============================== */
+
+.lista{
+
+    margin-top:20px;
 }
 
-.info {
-    text-align: center;
-    color: #aaa;
-    line-height: 1.6;
-    margin: 15px 0;
+.pessoa{
+
+    padding:18px 8px;
+
+    border-bottom:
+    1px solid
+    rgba(212,175,55,.2);
 }
 
-.erro {
-    color: #ff7777;
-    text-align: center;
-    margin-top: 15px;
+.pessoa strong{
+
+    color:#e5c65a;
+
+    font-size:17px;
 }
 
-.sucesso {
-    color: #55ed82;
+.pessoa span{
+
+    display:block;
+
+    margin-top:7px;
+
+    font-weight:bold;
 }
 
-@media(max-width:500px) {
+.entrou{
 
-    .card {
-        padding: 22px 15px;
+    color:#55ed82;
+}
+
+.confirmado{
+
+    color:#ffca58;
+}
+
+.pendente{
+
+    color:#aaa;
+}
+
+.estado{
+
+    display:inline-block;
+
+    padding:5px 10px;
+
+    border-radius:20px;
+
+    margin-top:8px;
+
+    font-size:12px;
+}
+
+
+/* ==============================
+   BOTÃO NOVO SCAN
+============================== */
+
+.btnNovo{
+
+    background:#111;
+
+    color:#e5c65a;
+
+    border:1px solid #d4af37;
+}
+
+
+/* ==============================
+   MOBILE
+============================== */
+
+@media(max-width:600px){
+
+    .contadores{
+
+        grid-template-columns:
+        repeat(2,1fr);
     }
 
-    h1 {
-        font-size: 25px;
+    .card{
+
+        padding:22px 15px;
     }
 
-    .result-number {
-        font-size: 50px;
+    h1{
+
+        font-size:25px;
     }
 
-    .result-name {
-        font-size: 24px;
+    .result-number{
+
+        font-size:50px;
     }
+
+    .result-name{
+
+        font-size:24px;
+    }
+
 }
+
 </style>
+
 </head>
+
 
 <body>
 
+
 <div class="container">
 
-<!-- =====================================
-     CONTROLE DE ENTRADA
-===================================== -->
+
+<!-- =================================
+     CABEÇALHO
+================================= -->
 
 <div class="card">
 
-<h1>🎟️ CONTROLE DE ENTRADA</h1>
+<h1>
+🎟️ CONTROLE DE ENTRADA
+</h1>
+
 
 <div class="subtitle">
 
-<strong>LAYESON &amp; NAIRA</strong>
+<strong>
+LAYESON &amp; NAIRA
+</strong>
 
 <br>
 
@@ -212,7 +410,93 @@ button:active {
 
 <br>
 
-18h00 — Salão Rosita
+16h30 — Salão Rosita
+
+</div>
+
+
+<!-- =================================
+     CONTADORES
+================================= -->
+
+<div class="contadores">
+
+
+<div class="contador">
+
+<div
+id="total"
+class="contador-numero">
+
+26
+
+</div>
+
+<div class="contador-label">
+
+TOTAL
+
+</div>
+
+</div>
+
+
+<div class="contador">
+
+<div
+id="entrou"
+class="contador-numero">
+
+0
+
+</div>
+
+<div class="contador-label">
+
+ENTRARAM
+
+</div>
+
+</div>
+
+
+<div class="contador">
+
+<div
+id="confirmados"
+class="contador-numero">
+
+0
+
+</div>
+
+<div class="contador-label">
+
+CONFIRMADOS
+
+</div>
+
+</div>
+
+
+<div class="contador">
+
+<div
+id="pendentes"
+class="contador-numero">
+
+26
+
+</div>
+
+<div class="contador-label">
+
+PENDENTES
+
+</div>
+
+</div>
+
 
 </div>
 
@@ -225,14 +509,19 @@ do convite do convidado.
 </div>
 
 
-<!-- LEITOR QR -->
+<!-- =================================
+     LEITOR
+================================= -->
 
 <div id="reader"></div>
 
 
-<div id="mensagemCamera" class="info">
+<div
+id="mensagemCamera"
+class="info">
 
-Clique em <strong>INICIAR LEITOR</strong>
+Clique em
+<strong>INICIAR LEITOR</strong>
 para abrir a câmera.
 
 </div>
@@ -257,24 +546,41 @@ style="display:none;">
 </button>
 
 
-<!-- RESULTADO -->
+<!-- =================================
+     RESULTADO
+================================= -->
 
 <div
 id="resultado"
 style="display:none;">
-</div>
-
 
 </div>
 
 
-<!-- =====================================
-     LISTA DE CONVIDADOS
-===================================== -->
+</div>
+
+
+
+<!-- =================================
+     LISTA DOS CONVIDADOS
+================================= -->
 
 <div class="card">
 
-<h1>📋 CONVIDADOS</h1>
+<h1>
+📋 CONVIDADOS
+</h1>
+
+
+<div
+class="info">
+
+🟢 ENTROU &nbsp; | &nbsp;
+🟡 CONFIRMADO &nbsp; | &nbsp;
+⚪ NÃO CONFIRMADO
+
+</div>
+
 
 <div id="lista">
 
@@ -282,51 +588,64 @@ A carregar convidados...
 
 </div>
 
-</div>
-
 
 </div>
 
 
-<!-- =====================================
-     BIBLIOTECA QR CODE
-===================================== -->
-
-<script src="https://unpkg.com/html5-qrcode"
-crossorigin="anonymous"></script>
+</div>
 
 
-<!-- =====================================
+
+<!-- =================================
+     BIBLIOTECA QR
+================================= -->
+
+<script
+src="https://unpkg.com/html5-qrcode"
+crossorigin="anonymous">
+</script>
+
+
+
+<!-- =================================
      FIREBASE
-===================================== -->
+================================= -->
 
 <script type="module">
 
 import {
     initializeApp
 }
+
 from
 "https://www.gstatic.com/firebasejs/12.1.0/firebase-app.js";
 
 
 import {
+
     getDatabase,
+
     ref,
+
     get,
+
     update
+
 }
+
 from
 "https://www.gstatic.com/firebasejs/12.1.0/firebase-database.js";
 
 
-/* =====================================
-   CONFIGURAÇÃO FIREBASE
-===================================== */
+
+/* =================================
+   FIREBASE CONFIG
+================================= */
 
 const firebaseConfig = {
 
     apiKey:
-    "AIzaSyBWrcrW1MiiklxpzOgQN7yCVsOJ2MWnhGM",
+    "AIzaSyBWrW1MiiklxpzOgQN7yCVsOJ2MWnhGM",
 
     authDomain:
     "convite-layerson-naira.firebaseapp.com",
@@ -357,28 +676,175 @@ const db =
 getDatabase(app);
 
 
-/* =====================================
-   VARIÁVEL DO LEITOR
-===================================== */
+
+/* =================================
+   26 CONVIDADOS
+================================= */
+
+const convidados = [
+
+    {
+        numero:"01",
+        nome:"ALLEN DA GRAÇA"
+    },
+
+    {
+        numero:"02",
+        nome:"ERIK"
+    },
+
+    {
+        numero:"03",
+        nome:"ZOZÓ"
+    },
+
+    {
+        numero:"04",
+        nome:"LENIA"
+    },
+
+    {
+        numero:"05",
+        nome:"ELTON"
+    },
+
+    {
+        numero:"06",
+        nome:"INÊS"
+    },
+
+    {
+        numero:"07",
+        nome:"ADELINO"
+    },
+
+    {
+        numero:"08",
+        nome:"CRIPTON"
+    },
+
+    {
+        numero:"09",
+        nome:"MICHELA"
+    },
+
+    {
+        numero:"10",
+        nome:"MAIDA"
+    },
+
+    {
+        numero:"11",
+        nome:"SHEIMA"
+    },
+
+    {
+        numero:"12",
+        nome:"ROSE"
+    },
+
+    {
+        numero:"13",
+        nome:"NILCA"
+    },
+
+    {
+        numero:"14",
+        nome:"BENIAS"
+    },
+
+    {
+        numero:"15",
+        nome:"MARTINHA"
+    },
+
+    {
+        numero:"16",
+        nome:"ALICE"
+    },
+
+    {
+        numero:"17",
+        nome:"SAMARIA"
+    },
+
+    {
+        numero:"18",
+        nome:"EVARCENIA"
+    },
+
+    {
+        numero:"19",
+        nome:"CHIANA"
+    },
+
+    {
+        numero:"20",
+        nome:"BELISIO"
+    },
+
+    {
+        numero:"21",
+        nome:"FIGUEREDO"
+    },
+
+    {
+        numero:"22",
+        nome:"ABEL"
+    },
+
+    {
+        numero:"23",
+        nome:"MOMED"
+    },
+
+    {
+        numero:"24",
+        nome:"ERASMO"
+    },
+
+    {
+        numero:"25",
+        nome:"IDELIO"
+    },
+
+    {
+        numero:"26",
+        nome:"IVANIA"
+    }
+
+];
+
+
+
+/* =================================
+   LEITOR
+================================= */
 
 let scanner = null;
 
 let leitorAtivo = false;
 
 
-/* =====================================
-   INICIAR LEITOR
-===================================== */
 
-window.iniciarLeitor = async function() {
+/* =================================
+   INICIAR LEITOR
+================================= */
+
+window.iniciarLeitor =
+async function(){
 
     const mensagem =
-    document.getElementById("mensagemCamera");
+    document
+    .getElementById("mensagemCamera");
 
-    try {
 
-        if (leitorAtivo) {
+    try{
+
+        if(leitorAtivo){
+
             return;
+
         }
 
 
@@ -390,15 +856,19 @@ window.iniciarLeitor = async function() {
         await Html5Qrcode.getCameras();
 
 
-        if (!cameras || cameras.length === 0) {
+        if(
+            !cameras ||
+            cameras.length === 0
+        ){
 
             mensagem.innerHTML =
-            "❌ Nenhuma câmera foi encontrada neste dispositivo.";
+            "❌ Nenhuma câmera encontrada.";
 
             mensagem.className =
             "erro";
 
             return;
+
         }
 
 
@@ -406,17 +876,19 @@ window.iniciarLeitor = async function() {
         cameras[0].id;
 
 
-        /* Preferir câmera traseira */
-
         const traseira =
-        cameras.find(camera =>
+        cameras.find(
+            camera =>
             /back|rear|traseira|environment/i
             .test(camera.label)
         );
 
 
-        if (traseira) {
-            cameraId = traseira.id;
+        if(traseira){
+
+            cameraId =
+            traseira.id;
+
         }
 
 
@@ -425,12 +897,14 @@ window.iniciarLeitor = async function() {
 
         document
         .getElementById("btnIniciar")
-        .style.display = "none";
+        .style.display =
+        "none";
 
 
         document
         .getElementById("btnParar")
-        .style.display = "block";
+        .style.display =
+        "block";
 
 
         mensagem.innerHTML =
@@ -447,27 +921,26 @@ window.iniciarLeitor = async function() {
 
             {
 
-                fps: 10,
+                fps:10,
 
-                qrbox: {
-                    width: 250,
-                    height: 250
+                qrbox:{
+                    width:250,
+                    height:250
                 },
 
-                aspectRatio: 1.0
+                aspectRatio:1.0
 
             },
 
-            function(decodedText) {
+            function(decodedText){
 
                 processarQR(decodedText);
 
             },
 
-            function(errorMessage) {
+            function(errorMessage){
 
-                /* Erros normais durante a procura
-                   do QR Code são ignorados. */
+                /* ignorar erros normais */
 
             }
 
@@ -475,26 +948,29 @@ window.iniciarLeitor = async function() {
 
     }
 
-    catch(error) {
+    catch(error){
 
         console.error(error);
+
 
         leitorAtivo = false;
 
 
         document
         .getElementById("btnIniciar")
-        .style.display = "block";
+        .style.display =
+        "block";
 
 
         document
         .getElementById("btnParar")
-        .style.display = "none";
+        .style.display =
+        "none";
 
 
         mensagem.innerHTML =
         "❌ Não foi possível abrir a câmera.<br><br>" +
-        "Verifique se autorizou o acesso à câmera.";
+        "Autorize o acesso à câmera.";
 
         mensagem.className =
         "erro";
@@ -504,15 +980,20 @@ window.iniciarLeitor = async function() {
 };
 
 
-/* =====================================
+
+/* =================================
    PARAR LEITOR
-===================================== */
+================================= */
 
-window.pararLeitor = async function() {
+window.pararLeitor =
+async function(){
 
-    try {
+    try{
 
-        if (scanner && leitorAtivo) {
+        if(
+            scanner &&
+            leitorAtivo
+        ){
 
             await scanner.stop();
 
@@ -522,7 +1003,7 @@ window.pararLeitor = async function() {
 
     }
 
-    catch(error) {
+    catch(error){
 
         console.log(error);
 
@@ -534,44 +1015,45 @@ window.pararLeitor = async function() {
 
     document
     .getElementById("btnIniciar")
-    .style.display = "block";
+    .style.display =
+    "block";
 
 
     document
     .getElementById("btnParar")
-    .style.display = "none";
+    .style.display =
+    "none";
 
 
     document
     .getElementById("mensagemCamera")
     .innerHTML =
+
     "Clique em <strong>INICIAR LEITOR</strong> para abrir a câmera.";
 
 };
 
 
-/* =====================================
+
+/* =================================
    PROCESSAR QR
-===================================== */
+================================= */
 
-async function processarQR(texto) {
-
-    /* Para evitar várias leituras
-       do mesmo QR */
+async function processarQR(texto){
 
     await pararLeitor();
 
 
-    try {
+    try{
 
         const dados =
         JSON.parse(texto);
 
 
-        if (
+        if(
             !dados.convite ||
             !dados.nome
-        ) {
+        ){
 
             mostrarResultado(
 
@@ -581,11 +1063,12 @@ async function processarQR(texto) {
 
                 "",
 
-                "Este QR Code não pertence ao sistema de convites."
+                "Este QR Code não pertence ao sistema."
 
             );
 
             return;
+
         }
 
 
@@ -599,7 +1082,7 @@ async function processarQR(texto) {
 
     }
 
-    catch(error) {
+    catch(error){
 
         console.error(error);
 
@@ -621,9 +1104,10 @@ async function processarQR(texto) {
 }
 
 
-/* =====================================
+
+/* =================================
    VERIFICAR CONVITE
-===================================== */
+================================= */
 
 async function verificarConvite(
 
@@ -631,21 +1115,17 @@ async function verificarConvite(
 
     nome
 
-) {
+){
 
-    try {
+    try{
 
-        const caminho =
-        "convites/" + numero;
-
-
-        const snapshot =
-        await get(
-            ref(db, caminho)
+        const pessoa =
+        convidados.find(
+            p => p.numero === String(numero)
         );
 
 
-        if (!snapshot.exists()) {
+        if(!pessoa){
 
             mostrarResultado(
 
@@ -655,19 +1135,26 @@ async function verificarConvite(
 
                 nome,
 
-                "Este convite ainda não foi confirmado."
+                "❌ Este número de convite não existe."
 
             );
 
             return;
+
         }
 
 
-        const dados =
-        snapshot.val();
+        const caminho =
+        "convites/" + numero;
 
 
-        if (dados.entrou === true) {
+        const snapshot =
+        await get(
+            ref(db,caminho)
+        );
+
+
+        if(!snapshot.exists()){
 
             mostrarResultado(
 
@@ -675,13 +1162,37 @@ async function verificarConvite(
 
                 numero,
 
-                dados.nome || nome,
+                pessoa.nome,
+
+                "⚪ CONVITE NÃO CONFIRMADO."
+
+            );
+
+            return;
+
+        }
+
+
+        const dados =
+        snapshot.val();
+
+
+        if(dados.entrou === true){
+
+            mostrarResultado(
+
+                false,
+
+                numero,
+
+                dados.nome || pessoa.nome,
 
                 "⚠️ ESTE CONVITE JÁ FOI UTILIZADO."
 
             );
 
             return;
+
         }
 
 
@@ -691,15 +1202,15 @@ async function verificarConvite(
 
             numero,
 
-            dados.nome || nome,
+            dados.nome || pessoa.nome,
 
-            "CONVITE VÁLIDO — ENTRADA AUTORIZADA."
+            "🟢 CONVITE VÁLIDO — ENTRADA AUTORIZADA."
 
         );
 
     }
 
-    catch(error) {
+    catch(error){
 
         console.error(error);
 
@@ -721,9 +1232,10 @@ async function verificarConvite(
 }
 
 
-/* =====================================
+
+/* =================================
    MOSTRAR RESULTADO
-===================================== */
+================================= */
 
 function mostrarResultado(
 
@@ -735,7 +1247,7 @@ function mostrarResultado(
 
     mensagem
 
-) {
+){
 
     const resultado =
     document.getElementById("resultado");
@@ -777,10 +1289,6 @@ function mostrarResultado(
 
         <div class="status">
 
-            ${valido ? "🟢" : "🔴"}
-
-            <br><br>
-
             ${mensagem}
 
         </div>
@@ -804,19 +1312,29 @@ function mostrarResultado(
 
         }
 
+
+        <button
+            class="btnNovo"
+            onclick="novoScan()">
+
+            📷 LER OUTRO CONVITE
+
+        </button>
+
     `;
 
 }
 
 
-/* =====================================
-   REGISTRAR ENTRADA
-===================================== */
+
+/* =================================
+   MARCAR ENTRADA
+================================= */
 
 window.marcarEntrada =
-async function(numero) {
+async function(numero){
 
-    try {
+    try{
 
         const caminho =
         "convites/" + numero;
@@ -828,20 +1346,30 @@ async function(numero) {
 
         await update(
 
-            ref(db, caminho),
+            ref(db,caminho),
 
             {
 
-                entrou: true,
+                entrou:true,
 
                 horaEntrada:
-                agora.toLocaleTimeString("pt-PT"),
+                agora.toLocaleTimeString(
+                    "pt-PT"
+                ),
 
                 dataEntrada:
-                agora.toLocaleDateString("pt-PT")
+                agora.toLocaleDateString(
+                    "pt-PT"
+                )
 
             }
 
+        );
+
+
+        const pessoa =
+        convidados.find(
+            p => p.numero === String(numero)
         );
 
 
@@ -856,13 +1384,18 @@ async function(numero) {
         resultado.innerHTML = `
 
             <div class="result-number">
+
                 ${numero}
+
             </div>
 
 
             <div class="result-name">
 
-                ENTRADA REGISTRADA
+                ${pessoa
+                    ? pessoa.nome
+                    : ""
+                }
 
             </div>
 
@@ -873,13 +1406,24 @@ async function(numero) {
 
                 <br><br>
 
-                CONVITE AUTORIZADO
+                <strong>
+                ENTRADA REGISTRADA
+                </strong>
 
                 <br><br>
 
-                ✅ A PESSOA PODE ENTRAR
+                ✅ A PESSOA PODE ENTRAR.
 
             </div>
+
+
+            <button
+                class="btnNovo"
+                onclick="novoScan()">
+
+                📷 LER OUTRO CONVITE
+
+            </button>
 
         `;
 
@@ -888,7 +1432,7 @@ async function(numero) {
 
     }
 
-    catch(error) {
+    catch(error){
 
         console.error(error);
 
@@ -901,7 +1445,7 @@ async function(numero) {
 
             "",
 
-            "Erro ao registrar a entrada."
+            "❌ Erro ao registrar a entrada."
 
         );
 
@@ -910,11 +1454,31 @@ async function(numero) {
 };
 
 
-/* =====================================
-   LISTA DE CONVIDADOS
-===================================== */
 
-async function carregarLista() {
+/* =================================
+   NOVO SCAN
+================================= */
+
+window.novoScan =
+function(){
+
+    document
+    .getElementById("resultado")
+    .style.display =
+    "none";
+
+
+    iniciarLeitor();
+
+};
+
+
+
+/* =================================
+   CARREGAR LISTA
+================================= */
+
+async function carregarLista(){
 
     const lista =
     document.getElementById("lista");
@@ -923,41 +1487,18 @@ async function carregarLista() {
     lista.innerHTML = "";
 
 
-    const convidados = [
+    let totalEntrou = 0;
 
-        {
-            numero: "01",
-            nome: "ALLEN DA GRAÇA"
-        },
+    let totalConfirmado = 0;
 
-        {
-            numero: "02",
-            nome: "ERIK"
-        },
-
-        {
-            numero: "03",
-            nome: "ZOZÓ"
-        },
-
-        {
-            numero: "04",
-            nome: "LENIA"
-        },
-
-        {
-            numero: "05",
-            nome: "ELTON"
-        }
-
-    ];
+    let totalPendente = 0;
 
 
-    for (
+    for(
         const pessoa of convidados
-    ) {
+    ){
 
-        try {
+        try{
 
             const snapshot =
             await get(
@@ -982,13 +1523,16 @@ async function carregarLista() {
             "pessoa";
 
 
-            if (snapshot.exists()) {
+            if(snapshot.exists()){
 
                 const dados =
                 snapshot.val();
 
 
-                if (dados.entrou === true) {
+                if(dados.entrou === true){
+
+                    totalEntrou++;
+
 
                     div.innerHTML = `
 
@@ -997,13 +1541,13 @@ async function carregarLista() {
                             CONVITE
                             ${pessoa.numero}
                             —
-                            ${dados.nome || pessoa.nome}
+                            ${pessoa.nome}
 
                         </strong>
 
                         <span class="entrou">
 
-                            🟢 JÁ ENTROU
+                            🟢 ENTROU
 
                         </span>
 
@@ -1011,9 +1555,12 @@ async function carregarLista() {
 
                 }
 
-                else if (
+                else if(
                     dados.confirmado === true
-                ) {
+                ){
+
+                    totalConfirmado++;
+
 
                     div.innerHTML = `
 
@@ -1022,14 +1569,14 @@ async function carregarLista() {
                             CONVITE
                             ${pessoa.numero}
                             —
-                            ${dados.nome || pessoa.nome}
+                            ${pessoa.nome}
 
                         </strong>
 
                         <span class="confirmado">
 
-                            🟡 CONFIRMADO —
-                            AINDA NÃO ENTROU
+                            🟡 CONFIRMADO
+                            — AINDA NÃO ENTROU
 
                         </span>
 
@@ -1037,7 +1584,10 @@ async function carregarLista() {
 
                 }
 
-                else {
+                else{
+
+                    totalPendente++;
+
 
                     div.innerHTML = `
 
@@ -1046,13 +1596,13 @@ async function carregarLista() {
                             CONVITE
                             ${pessoa.numero}
                             —
-                            ${dados.nome || pessoa.nome}
+                            ${pessoa.nome}
 
                         </strong>
 
                         <span class="pendente">
 
-                            ⚪ AINDA NÃO CONFIRMADO
+                            ⚪ NÃO CONFIRMADO
 
                         </span>
 
@@ -1062,7 +1612,10 @@ async function carregarLista() {
 
             }
 
-            else {
+            else{
+
+                totalPendente++;
+
 
                 div.innerHTML = `
 
@@ -1077,7 +1630,7 @@ async function carregarLista() {
 
                     <span class="pendente">
 
-                        ⚪ AINDA NÃO CONFIRMADO
+                        ⚪ NÃO CONFIRMADO
 
                     </span>
 
@@ -1090,7 +1643,7 @@ async function carregarLista() {
 
         }
 
-        catch(error) {
+        catch(error){
 
             console.error(error);
 
@@ -1098,11 +1651,42 @@ async function carregarLista() {
 
     }
 
+
+    document
+    .getElementById("total")
+    .textContent =
+    convidados.length;
+
+
+    document
+    .getElementById("entrou")
+    .textContent =
+    totalEntrou;
+
+
+    document
+    .getElementById("confirmados")
+    .textContent =
+    totalConfirmado;
+
+
+    document
+    .getElementById("pendentes")
+    .textContent =
+    totalPendente;
+
 }
 
 
+
+/* =================================
+   INICIAR LISTA
+================================= */
+
 carregarLista();
 
+
+/* Atualizar a cada 5 segundos */
 
 setInterval(
 
@@ -1116,3 +1700,4 @@ setInterval(
 
 </body>
 </html>
+```
