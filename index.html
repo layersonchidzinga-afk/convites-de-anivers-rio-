@@ -298,19 +298,6 @@ button:hover{
     line-height:1.7;
 }
 
-.whatsapp{
-
-    background:
-    linear-gradient(
-        135deg,
-        #168c45,
-        #25d366,
-        #168c45
-    );
-
-    color:white;
-}
-
 @media(max-width:600px){
 
     .event{
@@ -343,9 +330,7 @@ button:hover{
 <section id="inicio">
 
     <div class="small">
-
         CONVITE ESPECIAL
-
     </div>
 
 
@@ -369,9 +354,7 @@ button:hover{
 
 
     <div class="line">
-
         ◆ ───────── ◆
-
     </div>
 
 
@@ -425,9 +408,7 @@ button:hover{
 
 
     <div class="small">
-
         SEU CONVITE
-
     </div>
 
 
@@ -441,9 +422,7 @@ button:hover{
 
 
     <div class="line">
-
         ◆ ───────── ◆
-
     </div>
 
 
@@ -573,9 +552,7 @@ button:hover{
     </button>
 
 
-    <div
-        id="confirmacao">
-    </div>
+    <div id="confirmacao"></div>
 
 
 </section>
@@ -605,9 +582,7 @@ import {
 
     ref,
 
-    set,
-
-    get
+    set
 
 }
 from
@@ -650,7 +625,7 @@ getDatabase(app);
 
 
 /* =================================
-   CONVIDADOS — 26
+   26 CONVIDADOS
 ================================= */
 
 const convidados = {
@@ -823,7 +798,7 @@ let convidadoAtual = null;
    ENTRAR
 ================================= */
 
-window.entrar = async function(){
+window.entrar = function(){
 
     const pin =
     document
@@ -879,9 +854,9 @@ window.entrar = async function(){
 
 
 
-    /* ===============================
+    /* =================================
        QR CODE
-    =============================== */
+    ================================= */
 
     const dadosQR = {
 
@@ -937,30 +912,87 @@ window.entrar = async function(){
    CONFIRMAR PRESENÇA
 ================================= */
 
-window.confirmarPresenca =
-async function(){
+window.confirmarPresenca = async function(){
 
     if(!convidadoAtual)
         return;
 
 
-    const caminho =
-    "convites/" +
-    convidadoAtual.numero;
+    /* =================================
+       ABRIR WHATSAPP IMEDIATAMENTE
+    ================================= */
 
+    const numeroWhatsApp =
+    "258870739955";
+
+
+    const mensagem =
+
+    "🎉 CONFIRMAÇÃO DE PRESENÇA" +
+
+    "\n\n" +
+
+    "Convidado: " +
+    convidadoAtual.nome +
+
+    "\n" +
+
+    "Convite: " +
+    convidadoAtual.numero +
+
+    "\n\n" +
+
+    "Confirmo a minha presença " +
+    "no aniversário de Layerson & Naira." +
+
+    "\n\n" +
+
+    "📅 19 de setembro de 2026" +
+
+    "\n" +
+
+    "🕟 16h30" +
+
+    "\n" +
+
+    "📍 Salão Rosita";
+
+
+    const whatsappURL =
+
+    "https://wa.me/" +
+
+    numeroWhatsApp +
+
+    "?text=" +
+
+    encodeURIComponent(
+        mensagem
+    );
+
+
+    /*
+       Abre o WhatsApp diretamente
+       antes da operação Firebase.
+    */
+
+    window.location.href =
+    whatsappURL;
+
+
+
+    /* =================================
+       REGISTRAR NO FIREBASE
+    ================================= */
 
     try{
-
-
-        /* ============================
-           GRAVAR NO FIREBASE
-        ============================ */
 
         await set(
 
             ref(
                 db,
-                caminho
+                "convites/" +
+                convidadoAtual.numero
             ),
 
             {
@@ -993,119 +1025,14 @@ async function(){
 
         );
 
-
-        /* ============================
-           MENSAGEM WHATSAPP
-        ============================ */
-
-        const numeroWhatsApp =
-        "258870739955";
-
-
-        const mensagem =
-
-        "🎉 CONFIRMAÇÃO DE PRESENÇA" +
-
-        "\n\n" +
-
-        "Convidado: " +
-        convidadoAtual.nome +
-
-        "\n" +
-
-        "Convite: " +
-        convidadoAtual.numero +
-
-        "\n\n" +
-
-        "Confirmo a minha presença " +
-        "no aniversário de Layerson & Naira." +
-
-        "\n\n" +
-
-        "📅 19 de setembro de 2026" +
-
-        "\n" +
-
-        "🕟 16h30" +
-
-        "\n" +
-
-        "📍 Salão Rosita";
-
-
-        const whatsappURL =
-
-        "https://wa.me/" +
-
-        numeroWhatsApp +
-
-        "?text=" +
-
-        encodeURIComponent(
-            mensagem
-        );
-
-
-        /* Abrir WhatsApp */
-
-        window.open(
-            whatsappURL,
-            "_blank"
-        );
-
-
-        document
-        .getElementById("confirmacao")
-        .innerHTML =
-
-        `
-
-        <div class="success">
-
-            ✅ <strong>
-            PRESENÇA CONFIRMADA!
-            </strong>
-
-            <br><br>
-
-            A confirmação foi registrada.
-
-            <br>
-
-            O WhatsApp foi aberto
-            para enviar a mensagem.
-
-        </div>
-
-        `;
-
     }
-
 
     catch(error){
 
-        console.error(error);
-
-
-        document
-        .getElementById("confirmacao")
-        .innerHTML =
-
-        `
-
-        <div class="error">
-
-            ❌ Não foi possível
-            confirmar a presença.
-
-            <br><br>
-
-            Tente novamente.
-
-        </div>
-
-        `;
+        console.error(
+            "Erro ao guardar confirmação:",
+            error
+        );
 
     }
 
