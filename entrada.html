@@ -2,10 +2,11 @@
 <!DOCTYPE html>
 <html lang="pt">
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Controle de Entrada | Layerson & Naira</title>
+<title>Entrada | Layerson & Naira</title>
 
 <style>
 
@@ -16,7 +17,9 @@
 }
 
 body{
+
     min-height:100vh;
+
     background:
     radial-gradient(
         circle at top,
@@ -25,61 +28,125 @@ body{
         #060606 70%,
         #000 100%
     );
-    color:white;
+
+    color:#fff;
+
     font-family:Arial,sans-serif;
-    padding:20px;
+
+    padding:15px;
 }
 
 .container{
+
     width:100%;
-    max-width:750px;
+    max-width:800px;
     margin:auto;
 }
 
 .card{
+
     background:rgba(8,8,8,.97);
+
     border:1px solid #d4af37;
+
     border-radius:25px;
-    padding:30px 20px;
+
+    padding:25px 20px;
+
     margin-bottom:20px;
-    box-shadow:0 0 60px rgba(212,175,55,.15);
+
+    box-shadow:
+    0 0 60px
+    rgba(212,175,55,.15);
 }
 
 h1{
+
     text-align:center;
+
     color:#e5c65a;
-    font-size:30px;
+
+    font-size:29px;
+
     margin-bottom:10px;
 }
 
 .subtitle{
+
     text-align:center;
+
     color:#aaa;
+
     line-height:1.7;
-    margin-bottom:25px;
+
+    margin-bottom:20px;
+}
+
+.hidden{
+
+    display:none !important;
+}
+
+
+/* ================================
+   SENHA
+================================ */
+
+.login-icon{
+
+    font-size:70px;
+
+    text-align:center;
+
+    margin-bottom:15px;
 }
 
 input{
+
     display:block;
+
     width:100%;
+
     max-width:400px;
-    margin:20px auto;
-    padding:17px;
+
+    margin:15px auto;
+
+    padding:17px 20px;
+
     border-radius:40px;
+
     border:1px solid #d4af37;
+
     background:#050505;
-    color:white;
+
+    color:#fff;
+
     text-align:center;
+
     font-size:18px;
+
     outline:none;
 }
 
+input:focus{
+
+    box-shadow:
+    0 0 25px
+    rgba(212,175,55,.3);
+}
+
 button{
+
     width:100%;
-    padding:17px;
-    margin-top:15px;
+
+    padding:16px;
+
+    margin-top:12px;
+
     border:0;
+
     border-radius:40px;
+
     background:
     linear-gradient(
         135deg,
@@ -87,185 +154,424 @@ button{
         #f0d66b,
         #a77a18
     );
+
     color:#080808;
+
     font-weight:bold;
+
     font-size:16px;
+
     cursor:pointer;
 }
 
 button:active{
+
     transform:scale(.98);
 }
 
+.btnDark{
+
+    background:#111;
+
+    color:#e5c65a;
+
+    border:1px solid #d4af37;
+}
+
 .erro{
+
     color:#ff7777;
+
     text-align:center;
+
     margin-top:15px;
 }
 
-.hidden{
-    display:none !important;
+
+/* ================================
+   CONTADORES
+================================ */
+
+.contadores{
+
+    display:grid;
+
+    grid-template-columns:
+    repeat(4,1fr);
+
+    gap:10px;
+
+    margin:20px 0;
 }
 
-.info{
+.contador{
+
     text-align:center;
-    color:#aaa;
-    line-height:1.6;
-    margin:15px 0;
+
+    padding:15px 5px;
+
+    border:
+    1px solid
+    rgba(212,175,55,.3);
+
+    border-radius:15px;
 }
+
+.contador-numero{
+
+    font-size:30px;
+
+    font-weight:bold;
+
+    color:#e5c65a;
+}
+
+.contador-label{
+
+    color:#999;
+
+    font-size:11px;
+
+    margin-top:6px;
+}
+
+
+/* ================================
+   PROGRESSO
+================================ */
+
+.progress-area{
+
+    margin:20px 0;
+}
+
+.progress-info{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    color:#aaa;
+
+    font-size:13px;
+
+    margin-bottom:7px;
+}
+
+.progress{
+
+    width:100%;
+
+    height:13px;
+
+    background:#222;
+
+    border-radius:20px;
+
+    overflow:hidden;
+
+    border:1px solid
+    rgba(212,175,55,.3);
+}
+
+.progress-bar{
+
+    height:100%;
+
+    width:0%;
+
+    background:
+    linear-gradient(
+        90deg,
+        #a77a18,
+        #f2d66b
+    );
+
+    transition:
+    width .5s ease;
+}
+
+
+/* ================================
+   SCANNER
+================================ */
 
 #reader{
+
     width:100%;
+
     max-width:500px;
-    margin:auto;
+
+    margin:20px auto;
+
     border-radius:20px;
+
     overflow:hidden;
 }
 
 #reader video{
+
     border-radius:15px !important;
 }
 
+.info{
+
+    text-align:center;
+
+    color:#aaa;
+
+    line-height:1.6;
+
+    margin:15px 0;
+}
+
+
+/* ================================
+   RESULTADO
+================================ */
+
 .result{
-    margin-top:25px;
+
+    margin-top:20px;
+
     padding:25px;
+
     border-radius:20px;
+
     text-align:center;
 }
 
 .valid{
-    background:rgba(40,150,70,.15);
+
+    background:
+    rgba(40,150,70,.15);
+
     border:1px solid #4bea7d;
 }
 
 .invalid{
-    background:rgba(170,30,30,.15);
+
+    background:
+    rgba(170,30,30,.15);
+
     border:1px solid #ff5555;
 }
 
 .result-number{
-    font-size:60px;
+
+    font-size:55px;
+
     color:#e5c65a;
-    margin-bottom:10px;
+
+    margin-bottom:8px;
 }
 
 .result-name{
-    font-size:28px;
-    margin-bottom:18px;
-}
 
-.status{
-    font-size:18px;
-    line-height:1.7;
-}
+    font-size:27px;
 
-.contadores{
-    display:grid;
-    grid-template-columns:repeat(4,1fr);
-    gap:10px;
-    margin:25px 0;
-}
+    margin-bottom:15px;
 
-.contador{
-    padding:15px 5px;
-    border:1px solid rgba(212,175,55,.3);
-    border-radius:15px;
-    text-align:center;
-}
-
-.contador-numero{
-    font-size:30px;
-    color:#e5c65a;
     font-weight:bold;
 }
 
-.contador-label{
-    color:#999;
-    font-size:11px;
-    margin-top:7px;
-    line-height:1.3;
+.status{
+
+    font-size:18px;
+
+    line-height:1.7;
 }
 
+
+/* ================================
+   PESQUISA
+================================ */
+
+.search{
+
+    margin:10px 0 20px;
+}
+
+
+/* ================================
+   LISTA
+================================ */
+
 .pessoa{
-    padding:18px 8px;
-    border-bottom:1px solid rgba(212,175,55,.2);
+
+    padding:17px 7px;
+
+    border-bottom:
+    1px solid
+    rgba(212,175,55,.2);
 }
 
 .pessoa strong{
+
     color:#e5c65a;
-    font-size:17px;
+
+    font-size:16px;
 }
 
 .pessoa span{
+
     display:block;
+
     margin-top:7px;
+
     font-weight:bold;
 }
 
 .entrou{
+
     color:#55ed82;
 }
 
 .confirmado{
+
     color:#ffca58;
 }
 
 .pendente{
+
     color:#aaa;
 }
 
-.btnNovo{
-    background:#111;
-    color:#e5c65a;
-    border:1px solid #d4af37;
+
+/* ================================
+   HISTÓRICO
+================================ */
+
+.historico-item{
+
+    padding:15px 7px;
+
+    border-bottom:
+    1px solid
+    rgba(212,175,55,.2);
+
+    line-height:1.6;
 }
+
+.historico-item strong{
+
+    color:#e5c65a;
+}
+
+.historico-hora{
+
+    color:#55ed82;
+
+    font-size:13px;
+}
+
+
+/* ================================
+   BEM-VINDO
+================================ */
+
+.welcome{
+
+    text-align:center;
+
+    padding:30px 15px;
+}
+
+.welcome-icon{
+
+    font-size:70px;
+
+    margin-bottom:15px;
+}
+
+.welcome h2{
+
+    color:#e5c65a;
+
+    font-size:30px;
+
+    margin-bottom:15px;
+}
+
+.welcome p{
+
+    color:#bbb;
+
+    line-height:1.7;
+}
+
+
+/* ================================
+   MOBILE
+================================ */
 
 @media(max-width:600px){
 
-    .contadores{
-        grid-template-columns:repeat(2,1fr);
+    body{
+
+        padding:10px;
     }
 
     .card{
+
         padding:22px 15px;
     }
 
     h1{
+
         font-size:25px;
     }
 
+    .contadores{
+
+        grid-template-columns:
+        repeat(2,1fr);
+    }
+
     .result-number{
-        font-size:50px;
+
+        font-size:48px;
     }
 
     .result-name{
-        font-size:24px;
+
+        font-size:23px;
     }
+
 }
 
 </style>
+
 </head>
 
+
 <body>
+
 
 <div class="container">
 
 
-<!-- ==========================================
-     TELA DE SENHA
-========================================== -->
+<!-- ==================================================
+     LOGIN
+================================================== -->
 
 <div
 id="telaSenha"
 class="card">
 
+<div class="login-icon">
+🔐
+</div>
+
 <h1>
-🔐 CONTROLE DE ENTRADA
+CONTROLE DE ENTRADA
 </h1>
 
 <div class="subtitle">
 
+<strong>
 LAYESON &amp; NAIRA
+</strong>
 
 <br><br>
 
@@ -277,17 +583,21 @@ Digite a senha para continuar.
 
 </div>
 
+
 <input
 id="senha"
 type="password"
 placeholder="Digite a senha"
 autocomplete="off">
 
-<button onclick="entrarSistema()">
+
+<button
+onclick="entrarSistema()">
 
 🔓 ENTRAR NO SISTEMA
 
 </button>
+
 
 <div
 id="erroSenha"
@@ -298,14 +608,18 @@ class="erro">
 
 
 
-<!-- ==========================================
+<!-- ==================================================
      SISTEMA
-========================================== -->
+================================================== -->
 
 <div
 id="sistema"
 class="hidden">
 
+
+<!-- ================================================
+     CABEÇALHO
+================================================ -->
 
 <div class="card">
 
@@ -333,6 +647,7 @@ LAYESON &amp; NAIRA
 <!-- CONTADORES -->
 
 <div class="contadores">
+
 
 <div class="contador">
 
@@ -388,7 +703,7 @@ class="contador-numero">
 </div>
 
 <div class="contador-label">
-NÃO CONFIRMADOS
+PENDENTES
 </div>
 
 </div>
@@ -396,16 +711,52 @@ NÃO CONFIRMADOS
 </div>
 
 
-<div class="info">
+<!-- PROGRESSO -->
 
-🟢 ENTROU &nbsp; | &nbsp;
-🟡 CONFIRMADO &nbsp; | &nbsp;
-⚪ NÃO CONFIRMADO
+<div class="progress-area">
+
+<div class="progress-info">
+
+<span>
+Presença na festa
+</span>
+
+<span id="percentagem">
+0%
+</span>
+
+</div>
+
+<div class="progress">
+
+<div
+id="barra"
+class="progress-bar">
+</div>
+
+</div>
 
 </div>
 
 
-<div id="reader"></div>
+</div>
+
+
+
+<!-- ==================================================
+     SCANNER
+================================================== -->
+
+<div class="card">
+
+<h1>
+📷 LEITOR QR CODE
+</h1>
+
+
+<div
+id="reader">
+</div>
 
 
 <div
@@ -447,32 +798,116 @@ style="display:none;">
 
 
 
-<!-- ==========================================
+<!-- ==================================================
      LISTA
-========================================== -->
+================================================== -->
 
 <div class="card">
 
 <h1>
-📋 LISTA DE CONVIDADOS
+🔎 CONVIDADOS
 </h1>
 
-<div id="lista">
-A carregar...
-</div>
+
+<input
+id="pesquisa"
+class="search"
+type="text"
+placeholder="Pesquisar convidado..."
+oninput="filtrarLista()">
+
+
+<div
+id="lista">
+
+A carregar convidados...
 
 </div>
 
 </div>
 
+
+
+<!-- ==================================================
+     HISTÓRICO
+================================================== -->
+
+<div class="card">
+
+<h1>
+🕒 HISTÓRICO DE ENTRADAS
+</h1>
+
+
+<div
+id="historico">
+
+Nenhuma entrada registrada.
+
 </div>
 
+</div>
+
+
+
+<!-- ==================================================
+     BOAS-VINDAS
+================================================== -->
+
+<div
+id="boasVindas"
+class="card hidden">
+
+<div class="welcome">
+
+<div class="welcome-icon">
+🎉
+</div>
+
+<h2>
+BEM-VINDO!
+</h2>
+
+<p>
+
+Obrigado por celebrar este momento
+especial com
+
+<br>
+
+<strong>
+LAYESON &amp; NAIRA
+</strong>
+
+❤️
+
+</p>
+
+</div>
+
+</div>
+
+
+</div>
+
+</div>
+
+
+
+<!-- ==================================================
+     BIBLIOTECA QR
+================================================== -->
 
 <script
 src="https://unpkg.com/html5-qrcode"
 crossorigin="anonymous">
 </script>
 
+
+
+<!-- ==================================================
+     FIREBASE
+================================================== -->
 
 <script type="module">
 
@@ -493,9 +928,10 @@ from
 "https://www.gstatic.com/firebasejs/12.1.0/firebase-database.js";
 
 
-/* ==========================================
-   FIREBASE
-========================================== */
+
+/* ==================================================
+   FIREBASE CONFIG
+================================================== */
 
 const firebaseConfig = {
 
@@ -526,14 +962,87 @@ const firebaseConfig = {
 const app =
 initializeApp(firebaseConfig);
 
+
 const db =
 getDatabase(app);
 
 
 
-/* ==========================================
-   SENHA
-========================================== */
+/* ==================================================
+   26 CONVIDADOS
+================================================== */
+
+const convidados = [
+
+    {numero:"01",nome:"ALLEN DA GRAÇA"},
+
+    {numero:"02",nome:"ERIK"},
+
+    {numero:"03",nome:"ZOZÓ"},
+
+    {numero:"04",nome:"LENIA"},
+
+    {numero:"05",nome:"ELTON"},
+
+    {numero:"06",nome:"INÊS"},
+
+    {numero:"07",nome:"ADELINO"},
+
+    {numero:"08",nome:"CRIPTON"},
+
+    {numero:"09",nome:"MICHELA"},
+
+    {numero:"10",nome:"MAIDA"},
+
+    {numero:"11",nome:"SHEIMA"},
+
+    {numero:"12",nome:"ROSE"},
+
+    {numero:"13",nome:"NILCA"},
+
+    {numero:"14",nome:"BENIAS"},
+
+    {numero:"15",nome:"MARTINHA"},
+
+    {numero:"16",nome:"ALICE"},
+
+    {numero:"17",nome:"SAMARIA"},
+
+    {numero:"18",nome:"EVARCENIA"},
+
+    {numero:"19",nome:"CHIANA"},
+
+    {numero:"20",nome:"BELISIO"},
+
+    {numero:"21",nome:"FIGUEREDO"},
+
+    {numero:"22",nome:"ABEL"},
+
+    {numero:"23",nome:"MOMED"},
+
+    {numero:"24",nome:"ERASMO"},
+
+    {numero:"25",nome:"IDELIO"},
+
+    {numero:"26",nome:"IVANIA"}
+
+];
+
+
+
+/* ==================================================
+   VARIÁVEIS
+================================================== */
+
+let scanner = null;
+
+let leitorAtivo = false;
+
+
+
+/* ==================================================
+   LOGIN
+================================================== */
 
 window.entrarSistema =
 function(){
@@ -542,6 +1051,7 @@ function(){
     document
     .getElementById("senha")
     .value;
+
 
     const erro =
     document
@@ -575,7 +1085,7 @@ function(){
 
 
 
-/* ENTER NA SENHA */
+/* ENTER */
 
 document
 .getElementById("senha")
@@ -594,51 +1104,9 @@ document
 
 
 
-/* ==========================================
-   26 CONVIDADOS
-========================================== */
-
-const convidados = [
-
-    {numero:"01",nome:"ALLEN DA GRAÇA"},
-    {numero:"02",nome:"ERIK"},
-    {numero:"03",nome:"ZOZÓ"},
-    {numero:"04",nome:"LENIA"},
-    {numero:"05",nome:"ELTON"},
-    {numero:"06",nome:"INÊS"},
-    {numero:"07",nome:"ADELINO"},
-    {numero:"08",nome:"CRIPTON"},
-    {numero:"09",nome:"MICHELA"},
-    {numero:"10",nome:"MAIDA"},
-    {numero:"11",nome:"SHEIMA"},
-    {numero:"12",nome:"ROSE"},
-    {numero:"13",nome:"NILCA"},
-    {numero:"14",nome:"BENIAS"},
-    {numero:"15",nome:"MARTINHA"},
-    {numero:"16",nome:"ALICE"},
-    {numero:"17",nome:"SAMARIA"},
-    {numero:"18",nome:"EVARCENIA"},
-    {numero:"19",nome:"CHIANA"},
-    {numero:"20",nome:"BELISIO"},
-    {numero:"21",nome:"FIGUEREDO"},
-    {numero:"22",nome:"ABEL"},
-    {numero:"23",nome:"MOMED"},
-    {numero:"24",nome:"ERASMO"},
-    {numero:"25",nome:"IDELIO"},
-    {numero:"26",nome:"IVANIA"}
-
-];
-
-
-
-/* ==========================================
-   LEITOR
-========================================== */
-
-let scanner = null;
-
-let leitorAtivo = false;
-
+/* ==================================================
+   INICIAR SCANNER
+================================================== */
 
 window.iniciarLeitor =
 async function(){
@@ -651,7 +1119,11 @@ async function(){
 
     try{
 
-        if(leitorAtivo) return;
+        if(leitorAtivo){
+
+            return;
+
+        }
 
 
         scanner =
@@ -717,21 +1189,28 @@ async function(){
         "📷 Aponte a câmera para o QR Code.";
 
 
+        mensagem.className =
+        "info";
+
+
         await scanner.start(
 
             cameraId,
 
             {
+
                 fps:10,
+
                 qrbox:{
                     width:250,
                     height:250
                 }
+
             },
 
-            function(texto){
+            function(decodedText){
 
-                processarQR(texto);
+                processarQR(decodedText);
 
             },
 
@@ -748,7 +1227,8 @@ async function(){
         leitorAtivo = false;
 
         mensagem.innerHTML =
-        "❌ Não foi possível abrir a câmera.";
+        "❌ Não foi possível abrir a câmera.<br><br>" +
+        "Verifique a permissão da câmera.";
 
         mensagem.className =
         "erro";
@@ -759,9 +1239,9 @@ async function(){
 
 
 
-/* ==========================================
-   PARAR
-========================================== */
+/* ==================================================
+   PARAR SCANNER
+================================================== */
 
 window.pararLeitor =
 async function(){
@@ -805,9 +1285,9 @@ async function(){
 
 
 
-/* ==========================================
+/* ==================================================
    PROCESSAR QR
-========================================== */
+================================================== */
 
 async function processarQR(texto){
 
@@ -838,12 +1318,17 @@ async function processarQR(texto){
 
 
         await verificarConvite(
+
             dados.convite,
+
             dados.nome
+
         );
 
     }
     catch(error){
+
+        console.error(error);
 
         mostrarResultado(
             false,
@@ -858,13 +1343,16 @@ async function processarQR(texto){
 
 
 
-/* ==========================================
-   VERIFICAR
-========================================== */
+/* ==================================================
+   VERIFICAR CONVITE
+================================================== */
 
 async function verificarConvite(
+
     numero,
+
     nome
+
 ){
 
     try{
@@ -882,19 +1370,22 @@ async function verificarConvite(
                 false,
                 numero,
                 nome,
-                "❌ CONVITE NÃO EXISTE."
+                "❌ ESTE CONVITE NÃO EXISTE."
             );
 
             return;
+
         }
 
 
         const snapshot =
         await get(
+
             ref(
                 db,
                 "convites/" + numero
             )
+
         );
 
 
@@ -904,10 +1395,11 @@ async function verificarConvite(
                 false,
                 numero,
                 pessoa.nome,
-                "⚪ NÃO CONFIRMADO — NÃO PODE ENTRAR."
+                "⚪ NÃO CONFIRMADO — ENTRADA NÃO AUTORIZADA."
             );
 
             return;
+
         }
 
 
@@ -925,6 +1417,7 @@ async function verificarConvite(
             );
 
             return;
+
         }
 
 
@@ -934,30 +1427,42 @@ async function verificarConvite(
                 false,
                 numero,
                 dados.nome || pessoa.nome,
-                "⚪ NÃO CONFIRMADO — NÃO PODE ENTRAR."
+                "⚪ NÃO CONFIRMADO — ENTRADA NÃO AUTORIZADA."
             );
 
             return;
+
         }
 
 
         mostrarResultado(
+
             true,
+
             numero,
+
             dados.nome || pessoa.nome,
+
             "🟢 CONFIRMADO — ENTRADA AUTORIZADA."
+
         );
 
     }
+
     catch(error){
 
         console.error(error);
 
         mostrarResultado(
+
             false,
+
             numero,
+
             nome,
-            "❌ Erro ao consultar convite."
+
+            "❌ Erro ao consultar o convite."
+
         );
 
     }
@@ -966,15 +1471,20 @@ async function verificarConvite(
 
 
 
-/* ==========================================
+/* ==================================================
    RESULTADO
-========================================== */
+================================================== */
 
 function mostrarResultado(
+
     valido,
+
     numero,
+
     nome,
+
     mensagem
+
 ){
 
     const resultado =
@@ -1005,6 +1515,7 @@ function mostrarResultado(
             ""
         }
 
+
         ${
             nome
             ?
@@ -1015,11 +1526,13 @@ function mostrarResultado(
             ""
         }
 
+
         <div class="status">
 
             ${mensagem}
 
         </div>
+
 
         ${
             valido
@@ -1034,8 +1547,9 @@ function mostrarResultado(
             ""
         }
 
+
         <button
-            class="btnNovo"
+            class="btnDark"
             onclick="novoScan()">
 
             📷 LER OUTRO CONVITE
@@ -1048,9 +1562,9 @@ function mostrarResultado(
 
 
 
-/* ==========================================
+/* ==================================================
    MARCAR ENTRADA
-========================================== */
+================================================== */
 
 window.marcarEntrada =
 async function(numero){
@@ -1068,6 +1582,18 @@ async function(numero){
         new Date();
 
 
+        const hora =
+        agora.toLocaleTimeString(
+            "pt-PT"
+        );
+
+
+        const data =
+        agora.toLocaleDateString(
+            "pt-PT"
+        );
+
+
         await update(
 
             ref(
@@ -1079,15 +1605,9 @@ async function(numero){
 
                 entrou:true,
 
-                horaEntrada:
-                agora.toLocaleTimeString(
-                    "pt-PT"
-                ),
+                horaEntrada:hora,
 
-                dataEntrada:
-                agora.toLocaleDateString(
-                    "pt-PT"
-                )
+                dataEntrada:data
 
             }
 
@@ -1121,17 +1641,22 @@ async function(numero){
                 <br><br>
 
                 <strong>
-                ENTROU
+                ENTRADA REGISTRADA
                 </strong>
 
                 <br><br>
 
-                ✅ Entrada registrada com sucesso.
+                Horário:
+                ${hora}
+
+                <br><br>
+
+                ✅ A PESSOA PODE ENTRAR.
 
             </div>
 
             <button
-                class="btnNovo"
+                class="btnDark"
                 onclick="novoScan()">
 
                 📷 LER OUTRO CONVITE
@@ -1141,6 +1666,14 @@ async function(numero){
         `;
 
 
+        /* Mostrar boas-vindas */
+
+        document
+        .getElementById("boasVindas")
+        .classList
+        .remove("hidden");
+
+
         carregarLista();
 
     }
@@ -1148,8 +1681,16 @@ async function(numero){
 
         console.error(error);
 
-        alert(
-            "Erro ao registrar entrada."
+        mostrarResultado(
+
+            false,
+
+            numero,
+
+            "",
+
+            "❌ Erro ao registrar entrada."
+
         );
 
     }
@@ -1158,9 +1699,9 @@ async function(numero){
 
 
 
-/* ==========================================
+/* ==================================================
    NOVO SCAN
-========================================== */
+================================================== */
 
 window.novoScan =
 function(){
@@ -1170,15 +1711,62 @@ function(){
     .style.display =
     "none";
 
+
+    document
+    .getElementById("boasVindas")
+    .classList
+    .add("hidden");
+
+
     iniciarLeitor();
 
 };
 
 
 
-/* ==========================================
-   LISTA
-========================================== */
+/* ==================================================
+   PESQUISA
+================================================== */
+
+window.filtrarLista =
+function(){
+
+    const termo =
+    document
+    .getElementById("pesquisa")
+    .value
+    .toLowerCase();
+
+
+    const pessoas =
+    document.querySelectorAll(
+        ".pessoa"
+    );
+
+
+    pessoas.forEach(
+        pessoa => {
+
+            const texto =
+            pessoa.textContent
+            .toLowerCase();
+
+
+            pessoa.style.display =
+            texto.includes(termo)
+            ? "block"
+            : "none";
+
+        }
+    );
+
+};
+
+
+
+/* ==================================================
+   CARREGAR LISTA
+================================================== */
 
 async function carregarLista(){
 
@@ -1188,14 +1776,26 @@ async function carregarLista(){
     );
 
 
+    const historico =
+    document.getElementById(
+        "historico"
+    );
+
+
     lista.innerHTML = "";
 
 
-    let entrou = 0;
+    historico.innerHTML = "";
 
-    let confirmado = 0;
 
-    let pendente = 0;
+    let totalEntrou = 0;
+
+    let totalConfirmado = 0;
+
+    let totalPendente = 0;
+
+
+    let entradas = [];
 
 
     for(
@@ -1234,21 +1834,53 @@ async function carregarLista(){
 
                 if(dados.entrou === true){
 
-                    entrou++;
+                    totalEntrou++;
 
 
                     div.innerHTML = `
 
                         <strong>
-                        CONVITE ${pessoa.numero}
-                        — ${pessoa.nome}
+
+                        CONVITE
+                        ${pessoa.numero}
+                        —
+                        ${pessoa.nome}
+
                         </strong>
 
                         <span class="entrou">
+
                         🟢 ENTROU
+
+                        ${
+                            dados.horaEntrada
+                            ?
+                            " — " +
+                            dados.horaEntrada
+                            :
+                            ""
+                        }
+
                         </span>
 
                     `;
+
+
+                    entradas.push({
+
+                        numero:
+                        pessoa.numero,
+
+                        nome:
+                        pessoa.nome,
+
+                        hora:
+                        dados.horaEntrada || "Hora não registrada",
+
+                        data:
+                        dados.dataEntrada || ""
+
+                    });
 
                 }
 
@@ -1256,18 +1888,25 @@ async function carregarLista(){
                     dados.confirmado === true
                 ){
 
-                    confirmado++;
+                    totalConfirmado++;
 
 
                     div.innerHTML = `
 
                         <strong>
-                        CONVITE ${pessoa.numero}
-                        — ${pessoa.nome}
+
+                        CONVITE
+                        ${pessoa.numero}
+                        —
+                        ${pessoa.nome}
+
                         </strong>
 
                         <span class="confirmado">
-                        🟡 CONFIRMADO — AINDA NÃO ENTROU
+
+                        🟡 CONFIRMADO
+                        — AINDA NÃO ENTROU
+
                         </span>
 
                     `;
@@ -1276,18 +1915,24 @@ async function carregarLista(){
 
                 else{
 
-                    pendente++;
+                    totalPendente++;
 
 
                     div.innerHTML = `
 
                         <strong>
-                        CONVITE ${pessoa.numero}
-                        — ${pessoa.nome}
+
+                        CONVITE
+                        ${pessoa.numero}
+                        —
+                        ${pessoa.nome}
+
                         </strong>
 
                         <span class="pendente">
+
                         ⚪ NÃO CONFIRMADO
+
                         </span>
 
                     `;
@@ -1298,18 +1943,24 @@ async function carregarLista(){
 
             else{
 
-                pendente++;
+                totalPendente++;
 
 
                 div.innerHTML = `
 
                     <strong>
-                    CONVITE ${pessoa.numero}
-                    — ${pessoa.nome}
+
+                    CONVITE
+                    ${pessoa.numero}
+                    —
+                    ${pessoa.nome}
+
                     </strong>
 
                     <span class="pendente">
+
                     ⚪ NÃO CONFIRMADO
+
                     </span>
 
                 `;
@@ -1329,6 +1980,8 @@ async function carregarLista(){
     }
 
 
+    /* CONTADORES */
+
     document
     .getElementById("total")
     .textContent =
@@ -1338,29 +1991,122 @@ async function carregarLista(){
     document
     .getElementById("entrou")
     .textContent =
-    entrou;
+    totalEntrou;
 
 
     document
     .getElementById("confirmados")
     .textContent =
-    confirmado;
+    totalConfirmado;
 
 
     document
     .getElementById("pendentes")
     .textContent =
-    pendente;
+    totalPendente;
+
+
+    /* PERCENTAGEM */
+
+    const percentagem =
+    Math.round(
+        (
+            totalEntrou /
+            convidados.length
+        ) * 100
+    );
+
+
+    document
+    .getElementById("percentagem")
+    .textContent =
+    percentagem + "%";
+
+
+    document
+    .getElementById("barra")
+    .style.width =
+    percentagem + "%";
+
+
+    /* HISTÓRICO */
+
+    if(entradas.length === 0){
+
+        historico.innerHTML =
+
+        `<div class="info">
+
+            Nenhuma entrada registrada ainda.
+
+        </div>`;
+
+    }
+    else{
+
+        entradas.reverse();
+
+        entradas.forEach(
+            entrada => {
+
+                const div =
+                document.createElement(
+                    "div"
+                );
+
+
+                div.className =
+                "historico-item";
+
+
+                div.innerHTML = `
+
+                    <strong>
+
+                    🟢 CONVITE
+                    ${entrada.numero}
+                    —
+                    ${entrada.nome}
+
+                    </strong>
+
+                    <br>
+
+                    <span class="historico-hora">
+
+                    ⏰ ${entrada.hora}
+
+                    ${
+                        entrada.data
+                        ?
+                        " — " +
+                        entrada.data
+                        :
+                        ""
+                    }
+
+                    </span>
+
+                `;
+
+
+                historico.appendChild(div);
+
+            }
+        );
+
+    }
 
 }
 
 
 
-/* ==========================================
+/* ==================================================
    ATUALIZAÇÃO AUTOMÁTICA
-========================================== */
+================================================== */
 
 setInterval(
+
     function(){
 
         const sistema =
@@ -1380,7 +2126,9 @@ setInterval(
         }
 
     },
+
     5000
+
 );
 
 </script>
