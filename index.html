@@ -285,10 +285,6 @@ button:hover{
     color:#e5c65a;
 }
 
-/* ================================
-   AVISO DE CONFIRMAÇÃO
-================================ */
-
 .aviso-confirmacao{
 
     margin:25px auto 15px;
@@ -602,7 +598,7 @@ button:hover{
 
 
     <!-- ================================
-         AVISO IMPORTANTE
+         AVISO DE CONFIRMAÇÃO
     ================================= -->
 
     <div class="aviso-confirmacao">
@@ -619,7 +615,7 @@ button:hover{
 
 
     <!-- ================================
-         BOTÃO WHATSAPP
+         WHATSAPP
     ================================= -->
 
     <a
@@ -757,7 +753,7 @@ getDatabase(app);
 
 
 /* =================================
-   26 CONVIDADOS
+   CONVIDADOS
 ================================= */
 
 const convidados = {
@@ -862,10 +858,17 @@ const convidados = {
         nome:"BELISIO"
     },
 
+
+    /* ================================
+       FIGUEIREDO + TERESA
+       MESMO PIN DO FIGUEIREDO
+    ================================= */
+
     "negro chato":{
         numero:"21",
-        nome:"FIGUEREDO"
+        nome:"FIGUEIREDO & TERESA"
     },
+
 
     "bangla":{
         numero:"22",
@@ -890,6 +893,28 @@ const convidados = {
     "v":{
         numero:"26",
         nome:"IVANIA"
+    },
+
+
+    /* ================================
+       NATALIA
+       PIN: 260486
+    ================================= */
+
+    "260486":{
+        numero:"27",
+        nome:"NATALIA"
+    },
+
+
+    /* ================================
+       MATILDE + SALGUEIRO
+       PADRINHOS
+    ================================= */
+
+    "padrinhos":{
+        numero:"28",
+        nome:"MATILDE & SALGUEIRO"
     }
 
 };
@@ -1012,7 +1037,7 @@ window.entrar = function(){
 
 
     /* =================================
-       PREPARAR WHATSAPP
+       WHATSAPP
     ================================= */
 
     prepararWhatsApp();
@@ -1100,7 +1125,7 @@ window.confirmarPresenca = async function(){
 
 
     /* ===============================
-       PRIMEIRO ABRIR WHATSAPP
+       ABRIR WHATSAPP
     =============================== */
 
     const botao =
@@ -1181,6 +1206,7 @@ window.confirmarPresenca = async function(){
 
     }
 
+
     catch(error){
 
         console.error(
@@ -1188,11 +1214,13 @@ window.confirmarPresenca = async function(){
             error
         );
 
+
         document
         .getElementById("confirmacao")
         .innerHTML =
 
         "⚠️ O WhatsApp foi aberto, " +
+
         "mas não foi possível guardar a confirmação.";
 
     }
