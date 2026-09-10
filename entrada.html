@@ -7,204 +7,272 @@
 <title>Controle de Entrada | Layerson & Naira</title>
 
 <style>
-    * {
-        box-sizing: border-box;
-    }
+* {
+    box-sizing: border-box;
+}
 
-    body {
-        margin: 0;
-        font-family: Arial, sans-serif;
-        background: linear-gradient(135deg, #050505, #181818);
-        color: white;
-    }
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: linear-gradient(135deg, #050505, #181818);
+    color: white;
+}
 
-    header {
-        background: #000;
-        border-bottom: 2px solid #d4af37;
-        padding: 25px 15px;
-        text-align: center;
+header {
+    background: #000;
+    border-bottom: 2px solid #d4af37;
+    padding: 25px 15px;
+    text-align: center;
+}
+
+header h1 {
+    margin: 0;
+    color: #d4af37;
+    font-size: 28px;
+}
+
+header p {
+    margin: 8px 0 0;
+    color: #ddd;
+}
+
+.container {
+    width: 95%;
+    max-width: 1200px;
+    margin: 25px auto;
+}
+
+.resumo {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
+    margin-bottom: 25px;
+}
+
+.card {
+    background: #111;
+    border: 1px solid #333;
+    border-radius: 12px;
+    padding: 20px;
+    text-align: center;
+}
+
+.card h2 {
+    margin: 0;
+    color: #d4af37;
+    font-size: 30px;
+}
+
+.card p {
+    margin: 8px 0 0;
+    color: #ccc;
+}
+
+/* LEITOR QR CODE */
+.qr-area {
+    background: #111;
+    border: 1px solid #333;
+    border-radius: 12px;
+    padding: 20px;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.qr-area h2 {
+    color: #d4af37;
+    margin-top: 0;
+}
+
+#reader {
+    width: 100%;
+    max-width: 500px;
+    margin: 15px auto;
+}
+
+.btn-ler {
+    background: #d4af37;
+    color: #000;
+    border: none;
+    border-radius: 8px;
+    padding: 13px 20px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.btn-ler:hover {
+    background: #f0cf55;
+}
+
+.btn-fechar {
+    background: #555;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    padding: 10px 18px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.resultado-qr {
+    display: none;
+    background: #191919;
+    border: 1px solid #d4af37;
+    border-radius: 10px;
+    padding: 18px;
+    max-width: 500px;
+    margin: 15px auto 0;
+}
+
+.resultado-qr h3 {
+    color: #d4af37;
+}
+
+.resultado-qr p {
+    margin: 7px;
+}
+
+.btn-marcar-qr {
+    background: #d4af37;
+    color: #000;
+    border: none;
+    border-radius: 7px;
+    padding: 10px 15px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.search-box {
+    margin-bottom: 20px;
+}
+
+.search-box input {
+    width: 100%;
+    padding: 14px;
+    border-radius: 8px;
+    border: 1px solid #555;
+    background: #111;
+    color: white;
+    font-size: 16px;
+    outline: none;
+}
+
+.search-box input:focus {
+    border-color: #d4af37;
+}
+
+.table-container {
+    overflow-x: auto;
+    background: #111;
+    border-radius: 12px;
+    border: 1px solid #333;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    min-width: 850px;
+}
+
+th {
+    background: #d4af37;
+    color: #000;
+    padding: 13px 10px;
+    text-align: center;
+}
+
+td {
+    padding: 12px 10px;
+    border-bottom: 1px solid #333;
+    text-align: center;
+}
+
+tr:hover {
+    background: #1d1d1d;
+}
+
+.nome {
+    text-align: left;
+    font-weight: bold;
+}
+
+.pin {
+    color: #d4af37;
+    font-family: monospace;
+    font-weight: bold;
+}
+
+.badge {
+    display: inline-block;
+    padding: 6px 10px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.confirmado {
+    background: #173f1c;
+    color: #66ff78;
+}
+
+.nao-confirmado {
+    background: #442020;
+    color: #ff7777;
+}
+
+.entrou {
+    background: #173f1c;
+    color: #66ff78;
+}
+
+.nao-entrou {
+    background: #333;
+    color: #ccc;
+}
+
+button {
+    border: none;
+    border-radius: 7px;
+    padding: 8px 12px;
+    cursor: pointer;
+    font-weight: bold;
+    margin: 2px;
+}
+
+.btn-entrada {
+    background: #d4af37;
+    color: #000;
+}
+
+.btn-entrada:hover {
+    background: #f0cf55;
+}
+
+.btn-desfazer {
+    background: #555;
+    color: white;
+}
+
+.btn-desfazer:hover {
+    background: #777;
+}
+
+footer {
+    text-align: center;
+    padding: 25px;
+    color: #999;
+    font-size: 13px;
+}
+
+@media (max-width: 700px) {
+    .resumo {
+        grid-template-columns: 1fr;
     }
 
     header h1 {
-        margin: 0;
-        color: #d4af37;
-        font-size: 28px;
+        font-size: 22px;
     }
-
-    header p {
-        margin: 8px 0 0;
-        color: #ddd;
-    }
-
-    .container {
-        width: 95%;
-        max-width: 1200px;
-        margin: 25px auto;
-    }
-
-    .resumo {
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        gap: 15px;
-        margin-bottom: 25px;
-    }
-
-    .card {
-        background: #111;
-        border: 1px solid #333;
-        border-radius: 12px;
-        padding: 20px;
-        text-align: center;
-    }
-
-    .card h2 {
-        margin: 0;
-        color: #d4af37;
-        font-size: 30px;
-    }
-
-    .card p {
-        margin: 8px 0 0;
-        color: #ccc;
-    }
-
-    .search-box {
-        margin-bottom: 20px;
-    }
-
-    .search-box input {
-        width: 100%;
-        padding: 14px;
-        border-radius: 8px;
-        border: 1px solid #555;
-        background: #111;
-        color: white;
-        font-size: 16px;
-        outline: none;
-    }
-
-    .search-box input:focus {
-        border-color: #d4af37;
-    }
-
-    .table-container {
-        overflow-x: auto;
-        background: #111;
-        border-radius: 12px;
-        border: 1px solid #333;
-    }
-
-    table {
-        width: 100%;
-        border-collapse: collapse;
-        min-width: 850px;
-    }
-
-    th {
-        background: #d4af37;
-        color: #000;
-        padding: 13px 10px;
-        text-align: center;
-    }
-
-    td {
-        padding: 12px 10px;
-        border-bottom: 1px solid #333;
-        text-align: center;
-    }
-
-    tr:hover {
-        background: #1d1d1d;
-    }
-
-    .nome {
-        text-align: left;
-        font-weight: bold;
-    }
-
-    .pin {
-        color: #d4af37;
-        font-family: monospace;
-        font-weight: bold;
-    }
-
-    .badge {
-        display: inline-block;
-        padding: 6px 10px;
-        border-radius: 20px;
-        font-size: 12px;
-        font-weight: bold;
-    }
-
-    .confirmado {
-        background: #173f1c;
-        color: #66ff78;
-    }
-
-    .nao-confirmado {
-        background: #442020;
-        color: #ff7777;
-    }
-
-    .entrou {
-        background: #173f1c;
-        color: #66ff78;
-    }
-
-    .nao-entrou {
-        background: #333;
-        color: #ccc;
-    }
-
-    button {
-        border: none;
-        border-radius: 7px;
-        padding: 8px 12px;
-        cursor: pointer;
-        font-weight: bold;
-        margin: 2px;
-    }
-
-    .btn-entrada {
-        background: #d4af37;
-        color: #000;
-    }
-
-    .btn-entrada:hover {
-        background: #f0cf55;
-    }
-
-    .btn-desfazer {
-        background: #555;
-        color: white;
-    }
-
-    .btn-desfazer:hover {
-        background: #777;
-    }
-
-    .btn-qr {
-        background: #222;
-        color: #d4af37;
-        border: 1px solid #d4af37;
-    }
-
-    footer {
-        text-align: center;
-        padding: 25px;
-        color: #999;
-        font-size: 13px;
-    }
-
-    @media (max-width: 700px) {
-        .resumo {
-            grid-template-columns: 1fr;
-        }
-
-        header h1 {
-            font-size: 22px;
-        }
-    }
+}
 </style>
 </head>
 
@@ -232,25 +300,95 @@
 
         <div class="card">
             <h2 id="totalEntraram">0</h2>
-            <p>Já entraram</p>
+            <p>Pessoas que entraram</p>
         </div>
 
     </div>
 
+
+    <!-- =========================
+         LEITOR DE QR CODE
+    ========================== -->
+
+    <div class="qr-area">
+
+        <h2>📷 Ler QR Code do Convite</h2>
+
+        <p>
+            Aponte a câmera para o QR Code do convidado.
+        </p>
+
+        <button class="btn-ler" onclick="abrirLeitor()">
+            📷 LER QR CODE
+        </button>
+
+        <div id="reader" style="display:none;"></div>
+
+        <button
+            id="btnFechar"
+            class="btn-fechar"
+            onclick="fecharLeitor()"
+            style="display:none;">
+            Fechar câmera
+        </button>
+
+
+        <div id="resultadoQR" class="resultado-qr">
+
+            <h3>✅ Convite encontrado</h3>
+
+            <p>
+                <strong>Nº:</strong>
+                <span id="qrNumero"></span>
+            </p>
+
+            <p>
+                <strong>Convidado:</strong>
+                <span id="qrNome"></span>
+            </p>
+
+            <p>
+                <strong>Pessoas:</strong>
+                <span id="qrPessoas"></span>
+            </p>
+
+            <p>
+                <strong>Estado:</strong>
+                <span id="qrEstado"></span>
+            </p>
+
+            <button
+                id="btnMarcarQR"
+                class="btn-marcar-qr">
+                ✓ MARCAR ENTRADA
+            </button>
+
+        </div>
+
+    </div>
+
+
+    <!-- PESQUISA -->
+
     <div class="search-box">
+
         <input
             type="text"
             id="pesquisa"
             placeholder="🔎 Pesquisar por nome, PIN ou número do convite..."
-            onkeyup="pesquisar()"
-        >
+            onkeyup="pesquisar()">
+
     </div>
+
+
+    <!-- TABELA -->
 
     <div class="table-container">
 
         <table>
 
             <thead>
+
                 <tr>
                     <th>Nº</th>
                     <th>Convidado(s)</th>
@@ -260,6 +398,7 @@
                     <th>Entrada</th>
                     <th>Ação</th>
                 </tr>
+
             </thead>
 
             <tbody id="listaConvidados"></tbody>
@@ -270,12 +409,18 @@
 
 </div>
 
+
 <footer>
     Controle de entrada • Layerson & Naira
 </footer>
 
 
+<!-- BIBLIOTECA DO LEITOR QR CODE -->
+<script src="https://unpkg.com/html5-qrcode" type="text/javascript"></script>
+
+
 <!-- FIREBASE -->
+
 <script type="module">
 
 import { initializeApp }
@@ -308,6 +453,7 @@ const firebaseConfig = {
 
     appId:
     "1:680240896134:web:2d2aa2f97fb491e2001907"
+
 };
 
 
@@ -316,222 +462,81 @@ const app = initializeApp(firebaseConfig);
 const db = getDatabase(app);
 
 
-/* ================================
-   LISTA DOS 28 CONVITES
-   TOTAL = 30 PESSOAS
-================================ */
+/* =========================
+   28 CONVITES / 30 PESSOAS
+========================= */
 
 const convidados = [
 
-    {
-        numero: "01",
-        nome: "Allen da Graça",
-        pin: "da graca",
-        pessoas: 1
-    },
+    { numero:"01", nome:"Allen da Graça", pin:"da graca", pessoas:1 },
 
-    {
-        numero: "02",
-        nome: "Erik",
-        pin: "maiquel",
-        pessoas: 1
-    },
+    { numero:"02", nome:"Erik", pin:"maiquel", pessoas:1 },
 
-    {
-        numero: "03",
-        nome: "Zozó",
-        pin: "mulato",
-        pessoas: 1
-    },
+    { numero:"03", nome:"Zozó", pin:"mulato", pessoas:1 },
 
-    {
-        numero: "04",
-        nome: "Lenia",
-        pin: "best",
-        pessoas: 1
-    },
+    { numero:"04", nome:"Lenia", pin:"best", pessoas:1 },
 
-    {
-        numero: "05",
-        nome: "Elton",
-        pin: "eltonisso",
-        pessoas: 1
-    },
+    { numero:"05", nome:"Elton", pin:"eltonisso", pessoas:1 },
 
-    {
-        numero: "06",
-        nome: "Inês",
-        pin: "te amo",
-        pessoas: 1
-    },
+    { numero:"06", nome:"Inês", pin:"te amo", pessoas:1 },
 
-    {
-        numero: "07",
-        nome: "Adelino",
-        pin: "nanas",
-        pessoas: 1
-    },
+    { numero:"07", nome:"Adelino", pin:"nanas", pessoas:1 },
 
-    {
-        numero: "08",
-        nome: "Cripton",
-        pin: "the best",
-        pessoas: 1
-    },
+    { numero:"08", nome:"Cripton", pin:"the best", pessoas:1 },
 
-    {
-        numero: "09",
-        nome: "Michela",
-        pin: "pretinha",
-        pessoas: 1
-    },
+    { numero:"09", nome:"Michela", pin:"pretinha", pessoas:1 },
 
-    {
-        numero: "10",
-        nome: "Maida",
-        pin: "amiga",
-        pessoas: 1
-    },
+    { numero:"10", nome:"Maida", pin:"amiga", pessoas:1 },
 
-    {
-        numero: "11",
-        nome: "Sheima",
-        pin: "sheshe",
-        pessoas: 1
-    },
+    { numero:"11", nome:"Sheima", pin:"sheshe", pessoas:1 },
 
-    {
-        numero: "12",
-        nome: "Rose",
-        pin: "r",
-        pessoas: 1
-    },
+    { numero:"12", nome:"Rose", pin:"r", pessoas:1 },
 
-    {
-        numero: "13",
-        nome: "Nilca",
-        pin: "n",
-        pessoas: 1
-    },
+    { numero:"13", nome:"Nilca", pin:"n", pessoas:1 },
 
-    {
-        numero: "14",
-        nome: "Benias",
-        pin: "gostoso",
-        pessoas: 1
-    },
+    { numero:"14", nome:"Benias", pin:"gostoso", pessoas:1 },
 
-    {
-        numero: "15",
-        nome: "Martinha",
-        pin: "marta",
-        pessoas: 1
-    },
+    { numero:"15", nome:"Martinha", pin:"marta", pessoas:1 },
 
-    {
-        numero: "16",
-        nome: "Alice",
-        pin: "magwedere",
-        pessoas: 1
-    },
+    { numero:"16", nome:"Alice", pin:"magwedere", pessoas:1 },
 
-    {
-        numero: "17",
-        nome: "Samaria",
-        pin: "samy",
-        pessoas: 1
-    },
+    { numero:"17", nome:"Samaria", pin:"samy", pessoas:1 },
 
-    {
-        numero: "18",
-        nome: "Evarcenia",
-        pin: "eva",
-        pessoas: 1
-    },
+    { numero:"18", nome:"Evarcenia", pin:"eva", pessoas:1 },
 
-    {
-        numero: "19",
-        nome: "Chiana",
-        pin: "baixinha",
-        pessoas: 1
-    },
+    { numero:"19", nome:"Chiana", pin:"baixinha", pessoas:1 },
 
-    {
-        numero: "20",
-        nome: "Belisio",
-        pin: "belbel",
-        pessoas: 1
-    },
+    { numero:"20", nome:"Belisio", pin:"belbel", pessoas:1 },
 
-    {
-        numero: "21",
-        nome: "Figueiredo + Teresa",
-        pin: "negro chato",
-        pessoas: 2
-    },
+    { numero:"21", nome:"Figueiredo + Teresa", pin:"negro chato", pessoas:2 },
 
-    {
-        numero: "22",
-        nome: "Abel",
-        pin: "bangla",
-        pessoas: 1
-    },
+    { numero:"22", nome:"Abel", pin:"bangla", pessoas:1 },
 
-    {
-        numero: "23",
-        nome: "Momed",
-        pin: "momas",
-        pessoas: 1
-    },
+    { numero:"23", nome:"Momed", pin:"momas", pessoas:1 },
 
-    {
-        numero: "24",
-        nome: "Erasmo",
-        pin: "tubarao",
-        pessoas: 1
-    },
+    { numero:"24", nome:"Erasmo", pin:"tubarao", pessoas:1 },
 
-    {
-        numero: "25",
-        nome: "Idelio",
-        pin: "del g",
-        pessoas: 1
-    },
+    { numero:"25", nome:"Idelio", pin:"del g", pessoas:1 },
 
-    {
-        numero: "26",
-        nome: "Ivania",
-        pin: "v",
-        pessoas: 1
-    },
+    { numero:"26", nome:"Ivania", pin:"v", pessoas:1 },
 
-    {
-        numero: "27",
-        nome: "Natalia",
-        pin: "260486",
-        pessoas: 1
-    },
+    { numero:"27", nome:"Natalia", pin:"260486", pessoas:1 },
 
-    {
-        numero: "28",
-        nome: "Matilde + Salgueiro (Padrinhos)",
-        pin: "padrinhos",
-        pessoas: 2
-    }
+    { numero:"28", nome:"Matilde + Salgueiro (Padrinhos)", pin:"padrinhos", pessoas:2 }
 
 ];
 
 
-/* ================================
-   ESTADO DOS CONVIDADOS
-================================ */
-
 let estados = {};
 
+let scanner = null;
 
-/* ================================
+let numeroQRAtual = null;
+
+
+/* =========================
    MOSTRAR TABELA
-================================ */
+========================= */
 
 function mostrarTabela(lista = convidados) {
 
@@ -539,6 +544,7 @@ function mostrarTabela(lista = convidados) {
         document.getElementById("listaConvidados");
 
     tabela.innerHTML = "";
+
 
     lista.forEach((convite) => {
 
@@ -578,13 +584,9 @@ function mostrarTabela(lista = convidados) {
 
                 ${
                     confirmado
-
                     ?
-
                     '<span class="badge confirmado">CONFIRMADO</span>'
-
                     :
-
                     '<span class="badge nao-confirmado">NÃO CONFIRMADO</span>'
                 }
 
@@ -594,13 +596,9 @@ function mostrarTabela(lista = convidados) {
 
                 ${
                     entrou
-
                     ?
-
                     '<span class="badge entrou">ENTROU</span>'
-
                     :
-
                     '<span class="badge nao-entrou">NÃO ENTROU</span>'
                 }
 
@@ -643,9 +641,9 @@ function mostrarTabela(lista = convidados) {
 }
 
 
-/* ================================
+/* =========================
    MARCAR ENTRADA
-================================ */
+========================= */
 
 window.marcarEntrada = async function(numero) {
 
@@ -662,6 +660,7 @@ window.marcarEntrada = async function(numero) {
             "?"
         );
 
+
     if (!confirmar) return;
 
 
@@ -676,6 +675,16 @@ window.marcarEntrada = async function(numero) {
             }
         );
 
+
+        alert(
+            convite.nome +
+            " foi marcado como ENTROU."
+        );
+
+
+        mostrarResultadoQR(numero);
+
+
     } catch (erro) {
 
         console.error(erro);
@@ -689,9 +698,9 @@ window.marcarEntrada = async function(numero) {
 };
 
 
-/* ================================
+/* =========================
    DESFAZER ENTRADA
-================================ */
+========================= */
 
 window.desfazerEntrada = async function(numero) {
 
@@ -699,6 +708,7 @@ window.desfazerEntrada = async function(numero) {
         confirm(
             "Deseja realmente retirar a marcação de entrada?"
         );
+
 
     if (!confirmar) return;
 
@@ -725,9 +735,9 @@ window.desfazerEntrada = async function(numero) {
 };
 
 
-/* ================================
+/* =========================
    PESQUISA
-================================ */
+========================= */
 
 window.pesquisar = function() {
 
@@ -777,9 +787,9 @@ window.pesquisar = function() {
 };
 
 
-/* ================================
+/* =========================
    RESUMO
-================================ */
+========================= */
 
 function atualizarResumo() {
 
@@ -807,31 +817,343 @@ function atualizarResumo() {
 }
 
 
-/* ================================
+/* =========================
+   RESULTADO DO QR CODE
+========================= */
+
+function mostrarResultadoQR(numero) {
+
+    const convite =
+        convidados.find(c => c.numero === numero);
+
+
+    if (!convite) return;
+
+
+    const estado =
+        estados[numero] || {};
+
+
+    document.getElementById("qrNumero")
+        .textContent = convite.numero;
+
+    document.getElementById("qrNome")
+        .textContent = convite.nome;
+
+    document.getElementById("qrPessoas")
+        .textContent = convite.pessoas;
+
+    document.getElementById("qrEstado")
+        .textContent =
+        estado.entrou === true
+        ? "ENTROU"
+        : "NÃO ENTROU";
+
+
+    const resultado =
+        document.getElementById("resultadoQR");
+
+    resultado.style.display = "block";
+
+
+    const botao =
+        document.getElementById("btnMarcarQR");
+
+
+    if (estado.entrou === true) {
+
+        botao.textContent = "✓ JÁ ENTROU";
+
+        botao.disabled = true;
+
+        botao.style.opacity = "0.5";
+
+    } else {
+
+        botao.textContent =
+            "✓ MARCAR ENTRADA";
+
+        botao.disabled = false;
+
+        botao.style.opacity = "1";
+
+
+        botao.onclick = function() {
+
+            marcarEntrada(numero);
+
+        };
+
+    }
+
+}
+
+
+/* =========================
+   ABRIR LEITOR
+========================= */
+
+window.abrirLeitor = function() {
+
+    const reader =
+        document.getElementById("reader");
+
+    reader.style.display = "block";
+
+    document.getElementById("btnFechar")
+        .style.display = "inline-block";
+
+
+    if (scanner) {
+
+        return;
+
+    }
+
+
+    scanner =
+        new Html5Qrcode("reader");
+
+
+    scanner.start(
+
+        {
+            facingMode: "environment"
+        },
+
+        {
+            fps: 10,
+
+            qrbox: {
+                width: 250,
+                height: 250
+            }
+
+        },
+
+        (texto) => {
+
+            processarQRCode(texto);
+
+        },
+
+        (erro) => {
+
+            // Erros normais durante a procura do QR Code.
+            // Não mostramos mensagem para não incomodar.
+
+        }
+
+    ).catch((erro) => {
+
+        console.error(erro);
+
+        alert(
+            "Não foi possível abrir a câmera. " +
+            "Verifique se o navegador tem permissão para usar a câmera."
+        );
+
+        fecharLeitor();
+
+    });
+
+};
+
+
+/* =========================
+   FECHAR LEITOR
+========================= */
+
+window.fecharLeitor = function() {
+
+    if (scanner) {
+
+        scanner.stop()
+        .then(() => {
+
+            scanner.clear();
+
+            scanner = null;
+
+        })
+        .catch(() => {
+
+            scanner = null;
+
+        });
+
+    }
+
+
+    document.getElementById("reader")
+        .style.display = "none";
+
+
+    document.getElementById("btnFechar")
+        .style.display = "none";
+
+};
+
+
+/* =========================
+   PROCESSAR QR CODE
+========================= */
+
+function processarQRCode(texto) {
+
+    console.log("QR Code:", texto);
+
+
+    let dadosQR = null;
+
+
+    try {
+
+        dadosQR = JSON.parse(texto);
+
+    } catch (erro) {
+
+        // Se não for JSON, tentamos procurar
+        // pelo número do convite ou pelo PIN.
+
+        dadosQR = null;
+
+    }
+
+
+    let convite = null;
+
+
+    /* QR gerado pelo convite */
+
+    if (dadosQR) {
+
+        if (dadosQR.numero) {
+
+            convite =
+                convidados.find(
+                    c =>
+                    String(c.numero) ===
+                    String(dadosQR.numero)
+                );
+
+        }
+
+
+        if (!convite && dadosQR.nome) {
+
+            convite =
+                convidados.find(
+                    c =>
+                    c.nome.toLowerCase() ===
+                    String(dadosQR.nome).toLowerCase()
+                );
+
+        }
+
+    }
+
+
+    /* Procurar pelo número */
+
+    if (!convite) {
+
+        const numeroEncontrado =
+            texto.match(/\b(0?[1-9]|1[0-9]|2[0-8])\b/);
+
+        if (numeroEncontrado) {
+
+            const numero =
+                numeroEncontrado[1].padStart(2, "0");
+
+            convite =
+                convidados.find(
+                    c => c.numero === numero
+                );
+
+        }
+
+    }
+
+
+    /* Procurar pelo PIN */
+
+    if (!convite) {
+
+        convite =
+            convidados.find(
+                c =>
+                texto.toLowerCase()
+                .includes(c.pin.toLowerCase())
+            );
+
+    }
+
+
+    if (!convite) {
+
+        alert(
+            "❌ QR Code não reconhecido.\n\n" +
+            "Este QR Code não corresponde a nenhum dos 28 convites."
+        );
+
+        return;
+
+    }
+
+
+    numeroQRAtual =
+        convite.numero;
+
+
+    mostrarResultadoQR(
+        convite.numero
+    );
+
+
+    /* Para evitar ler o mesmo QR várias vezes */
+
+    fecharLeitor();
+
+}
+
+
+/* =========================
    LER FIREBASE
-================================ */
+========================= */
 
 const convitesRef =
     ref(db, "convites");
 
 
-onValue(convitesRef, (snapshot) => {
+onValue(
+    convitesRef,
+    (snapshot) => {
 
-    const dados =
-        snapshot.val() || {};
-
-
-    estados = dados;
-
-
-    mostrarTabela();
-
-});
+        const dados =
+            snapshot.val() || {};
 
 
-/* ================================
-   MOSTRAR INICIALMENTE
-================================ */
+        estados = dados;
+
+
+        mostrarTabela();
+
+        if (numeroQRAtual) {
+
+            mostrarResultadoQR(
+                numeroQRAtual
+            );
+
+        }
+
+    }
+);
+
+
+/* =========================
+   INICIAR
+========================= */
 
 mostrarTabela();
 
