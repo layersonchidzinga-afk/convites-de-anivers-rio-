@@ -1,4 +1,3 @@
-```html
 <!DOCTYPE html>
 <html lang="pt">
 <head>
@@ -19,7 +18,6 @@ content="width=device-width, initial-scale=1.0">
 }
 
 body{
-
     min-height:100vh;
 
     background:
@@ -48,7 +46,6 @@ body{
 }
 
 .card{
-
     width:100%;
 
     max-width:700px;
@@ -80,7 +77,6 @@ body{
 }
 
 .small{
-
     color:#b9a76e;
 
     letter-spacing:4px;
@@ -91,7 +87,6 @@ body{
 }
 
 h1{
-
     font-size:
     clamp(45px,10vw,75px);
 
@@ -101,7 +96,6 @@ h1{
 }
 
 h2{
-
     font-size:
     clamp(30px,8vw,50px);
 
@@ -109,14 +103,12 @@ h2{
 }
 
 .line{
-
     margin:28px auto;
 
     color:#d4af37;
 }
 
 .text{
-
     color:#bcbcbc;
 
     line-height:1.8;
@@ -127,7 +119,6 @@ h2{
 }
 
 input{
-
     width:100%;
 
     max-width:350px;
@@ -150,14 +141,12 @@ input{
 }
 
 input:focus{
-
     box-shadow:
     0 0 25px
     rgba(212,175,55,.25);
 }
 
 button{
-
     border:0;
 
     border-radius:40px;
@@ -184,14 +173,11 @@ button{
 }
 
 button:hover{
-
     transform:
     translateY(-2px);
-
 }
 
 .number{
-
     font-size:120px;
 
     color:#d8b845;
@@ -200,7 +186,6 @@ button:hover{
 }
 
 .guest{
-
     font-size:
     clamp(35px,9vw,55px);
 
@@ -210,7 +195,6 @@ button:hover{
 }
 
 .event{
-
     display:grid;
 
     grid-template-columns:
@@ -222,7 +206,6 @@ button:hover{
 }
 
 .event div{
-
     padding:20px 8px;
 
     border:
@@ -233,7 +216,6 @@ button:hover{
 }
 
 .label{
-
     color:#777;
 
     font-size:10px;
@@ -244,12 +226,10 @@ button:hover{
 }
 
 .value{
-
     color:#e5c65a;
 }
 
 .qr{
-
     background:#fff;
 
     padding:15px;
@@ -262,7 +242,6 @@ button:hover{
 }
 
 .qr img{
-
     width:250px;
 
     height:250px;
@@ -271,7 +250,6 @@ button:hover{
 }
 
 .status{
-
     padding:18px;
 
     margin:20px auto;
@@ -286,7 +264,6 @@ button:hover{
 }
 
 .aviso-confirmacao{
-
     margin:25px auto 15px;
 
     padding:20px;
@@ -305,21 +282,17 @@ button:hover{
     line-height:1.7;
 
     font-size:17px;
-
 }
 
 .aviso-confirmacao strong{
-
     display:block;
 
     font-size:20px;
 
     margin-bottom:8px;
-
 }
 
 .btn-whatsapp{
-
     display:inline-block;
 
     width:100%;
@@ -352,35 +325,28 @@ button:hover{
     0 5px 25px rgba(37,211,102,.18);
 
     transition:.2s;
-
 }
 
 .btn-whatsapp:hover{
-
     transform:
     translateY(-2px);
-
 }
 
 .confirmacao-status{
-
     margin-top:15px;
 
     color:#7dff9b;
 
     line-height:1.7;
-
 }
 
 .error{
-
     color:#ff7777;
 
     margin-top:15px;
 }
 
 .success{
-
     color:#7dff9b;
 
     margin-top:20px;
@@ -391,15 +357,11 @@ button:hover{
 @media(max-width:600px){
 
     .event{
-
         grid-template-columns:1fr;
-
     }
 
     .number{
-
         font-size:90px;
-
     }
 
 }
@@ -408,12 +370,9 @@ button:hover{
 
 </head>
 
-
 <body>
 
-
 <div class="card">
-
 
 <!-- =================================
      TELA DO PIN
@@ -424,7 +383,6 @@ button:hover{
     <div class="small">
         CONVITE ESPECIAL
     </div>
-
 
     <h1>
 
@@ -444,11 +402,9 @@ button:hover{
 
     </h1>
 
-
     <div class="line">
         ◆ ───────── ◆
     </div>
-
 
     <p class="text">
 
@@ -461,7 +417,6 @@ button:hover{
 
     </p>
 
-
     <input
         id="pin"
         type="password"
@@ -469,9 +424,7 @@ button:hover{
         autocomplete="off"
     >
 
-
     <br>
-
 
     <button onclick="entrar()">
 
@@ -479,14 +432,12 @@ button:hover{
 
     </button>
 
-
     <div
         id="erro"
         class="error">
     </div>
 
 </section>
-
 
 
 <!-- =================================
@@ -498,11 +449,9 @@ button:hover{
     class="hidden"
 >
 
-
     <div class="small">
         SEU CONVITE
     </div>
-
 
     <div
         id="numero"
@@ -512,20 +461,17 @@ button:hover{
 
     </div>
 
-
     <div class="line">
         ◆ ───────── ◆
     </div>
-
 
     <div
         id="nome"
         class="guest">
 
-        ALLEN DA GRAÇA
+        RIVAN
 
     </div>
-
 
     <p class="text">
 
@@ -537,7 +483,6 @@ button:hover{
         este momento contigo.
 
     </p>
-
 
     <h2>
 
@@ -551,9 +496,7 @@ button:hover{
 
     </h2>
 
-
     <div class="event">
-
 
         <div>
 
@@ -567,7 +510,6 @@ button:hover{
 
         </div>
 
-
         <div>
 
             <div class="label">
@@ -580,7 +522,6 @@ button:hover{
 
         </div>
 
-
         <div>
 
             <div class="label">
@@ -592,7 +533,6 @@ button:hover{
             </div>
 
         </div>
-
 
     </div>
 
@@ -682,12 +622,9 @@ button:hover{
 
     </button>
 
-
 </section>
 
-
 </div>
-
 
 
 <script type="module">
@@ -758,9 +695,9 @@ getDatabase(app);
 
 const convidados = {
 
-    "da graca":{
+    "vava":{
         numero:"01",
-        nome:"ALLEN DA GRAÇA"
+        nome:"RIVAN"
     },
 
     "maiquel":{
@@ -915,6 +852,17 @@ const convidados = {
     "padrinhos":{
         numero:"28",
         nome:"MATILDE & SALGUEIRO"
+    },
+
+
+    /* ================================
+       EDY
+       PIN: edy
+    ================================= */
+
+    "edy":{
+        numero:"29",
+        nome:"EDY"
     }
 
 };
@@ -1257,4 +1205,3 @@ document
 
 </body>
 </html>
-```
